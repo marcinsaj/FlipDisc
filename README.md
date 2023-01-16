@@ -6,7 +6,6 @@ Marcin Saj 15 Jan 2023
 ## Examples ##
 The following example sketches are included with the **FlipDisc** library:
 -
--
 - ...
 
 ## Library Installation ##
