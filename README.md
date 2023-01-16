@@ -3,9 +3,9 @@ https://github.com/marcinsaj/FlipDisc
 The MIT License  
 Marcin Saj 15 Jan 2023  
 
-## Introduction
+## Introduction  
 
-## Examples
+## Examples  
 The following example sketches are included with the **FlipDisc** library:
 -
 - ...
