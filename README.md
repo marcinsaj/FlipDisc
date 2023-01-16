@@ -3,10 +3,13 @@ https://github.com/marcinsaj/FlipDisc
 The MIT License  
 Marcin Saj 15 Jan 2023  
 
-## Examples ##
+## Introduction
+
+## Examples
 The following example sketches are included with the **FlipDisc** library:
 -
 - ...
+
 
 ## Library Installation ##
 To use the **FlipDisc** library:
@@ -22,7 +25,7 @@ To use the **FlipDisc** library:
 
 <p align="left"><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/warning.png"></p>
 
-## Warning! ##
+## Warning!
 The library uses SPI to control flip-disc displays. The user must remember to connect the display inputs marked DIN - data in - to the MOSI (SPI) output of the microcontroller and the CLK - clock - input of the display to the SCK (SPI) output of the microcontroller. In addition, it is very important to connect and declare EN, CH, PL pins. The declaration of DIN (MOSI) and CLK (SCK) is not necessary, because the <SPI.h> library handles the SPI hardware pins.  
  ```
  display -> microcontroller  
