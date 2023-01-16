@@ -1,4 +1,4 @@
- :hourglass:...work in progress...:hourglass:
+...work in progress...:
 
 # Arduino FlipDisc Library v1.0.0
 https://github.com/marcinsaj/FlipDisc  
