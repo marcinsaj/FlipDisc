@@ -1,6 +1,6 @@
 {
   "name": "FlipDisc",
-  "keywords": "flip-disc, flip-dot, display, flip disc, flip dot",
+  "keywords": "flip-disc, flip-dot, display, flip disc, flip dot, 7-segment", 
   "description": "Arduino library for flip-disc displays",
   "repository":
   {
