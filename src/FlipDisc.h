@@ -15,14 +15,6 @@
 #include <avr/pgmspace.h>
 #include "FlipDisc.h"
 
-// Declaration of the flip-disc display enable pin
-// EN_PIN - the output serves as a latch for shift registers on which
-// the controllers built into the displays are based.
-#define EN_PIN      A7    // 
-// Declaration of the Pulse Shaper Power Supply Module control pins
-#define CH_PIN      A2    // Charging PSPS module - turn ON/OFF
-#define PL_PIN      A3    // Release the current pulse - turn ON/OFF
-
 // Codenames of display modules
 #define SEG     0x7F   
 #define DOTS    0x3D
@@ -190,6 +182,7 @@ class FlipDisc
 {
     public:
         FlipDisc();
+        void Pin(uint16_t EN_PIN, uint16_t CH_PIN, uint16_t PL_PIN);
         void Init(uint8_t MOD1, uint8_t MOD2 = 0xFF, uint8_t MOD3 = 0xFF, 
                                 uint8_t MOD4 = 0xFF, uint8_t MOD5 = 0xFF, 
                                 uint8_t MOD6 = 0xFF, uint8_t MOD7 = 0xFF, 
@@ -200,6 +193,7 @@ class FlipDisc
                                 uint8_t data8 = 0xFF);
         void ToSeg(uint8_t segNumber, uint8_t data);
         void Dot(uint8_t segNumber, uint8_t dot1, uint8_t dot2 = 0xFF, uint8_t dot3 = 0xFF);
+        
     private:
         void SendBlankData(uint8_t moduleNumber, uint8_t moduleType, uint8_t dataPosition);
         void ClearAllOutputs(void);
