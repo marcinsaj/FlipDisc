@@ -190,8 +190,14 @@ class FlipDisc
 {
     public:
         FlipDisc();
-        void Init(uint8_t MOD1, uint8_t MOD2 = 0xFF, uint8_t MOD3 = 0xFF, uint8_t MOD4 = 0xFF, uint8_t MOD5 = 0xFF, uint8_t MOD6 = 0xFF, uint8_t MOD7 = 0xFF, uint8_t MOD8 = 0xFF);
-        void Seg(uint8_t data1, uint8_t data2 = 0xFF, uint8_t data3 = 0xFF, uint8_t data4 = 0xFF, uint8_t data5 = 0xFF, uint8_t data6 = 0xFF, uint8_t data7 = 0xFF, uint8_t data8 = 0xFF);
+        void Init(uint8_t MOD1, uint8_t MOD2 = 0xFF, uint8_t MOD3 = 0xFF, 
+                                uint8_t MOD4 = 0xFF, uint8_t MOD5 = 0xFF, 
+                                uint8_t MOD6 = 0xFF, uint8_t MOD7 = 0xFF, 
+                                uint8_t MOD8 = 0xFF);
+        void Seg(uint8_t data1, uint8_t data2 = 0xFF, uint8_t data3 = 0xFF, 
+                                uint8_t data4 = 0xFF, uint8_t data5 = 0xFF, 
+                                uint8_t data6 = 0xFF, uint8_t data7 = 0xFF, 
+                                uint8_t data8 = 0xFF);
         void ToSeg(uint8_t segNumber, uint8_t data);
         void Dot(uint8_t segNumber, uint8_t dot1, uint8_t dot2 = 0xFF, uint8_t dot3 = 0xFF);
     private:
