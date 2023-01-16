@@ -7,7 +7,7 @@ Marcin Saj 15 Jan 2023
 
 ## Introduction  
 
-## Examples - code & diagrams 
+## Examples - Code & Diagrams 
 The following example sketches are included with the **FlipDisc** library:
 
 
