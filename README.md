@@ -44,11 +44,11 @@ When using the **FlipDisc** library with flip-disc displays, the user is respons
 #define PL_PIN  'Set your pin'  // Release the current pulse - turn ON/OFF
 ```
 ## Supported displays
-- 7-segment flip-disc display
-- 2-dot flip-disc display
-- 3-dot flip-disc display
-- 1x3 flip-disc display
-- 1x7 flip-disc display
+- 7-segment flip-disc display - https://flipo.io/project/flip-disc-7-segment-display/
+- 2-dot flip-disc display - https://flipo.io/project/flip-disc-2x1-display/
+- 3-dot flip-disc display - https://flipo.io/project/flip-disc-3x1-display/
+- 1x3 flip-disc display - https://flipo.io/project/flip-disc-1x3-display/
+- 1x7 flip-disc display - https://flipo.io/project/flip-disc-1x7-display/
 
 ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-7-segment-display.jpg)
 ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-2x1-display.jpg)
