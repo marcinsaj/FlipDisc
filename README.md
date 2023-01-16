@@ -22,6 +22,7 @@ To use the **FlipDisc** library:
 
 
 <p align="left"><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/warning.png"></p>
+
 ## Warning ##
 Incorrect declaration of control pins or incorrect connection of modules may result in damage to flip-disc displays. When using the **FlipDisc** library with flip-disc displays, the user is responsible for ensuring that the connection of the display and power module corresponds to the declared control pins.
 ```c++
