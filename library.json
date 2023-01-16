@@ -1,1 +1,12 @@
-
+{
+  "name": "FlipDisc",
+  "keywords": "flip-disc, flip-dot, display, flip disc, flip dot",
+  "description": "Arduino library for flip-disc displays",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/marcinsaj/FlipDisc.git"
+  },
+  "frameworks": "arduino",
+  "platforms": "atmelavr"
+}
