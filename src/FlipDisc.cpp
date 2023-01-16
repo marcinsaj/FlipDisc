@@ -14,14 +14,13 @@
  * Declaration of the flip-disc display enable pin   
  * EN_PIN - the pin serves as a latch for shift registers on which 
  * the controllers built into the displays are based.
- * Given values A7, A2, A3 are default for Arduino Flip-disc Controller board
  */
-uint16_t _EN_PIN = A7;  // Start & End SPI transfer data
+uint16_t _EN_PIN = 0;  // Start & End SPI transfer data
 /*
  * Declaration of the Pulse Shaper Power Supply Module control pins
  */
-uint16_t _CH_PIN  = A2; // Charging PSPS module - turn ON/OFF
-uint16_t _PL_PIN  = A3; // Release the current pulse - turn ON/OFF
+uint16_t _CH_PIN  = 0; // Charging PSPS module - turn ON/OFF
+uint16_t _PL_PIN  = 0; // Release the current pulse - turn ON/OFF
         
 /* 
  *  2-dimensional array with 3 columns.
@@ -432,7 +431,7 @@ void FlipDisc::Pin(uint16_t EN_PIN, uint16_t CH_PIN, uint16_t PL_PIN)
   digitalWrite(_CH_PIN, LOW);
   
   // Start & End SPI transfer data
-  pinMode(_EN_PIN, OUTPUT);
+  pinMode(EN_PIN, OUTPUT);
   _EN_PIN = EN_PIN;
   digitalWrite(_EN_PIN, LOW);  
 }
