@@ -10,7 +10,6 @@
 
 #include "FlipDisc.h"
 
-
 /* 
  * Declaration of the flip-disc display enable pin   
  * EN_PIN - the pin serves as a latch for shift registers on which 
