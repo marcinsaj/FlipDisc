@@ -10,6 +10,20 @@
 
 #include "FlipDisc.h"
 
+
+/* 
+ * Declaration of the flip-disc display enable pin   
+ * EN_PIN - the pin serves as a latch for shift registers on which 
+ * the controllers built into the displays are based.
+ * Given values A7, A2, A3 are default for Arduino Flip-disc Controller board
+ */
+uint16_t _EN_PIN = A7;  // Start & End SPI transfer data
+/*
+ * Declaration of the Pulse Shaper Power Supply Module control pins
+ */
+uint16_t _CH_PIN  = A2; // Charging PSPS module - turn ON/OFF
+uint16_t _PL_PIN  = A3; // Release the current pulse - turn ON/OFF
+        
 /* 
  *  2-dimensional array with 3 columns.
  * The first column lists all connected displays,
@@ -43,7 +57,7 @@ uint8_t numberAllBytes = 0;
 /*----------------------------------------------------------------------------------*
  * Initialization function for a series of displays. The function has 1 default     *
  * argument and 7 optional arguments. The function prepares SPI and configures      *
- * EN_PIN - the output serves as a latch for shift registers on which               *
+ * _EN_PIN - the output serves as a latch for shift registers on which               *
  * the controllers built into the displays are based. The function also configures  *
  * the PL and CH outputs for the Pulse Shaper Power Supply module.                  *
  * Correct initialization requires names of the serially connected displays.        *
@@ -54,15 +68,6 @@ void FlipDisc::Init(uint8_t MOD1, uint8_t MOD2 = 0xFF, uint8_t MOD3 = 0xFF,
                                   uint8_t MOD8 = 0xFF)
 {
   SPI.begin();
- 
-  pinMode(PL_PIN, OUTPUT);
-  digitalWrite(PL_PIN, LOW);
-
-  pinMode(CH_PIN, OUTPUT);
-  digitalWrite(CH_PIN, LOW);
-  
-  pinMode(EN_PIN, OUTPUT);
-  digitalWrite(EN_PIN, LOW);
 
   // First charging Pulse Shaper Power Supply module after power up the device
   PrepareCurrentPulse();
@@ -229,7 +234,7 @@ void FlipDisc::ToSeg(uint8_t segNumber, uint8_t data)
     newDiscStatus = displaySegArray[data][discNumber];
     
     // Start of SPI data transfer
-    digitalWrite(EN_PIN, LOW);
+    digitalWrite(_EN_PIN, LOW);
 
    /* 
     * Send blank data "0" to all control outputs of the other displays before 
@@ -267,7 +272,7 @@ void FlipDisc::ToSeg(uint8_t segNumber, uint8_t data)
     SendBlankData(segNumber, SEG, After);
 
     // End of SPI data transfer
-    digitalWrite(EN_PIN, HIGH);
+    digitalWrite(_EN_PIN, HIGH);
     
     // Release of 1ms current pulse
     ReleaseCurrentPulse();
@@ -309,7 +314,7 @@ void FlipDisc::Dot(uint8_t segNumber, uint8_t dot1, uint8_t dot2 = 0xFF, uint8_t
     if(newDotArray[dot] != 0xFF)
     {
       // Start of SPI data transfer
-      digitalWrite(EN_PIN, LOW);
+      digitalWrite(_EN_PIN, LOW);
 
      /* 
       * Send blank data "0" to all control outputs of the other displays before 
@@ -342,7 +347,7 @@ void FlipDisc::Dot(uint8_t segNumber, uint8_t dot1, uint8_t dot2 = 0xFF, uint8_t
       SendBlankData(segNumber, DOTS, After);
 
       // End of SPI data transfer
-      digitalWrite(EN_PIN, HIGH);
+      digitalWrite(_EN_PIN, HIGH);
 
       // Release of 1ms current pulse 
       ReleaseCurrentPulse();
@@ -413,17 +418,37 @@ void FlipDisc::SendBlankData(uint8_t moduleNumber, uint8_t moduleType, uint8_t d
 }
 
 /*----------------------------------------------------------------------------------*
+ * The function is used to configure the control pins                               *
+ *----------------------------------------------------------------------------------*/
+void FlipDisc::Pin(uint16_t EN_PIN, uint16_t CH_PIN, uint16_t PL_PIN)
+{
+  // Release the current pulse - turn ON/OFF
+  pinMode(PL_PIN, OUTPUT);
+  _PL_PIN = PL_PIN;
+  digitalWrite(_PL_PIN, LOW);
+
+  // Charging PSPS module - turn ON/OFF
+  pinMode(CH_PIN, OUTPUT);
+  _CH_PIN = CH_PIN;
+  digitalWrite(_CH_PIN, LOW);
+  
+  // Start & End SPI transfer data
+  pinMode(_EN_PIN, OUTPUT);
+  _EN_PIN = EN_PIN;
+  digitalWrite(_EN_PIN, LOW);  
+}
+/*----------------------------------------------------------------------------------*
  * This function is used to disable all outputs of all displays in order to protect *
  * the displays against incorrect control or failure of the power module.           *
  *----------------------------------------------------------------------------------*/
 void FlipDisc::ClearAllOutputs(void)
 {
   // Start of SPI data transfer
-  digitalWrite(EN_PIN, LOW);
+  digitalWrite(_EN_PIN, LOW);
   // Clear all outputs of connected displays 
   for(int i = 0; i < numberAllBytes; i++) SPI.transfer(0);
   // End of SPI data transfer
-  digitalWrite(EN_PIN, HIGH); 
+  digitalWrite(_EN_PIN, HIGH); 
 }
 
 /*----------------------------------------------------------------------------------*
@@ -432,10 +457,10 @@ void FlipDisc::ClearAllOutputs(void)
  *----------------------------------------------------------------------------------*/
 void FlipDisc::PrepareCurrentPulse(void)
 {
-  digitalWrite(PL_PIN, LOW);    // Turn OFF PSPS module output
-  digitalWrite(CH_PIN, HIGH);   // Turn ON charging
+  digitalWrite(_PL_PIN, LOW);    // Turn OFF PSPS module output
+  digitalWrite(_CH_PIN, HIGH);   // Turn ON charging
   delay(100);                   // first charging time 100ms
-  digitalWrite(CH_PIN, LOW);    // Turn OFF charging
+  digitalWrite(_CH_PIN, LOW);    // Turn OFF charging
 }
 
 /*----------------------------------------------------------------------------------*
@@ -444,11 +469,11 @@ void FlipDisc::PrepareCurrentPulse(void)
  *----------------------------------------------------------------------------------*/
 void FlipDisc::ReleaseCurrentPulse(void)
 {
-  digitalWrite(PL_PIN, LOW);    // Turn OFF PSPS module output
-  digitalWrite(CH_PIN, HIGH);   // Turn ON charging
+  digitalWrite(_PL_PIN, LOW);    // Turn OFF PSPS module output
+  digitalWrite(_CH_PIN, HIGH);   // Turn ON charging
   delayMicroseconds(100);       // Charging time 100us
-  digitalWrite(CH_PIN, LOW);    // Turn OFF charging 
-  digitalWrite(PL_PIN, HIGH);   // Turn ON PSPS module output
+  digitalWrite(_CH_PIN, LOW);    // Turn OFF charging 
+  digitalWrite(_PL_PIN, HIGH);   // Turn ON PSPS module output
   delay(1);                     // 1ms current pulse
-  digitalWrite(PL_PIN, LOW);    // Turn OFF PSPS module output  
+  digitalWrite(_PL_PIN, LOW);    // Turn OFF PSPS module output  
 }
