@@ -8,7 +8,7 @@ Marcin Saj 15 Jan 2023
 ## Introduction  
 
 ## Examples - Code & Diagrams 
-The following example sketches are included with the **FlipDisc** library:
+![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/about.png) The following example sketches are included with the **FlipDisc** library:
 
 
 ## Library Installation ##
