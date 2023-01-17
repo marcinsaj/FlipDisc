@@ -8,10 +8,10 @@ Marcin Saj 15 Jan 2023
 ## Introduction  
 
 ## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/about.png) Examples - Code & Diagrams 
-```
-Several example sketches are included with the **FlipDisc** library.  
-In the [examples section](https://github.com/marcinsaj/FlipDisc/tree/main/examples), in order to better understand the code, a visualization of connecting individual modules has been attached to each program code.
-```
+
+> Several example sketches are included with the **FlipDisc** library.  
+> In the [examples section](https://github.com/marcinsaj/FlipDisc/tree/main/examples), in order to better understand the code, a visualization of connecting individual > modules has been attached to each program code.
+
 
 ## Library Installation ##
 To use the **FlipDisc** library:
