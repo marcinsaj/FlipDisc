@@ -52,10 +52,10 @@ Therefore, the user has two options:
 - use any Arduino board + [power supply module](https://flipo.io/project/flip-disc-power-supply/)
 - or a [dedicated controller](https://flipo.io/project/arduino-controller-for-flip-disc-displays/)  
 
-  
-  
-  
-  
+</br>
+</br>
+</br>
+
 <p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/arduino-controller-for-flip-disc-displays.png"></p>  
 
 -------------------------------------------------------------------    
