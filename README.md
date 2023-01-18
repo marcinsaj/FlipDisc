@@ -8,7 +8,7 @@ Marcin Saj 15 Jan 2023
 -------------------------------------------------------------------------------------------  
 
  
-## <picture><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/about.png"></picture> Introduction   
+## <p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/about.png"></p> Introduction   
 
 
 
@@ -34,7 +34,7 @@ Several example sketches are included with the **FlipDisc** library.
 In the [examples section](https://github.com/marcinsaj/FlipDisc/tree/main/examples), in order to better understand the code, a visualization of connecting individual modules has been attached to each program code.  
 
 
-<picture><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/arduino-7-seg-flip-disc-psps-module.png"></picture>    
+<p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/arduino-7-seg-flip-disc-psps-module.png"></picture>    
 
 1️⃣ [Show me code](https://github.com/marcinsaj/FlipDisc/blob/main/examples/01-1x7-seg-flip-disc-arduino-psps.ino) &nbsp; [Download diagram](https://github.com/marcinsaj/FlipDisc/raw/main/datasheet/Flip-disc-7-Segment-Display-Arduino-Example-Connection-with-Pulse-Shaper-Schematic-01.pdf) :small_red_triangle_down:     
 
