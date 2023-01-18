@@ -7,8 +7,8 @@ Marcin Saj 15 Jan 2023
 
 -------------------------------------------------------------------------------------------  
 
-<p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/about.png"></p>   
-## Introduction   
+ 
+## <picture><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/about.png"></picture> Introduction   
 
 
 
