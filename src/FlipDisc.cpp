@@ -457,7 +457,7 @@ void FlipDisc::PrepareCurrentPulse(void)
 {
   digitalWrite(_PL_PIN, LOW);    // Turn OFF PSPS module output
   digitalWrite(_CH_PIN, HIGH);   // Turn ON charging
-  delay(100);                   // first charging time 100ms
+  delay(100);                    // first charging time 100ms
   digitalWrite(_CH_PIN, LOW);    // Turn OFF charging
 }
 
@@ -469,9 +469,9 @@ void FlipDisc::ReleaseCurrentPulse(void)
 {
   digitalWrite(_PL_PIN, LOW);    // Turn OFF PSPS module output
   digitalWrite(_CH_PIN, HIGH);   // Turn ON charging
-  delayMicroseconds(100);       // Charging time 100us
+  delayMicroseconds(100);        // Charging time 100us
   digitalWrite(_CH_PIN, LOW);    // Turn OFF charging 
   digitalWrite(_PL_PIN, HIGH);   // Turn ON PSPS module output
-  delay(1);                     // 1ms current pulse
+  delay(1);                      // 1ms current pulse
   digitalWrite(_PL_PIN, LOW);    // Turn OFF PSPS module output  
 }
