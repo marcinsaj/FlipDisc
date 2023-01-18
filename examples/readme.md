@@ -1,6 +1,10 @@
 ## Examples - Code & Diagrams
 
 <table style="border-collapse: collapse; border: none;">
+  <tr>
+    <th>heading 1</th>
+    <th>heading 2</th>
+  </tr>
     <tr style="border: none;">
         TEST    
         TEST    
