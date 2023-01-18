@@ -13,7 +13,7 @@ Marcin Saj 15 Jan 2023
 
 
 
--------------------------------------------------------------------------------------------   
+-------------------------------------------------------------------------------------------     
 
 ## Library Installation ##
 To use the **FlipDisc** library:
@@ -112,7 +112,8 @@ When using the **FlipDisc** library with flip-disc displays, the user is respons
 #define EN_PIN  'Set your pin'  // Start & End SPI transfer data
 #define CH_PIN  'Set your pin'  // Charging PSPS module - turn ON/OFF
 #define PL_PIN  'Set your pin'  // Release the current pulse - turn ON/OFF
-```
+```  
+-------------------------------------------------------------------------------------------  
 
 ## <picture><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/check.png"></picture> Supported displays      
 
