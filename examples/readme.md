@@ -1,12 +1,15 @@
 ## Examples - Code & Diagrams
 
-    <table style="border-collapse: collapse; border: none;">
-        <tr style="border: none;">
+<table style="border-collapse: collapse; border: none;">
+    <tr style="border: none;">
         - TEST
         - TEST
-
-        </tr>
-    </table>
+    </tr>
+    <tr style="border: none;">
+        - TEST
+        - TEST
+    </tr>
+</table>
 
 <p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/arduino-7-seg-flip-disc-psps-module.png"></p>    
 
