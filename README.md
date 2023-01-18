@@ -133,19 +133,23 @@ When using the **FlipDisc** library with flip-disc displays, the user is respons
 ```  
 -------------------------------------------------------------------------------------------  
 
-## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/check.png) Supported displays      
+## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/check.png) Supported displays & modules      
 
-- 7-segment flip-disc display - https://flipo.io/project/flip-disc-7-segment-display/
-- 2-dot flip-disc display - https://flipo.io/project/flip-disc-2x1-display/
-- 3-dot flip-disc display - https://flipo.io/project/flip-disc-3x1-display/
-- 1x3 flip-disc display - https://flipo.io/project/flip-disc-1x3-display/
-- 1x7 flip-disc display - https://flipo.io/project/flip-disc-1x7-display/
+- [dedicated Arduino controller](https://flipo.io/project/arduino-controller-for-flip-disc-displays/)
+- [7-segment flip-disc display](https://flipo.io/project/flip-disc-7-segment-display/)
+- [2-dot flip-disc display](https://flipo.io/project/flip-disc-2x1-display/)
+- [3-dot flip-disc display](https://flipo.io/project/flip-disc-3x1-display/)
+- [1x3 flip-disc display](https://flipo.io/project/flip-disc-1x3-display/)
+- [1x7 flip-disc display](https://flipo.io/project/flip-disc-1x7-display/)
+- [flip-disc power supply module](https://flipo.io/project/flip-disc-power-supply/)
 
 
 <p align="center">
+  <img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-arduino-controller.jpg">
   <img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-7-segment-display.jpg">
   <img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-2x1-display.jpg">
   <img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-3x1-display.jpg">
   <img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-1x3-display.jpg">
   <img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-1x7-display.jpg">
+  <img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-power-supply-module.jpg">
 </p>
