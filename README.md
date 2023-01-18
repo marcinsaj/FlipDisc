@@ -54,7 +54,6 @@ Therefore, the user has two options:
 
 </br>
 </br>
-</br>
 
 <p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/arduino-controller-for-flip-disc-displays.png"></p>  
 
