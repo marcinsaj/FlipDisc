@@ -13,7 +13,7 @@ Marcin Saj 15 Jan 2023
 Arduino library for flip-disc displays.
 This library is intended for use with the displays designed by www.Flipo.io - Marcin Saj.  
 
-The library allows you to easily control displays connected in series. You can connect up to 8 different displays in any order. Example codes and diagrams on how to connect the displays with the Arduino and the power supply module can be found below and on the project website: https://flipo.io/project/flip-disc-7-segment-display/  
+The library allows you to easily control displays connected in series. You can connect up to 8 different displays in any order. Example codes and diagrams on how to connect the displays with the Arduino and the [Pulse Shaper Power Supply](https://flipo.io/project/flip-disc-power-supply/) module can be found below and on the project website: www.Flipo.io  
 All the functions responsible for controlling the displays are described in example codes and in the library files [FlipDisc.ccp](https://github.com/marcinsaj/FlipDisc/blob/main/src/FlipDisc.cpp) & [FlipDisc.h](https://github.com/marcinsaj/FlipDisc/blob/main/src/FlipDisc.h)
 
 
