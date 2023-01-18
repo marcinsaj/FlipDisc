@@ -1,7 +1,7 @@
 ## Examples - Code & Diagrams
 
 <table style="border-collapse: collapse; border: none;">
-  <tr>
+  <tr style="border: none;">
     <th>heading 1</th>
     <th>heading 2</th>
   </tr>
