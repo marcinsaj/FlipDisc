@@ -7,7 +7,8 @@ Marcin Saj 15 Jan 2023
 
 -------------------------------------------------------------------------------------------  
 
-<p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/about.png"></p> ## Introduction   
+<p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/about.png"></p>   
+## Introduction   
 
 
 
@@ -113,7 +114,8 @@ When using the **FlipDisc** library with flip-disc displays, the user is respons
 #define PL_PIN  'Set your pin'  // Release the current pulse - turn ON/OFF
 ```
 
-<p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/note.png"></p> ## Supported displays      
+<p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/note.png"></p>  
+## Supported displays      
 
 - 7-segment flip-disc display - https://flipo.io/project/flip-disc-7-segment-display/
 - 2-dot flip-disc display - https://flipo.io/project/flip-disc-2x1-display/
