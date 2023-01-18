@@ -9,7 +9,7 @@ The MIT License
 Marcin Saj 15 Jan 2023  
   
 Dear Maker!   
-you are dealing with a very large project and not everything can be clear, because it is difficult to provide such extensive documentation about the library itself, several displays and side modules, display methods and many example program codes. If you need help or have any comments, please contact me: [marcin@flipo.io](marcin@flipo.io) 
+you are dealing with a very large project and not everything can be clear, because it is difficult to provide such extensive documentation about the library itself, several displays and side modules, display methods and many example program codes. If you need help or have any comments, please contact me: marcin@flipo.io
 
 
 -------------------------------------------------------------------------------------------  
