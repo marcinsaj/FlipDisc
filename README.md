@@ -33,6 +33,9 @@ To use the **FlipDisc** library:
 Several example sketches are included with the **FlipDisc** library.  
 In order to better understand the code, a visualization of connecting individual modules has been attached to each program code.  
 
+<p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/arduino-controller-for-flip-disc-displays.png"></p>  
+
+-------------------------------------------------------------------    
 
 <p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/arduino-7-seg-flip-disc-psps-module.png"></p>    
 
