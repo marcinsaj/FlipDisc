@@ -93,7 +93,7 @@ In the [examples section](https://github.com/marcinsaj/FlipDisc/tree/main/exampl
 
 -------------------------------------------------------------------  
 
-## <p><https://github.com/marcinsaj/FlipDisc/blob/main/extras/note.png"></p> Warning!  
+## <p><https://github.com/marcinsaj/FlipDisc/blob/main/extras/note.png></p> Warning!  
 
  The library uses SPI to control flip-disc displays. The user must remember to connect the display inputs marked DIN - data in - to the MOSI (SPI) output of the microcontroller and the CLK - clock - input of the display to the SCK (SPI) output of the microcontroller. In addition, it is very important to connect and declare EN, CH, PL pins. The declaration of DIN (MOSI) and CLK (SCK) is not necessary, because the <SPI.h> library handles the SPI hardware pins.  
  ```
@@ -112,7 +112,9 @@ When using the **FlipDisc** library with flip-disc displays, the user is respons
 #define CH_PIN  'Set your pin'  // Charging PSPS module - turn ON/OFF
 #define PL_PIN  'Set your pin'  // Release the current pulse - turn ON/OFF
 ```
-## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/check.png) Supported displays
+
+## <p><[https://github.com/marcinsaj/FlipDisc/blob/main/extras/note.png](https://github.com/marcinsaj/FlipDisc/blob/main/extras/check.png)></p> Supported displays    
+
 - 7-segment flip-disc display - https://flipo.io/project/flip-disc-7-segment-display/
 - 2-dot flip-disc display - https://flipo.io/project/flip-disc-2x1-display/
 - 3-dot flip-disc display - https://flipo.io/project/flip-disc-3x1-display/
