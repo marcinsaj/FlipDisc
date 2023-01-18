@@ -2,12 +2,12 @@
 
 <table style="border-collapse: collapse; border: none;">
     <tr style="border: none;">
-        TEST  
-        TEST  
+        TEST    
+        TEST    
     </tr>
     <tr style="border: none;">
-        TEST  
-        TEST  
+        TEST    
+        TEST    
     </tr>
 </table>
 
