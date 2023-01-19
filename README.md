@@ -44,11 +44,11 @@ To use the **FlipDisc** library:
 Several example sketches are included with the **FlipDisc** library.  
 In order to better understand the code, a visualization of connecting individual modules has been attached to each program code.  
 
-All diagrams below include the Arduino UNO as a reference. We can use any Arduino board to control the displays. ⚠️ Remember that for proper operation, each of the display connection configurations and the library itself requires the connection of the [Pulse Shaper Power Supply](https://flipo.io/project/flip-disc-power-supply/) module.  
+All diagrams below include the Arduino UNO as a reference. You can use any Arduino board to control the displays. ⚠️ Remember that for proper operation, each of the display connection configurations and the library itself requires the connection of the [Pulse Shaper Power Supply](https://flipo.io/project/flip-disc-power-supply/) module.  
   
-In order to simplify the control of the displays, a [dedicated controller](https://flipo.io/project/arduino-controller-for-flip-disc-displays/) was designed as the Arduino Shield for the Arduino Nano Every and Nano 33 IoT boards. The controller has a built-in pulse shaper power module and several other features.
+In order to simplify the control of the displays, a [dedicated controller](https://flipo.io/project/arduino-controller-for-flip-disc-displays/) was designed as the Arduino Shield for the Arduino Nano Every and Nano 33 IoT boards. The controller has a built-in pulse shaper power supply module and several other features.
   
-Therefore, the user has two options:
+In summary, there are two options:
 - use any Arduino board + [power supply module](https://flipo.io/project/flip-disc-power-supply/)
 - or a [dedicated controller](https://flipo.io/project/arduino-controller-for-flip-disc-displays/)  
 
