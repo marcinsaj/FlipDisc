@@ -21,9 +21,12 @@ uint16_t _EN_PIN = 0;  // Start & End SPI transfer data
  */
 uint16_t _CH_PIN  = 0; // Charging PSPS module - turn ON/OFF
 uint16_t _PL_PIN  = 0; // Release the current pulse - turn ON/OFF
+
+uint8_t flipDiscDelay = 0;  // Variable for the delay effect between flip discs
+uint32_t time_now = 0;      // Variable for the millis() function
         
 /* 
- *  2-dimensional array with 3 columns.
+ * 2-dimensional array with 3 columns.
  * The first column lists all connected displays "moduleTypeColumn",
  * the second column is the number of data bytes required to control the display "numberBytesColumn",
  * the third column is a number defining the relative position of the modules
@@ -500,8 +503,127 @@ void FlipDisc::Dot(uint8_t segNumber, uint8_t dot1 = 0xFF, uint8_t dot2 = 0xFF, 
   ClearAllOutputs();
 }
 
+void FlipDisc::Test(void)
+{
+  uint8_t currentTimeDelay = flipDiscDelay; // Save current time delay
+
+  Delay(100);                               // Change flip delay time to 100 
+  Clear();                                  // Clear all displays               
+  All();                                    // Set all discs of all displays 
+  Clear();                                  // Clear all displays 
+  Delay(currentTimeDelay);                  // Restore current time delay
+}
+
 /*----------------------------------------------------------------------------------*
- * Function for sending empty "0" data to complete the control data string.         *
+ * The function is used to turn on (set) all discs of all displays                  *
+ *----------------------------------------------------------------------------------*/
+void FlipDisc::All(void)
+{
+  for(int i = 0; i < 8; i++)
+  {
+    switch (moduleInitArray[i][moduleTypeColumn]) 
+    {
+      case SEG:
+        // "8" value for 7-Segment display = all discs
+        ToSeg((moduleInitArray[i][moduleRelativePositionColumn]), 8);
+        break;
+
+      case DOTS:
+        Dot((moduleInitArray[i][moduleRelativePositionColumn]), 1, 1 ,1);
+        break;  
+
+      case FLIP3:
+        Flip3((moduleInitArray[i][moduleRelativePositionColumn]), 1, 1 ,1);
+        break;
+        
+      case FLIP7:
+        break;
+        
+      default:
+        break;
+    }
+  }  
+}
+
+/*----------------------------------------------------------------------------------*
+ * The function is used to turn off (clear) all displays                            *
+ *----------------------------------------------------------------------------------*/
+void FlipDisc::Clear(void)
+{
+  for(int i = 0; i < 8; i++)
+  {
+    switch (moduleInitArray[i][moduleTypeColumn]) 
+    {
+      case SEG:
+        ToSeg((moduleInitArray[i][moduleRelativePositionColumn]), CLR);
+        break;
+
+      case DOTS:
+        Dot((moduleInitArray[i][moduleRelativePositionColumn]), 0, 0 ,0);
+        break;  
+
+      case FLIP3:
+        Flip3((moduleInitArray[i][moduleRelativePositionColumn]), 0, 0 ,0);
+        break;
+        
+      case FLIP7:
+        break;
+        
+      default:
+        break;
+    }
+  }  
+}
+
+/*----------------------------------------------------------------------------------*
+ * The function is used to configure the control pins                               *
+ *----------------------------------------------------------------------------------*/
+void FlipDisc::Pin(uint16_t EN_PIN, uint16_t CH_PIN, uint16_t PL_PIN)
+{
+  // Release the current pulse - turn ON/OFF
+  pinMode(PL_PIN, OUTPUT);
+  _PL_PIN = PL_PIN;
+  digitalWrite(_PL_PIN, LOW);
+
+  // Charging PSPS module - turn ON/OFF
+  pinMode(CH_PIN, OUTPUT);
+  _CH_PIN = CH_PIN;
+  digitalWrite(_CH_PIN, LOW);
+  
+  // Start & End SPI transfer data
+  pinMode(EN_PIN, OUTPUT);
+  _EN_PIN = EN_PIN;
+  digitalWrite(_EN_PIN, LOW);  
+}
+
+/*----------------------------------------------------------------------------------*
+ * This function is used to set the delay effect between flip discs             *
+ * The default value without calling the function is 0                              *
+ * Recommended delay range: 0 - 100ms                                               *
+ *----------------------------------------------------------------------------------*/
+void FlipDisc::Delay(uint8_t newTimeDelay)
+{
+  flipDiscDelay = newTimeDelay;  
+}
+
+/*----------------------------------------------------------------------------------*
+ * Private function                                                                 *
+ * The function is used to wait between flip discs                              *
+ * Recommended delay range: 0 - 100ms                                               *
+ *----------------------------------------------------------------------------------*/
+void FlipDisc::FlipDelay(void)
+{
+  time_now = millis();
+  
+  while(millis() - time_now < flipDiscDelay)
+  {
+    // Do nothing and wait
+  }  
+}
+
+/*----------------------------------------------------------------------------------*
+ * Private function                                                                 *
+ * The function is used to sending empty data to complete the control data string.  *
  * -> moduleNumber - (1-8) the relative position of the display in relation         *
  *    to the displays of the selected type                                          *
  * -> moduleType - (SEG, DOTS, FLIP3, FLIP7) selected display type                  *
@@ -560,26 +682,7 @@ void FlipDisc::SendBlankData(uint8_t moduleNumber, uint8_t moduleType, uint8_t d
 }
 
 /*----------------------------------------------------------------------------------*
- * The function is used to configure the control pins                               *
- *----------------------------------------------------------------------------------*/
-void FlipDisc::Pin(uint16_t EN_PIN, uint16_t CH_PIN, uint16_t PL_PIN)
-{
-  // Release the current pulse - turn ON/OFF
-  pinMode(PL_PIN, OUTPUT);
-  _PL_PIN = PL_PIN;
-  digitalWrite(_PL_PIN, LOW);
-
-  // Charging PSPS module - turn ON/OFF
-  pinMode(CH_PIN, OUTPUT);
-  _CH_PIN = CH_PIN;
-  digitalWrite(_CH_PIN, LOW);
-  
-  // Start & End SPI transfer data
-  pinMode(EN_PIN, OUTPUT);
-  _EN_PIN = EN_PIN;
-  digitalWrite(_EN_PIN, LOW);  
-}
-/*----------------------------------------------------------------------------------*
+ * Private function                                                                 *
  * This function is used to disable all outputs of all displays in order to protect *
  * the displays against incorrect control or failure of the power module.           *
  *----------------------------------------------------------------------------------*/
@@ -594,6 +697,7 @@ void FlipDisc::ClearAllOutputs(void)
 }
 
 /*----------------------------------------------------------------------------------*
+ * Private function                                                                 *
  * This function is used to prepare the Pulse Shaper Power Supply module            * 
  * for the first time after power up the device.                                    *
  *----------------------------------------------------------------------------------*/
@@ -606,6 +710,7 @@ void FlipDisc::PrepareCurrentPulse(void)
 }
 
 /*----------------------------------------------------------------------------------*
+ * Private function                                                                 *
  * The function is used to generate a current pulse of 1ms length                   *
  * required by flip-disc displays.                                                  *
  *----------------------------------------------------------------------------------*/
@@ -617,5 +722,6 @@ void FlipDisc::ReleaseCurrentPulse(void)
   digitalWrite(_CH_PIN, LOW);    // Turn OFF charging 
   digitalWrite(_PL_PIN, HIGH);   // Turn ON PSPS module output
   delay(1);                      // 1ms current pulse
-  digitalWrite(_PL_PIN, LOW);    // Turn OFF PSPS module output  
+  digitalWrite(_PL_PIN, LOW);    // Turn OFF PSPS module output
+  FlipDelay();                   // Delay effect between flip discs 
 }
