@@ -38,7 +38,7 @@
 #define Before 0xAA
 #define After  0xBB
 
-// Codenames for the SendBlankData() function
+// Codenames for the moduleInitArray[][3] columns
 #define moduleTypeColumn              0
 #define numberBytesColumn             1
 #define moduleRelativePositionColumn  2
