@@ -1,4 +1,4 @@
-... to do" FLIP7 (ToFlip7, Flip7), update Clear & All
+... to do: FLIP7 (ToFlip7, Flip7), update Clear & All
 ...work in progress...:  
 ...work in progress...:  
 ...work in progress...:  
