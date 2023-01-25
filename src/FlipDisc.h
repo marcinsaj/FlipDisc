@@ -38,6 +38,11 @@
 #define Before 0xAA
 #define After  0xBB
 
+// Codenames for the SendBlankData() function
+#define moduleTypeColumn              0
+#define numberBytesColumn             1
+#define moduleRelativePositionColumn  2
+
 /*
  * The 7-segment display consists of 23 disks. 
  * displaySegArray[][] - the array contains information about all the discs 
