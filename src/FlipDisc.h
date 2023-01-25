@@ -217,6 +217,8 @@ class FlipDisc
                                 uint8_t MOD6 = 0xFF, uint8_t MOD7 = 0xFF, 
                                 uint8_t MOD8 = 0xFF);
 
+        void Delay(uint8_t newTimeDelay);
+
         void ToSeg(uint8_t segNumber, uint8_t data);                                
         void Seg(uint8_t data1, uint8_t data2 = 0xFF, uint8_t data3 = 0xFF, 
                                 uint8_t data4 = 0xFF, uint8_t data5 = 0xFF, 
@@ -233,11 +235,12 @@ class FlipDisc
         void Flip7(uint8_t segNumber, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF, 
                    uint8_t disc4 = 0xFF, uint8_t disc5 = 0xFF, uint8_t disc6 = 0xFF, uint8_t disc7 = 0xFF);
 
-        void Test(void);  // to do - test all displays
-        void All(void);   // to do - set all discs of all displays
-        void Clear(void); // to do - clear all discs of all displays
+        void Test(void);
+        void All(void);
+        void Clear(void);
         
     private:
+        void FlipDelay(void);
         void SendBlankData(uint8_t moduleNumber, uint8_t moduleType, uint8_t dataPosition);
         void ClearAllOutputs(void);
         void PrepareCurrentPulse(void);
