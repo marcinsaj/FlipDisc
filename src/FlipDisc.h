@@ -230,8 +230,8 @@ class FlipDisc
         void Flip3(uint8_t segNumber, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF);
 
         void ToFlip7(uint8_t segNumber, uint8_t discNumber, bool discStatus);
-        void Flip7(uint8_t segNumber, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF, uint8_t disc4 = 0xFF,
-                                      uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF, uint8_t disc4 = 0xFF);
+        void Flip7(uint8_t segNumber, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF, 
+                   uint8_t disc4 = 0xFF, uint8_t disc5 = 0xFF, uint8_t disc6 = 0xFF, uint8_t disc7 = 0xFF);
 
         void Test(void);  // to do - test all displays
         void All(void);   // to do - set all discs of all displays
