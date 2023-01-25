@@ -38,7 +38,7 @@ uint8_t moduleInitArray[8][3];
  * -> FLIP3 - 1x3 flip-disc display
  * -> FLIP7 - 1x7 flip-disc display 
  */
-static const uint8_t moduleTypeArray[4] PROGMEM = {SEG, DOTS, FLIP3, FLIP7};
+static const uint8_t moduleTypeArray[] PROGMEM = {SEG, DOTS, FLIP3, FLIP7};
 
 /*
  * Total length of data frame for all displays.
@@ -384,7 +384,7 @@ void FlipDisc::SendBlankData(uint8_t moduleNumber, uint8_t moduleType, uint8_t d
   for(uint8_t moduleAbsolutePosition = 0; moduleAbsolutePosition < 8; moduleAbsolutePosition++)
   {  
     // Look for the selected display type
-    if(moduleInitArray[moduleAbsolutePosition][0] == moduleType)
+    if(moduleInitArray[moduleAbsolutePosition][moduleTypeColumn] == moduleType)
     { 
      /*
       * Then look for a specific display based on a relative number from a series 
@@ -393,12 +393,12 @@ void FlipDisc::SendBlankData(uint8_t moduleNumber, uint8_t moduleType, uint8_t d
       * Then, based on the absolute position of the display, we calculate the empty data frame "0"
       * and sending this data.
       */
-      if(moduleInitArray[moduleAbsolutePosition][2] == moduleNumber)
+      if(moduleInitArray[moduleAbsolutePosition][moduleRelativePositionColumn] == moduleNumber)
       {       
         if(dataPosition == Before)
         {
           // In the calculation, we omit the currently selected display "(moduleAbsolutePosition + 1)"
-          for(int i = (moduleAbsolutePosition + 1); i < 8; i++) emptyByte = moduleInitArray[i][1] + emptyByte;     
+          for(int i = (moduleAbsolutePosition + 1); i < 8; i++) emptyByte = moduleInitArray[i][numberBytesColumn] + emptyByte;     
           for(int j = 0; j < emptyByte; j++) SPI.transfer(0);
           return;     
         }
@@ -406,7 +406,7 @@ void FlipDisc::SendBlankData(uint8_t moduleNumber, uint8_t moduleType, uint8_t d
         if(dataPosition == After)
         {
           // In the calculation, we omit the currently selected display "(moduleAbsolutePosition - 1)"
-          for(int i = 0; i <= (moduleAbsolutePosition - 1); i++) emptyByte = moduleInitArray[i][1] + emptyByte;
+          for(int i = 0; i <= (moduleAbsolutePosition - 1); i++) emptyByte = moduleInitArray[i][numberBytesColumn] + emptyByte;
           for(int j = 0; j < emptyByte; j++) SPI.transfer(0);
           return;      
         }
