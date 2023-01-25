@@ -183,6 +183,30 @@ static const uint8_t resetDiscDot[3] PROGMEM =
   0b01000100
 };
 
+/* 
+ * Refers to "FLIP3" - 1x3 display.  
+ * The array contains the addresses of the control outputs corresponding 
+ * to the setting of the discs to the "color" side.
+ */ 
+static const uint8_t setDiscFlip3[3] PROGMEM =
+{
+  0b10000010,
+  0b10010000,
+  0b10100000
+};
+
+/* 
+ * Refers to "FLIP3" - 1x3 display.    
+ * The array contains the addresses of the control outputs corresponding 
+ * to the setting of the discs to the "black" side.
+ */ 
+static const uint8_t resetDiscFlip3[3] PROGMEM =
+{
+  0b00000101,
+  0b01000100,
+  0b00001100
+};
+
 class FlipDisc
 {
     public:
@@ -197,7 +221,10 @@ class FlipDisc
                                 uint8_t data6 = 0xFF, uint8_t data7 = 0xFF, 
                                 uint8_t data8 = 0xFF);
         void ToSeg(uint8_t segNumber, uint8_t data);
-        void Dot(uint8_t segNumber, uint8_t dot1, uint8_t dot2 = 0xFF, uint8_t dot3 = 0xFF);
+        void Flip3(uint8_t segNumber, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF);
+        void ToFlip3(uint8_t segNumber, uint8_t discNumber, bool discStatus);
+        void Dot(uint8_t segNumber, uint8_t dot1 = 0xFF, uint8_t dot2 = 0xFF, uint8_t dot3 = 0xFF);
+        void ToDot(uint8_t segNumber, uint8_t dotNumber, bool dotStatus);
         
     private:
         void SendBlankData(uint8_t moduleNumber, uint8_t moduleType, uint8_t dataPosition);
