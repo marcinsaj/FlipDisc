@@ -24,10 +24,10 @@ uint16_t _PL_PIN  = 0; // Release the current pulse - turn ON/OFF
         
 /* 
  *  2-dimensional array with 3 columns.
- * The first column lists all connected displays,
- * the second column is the number of data bytes required to control the display,
+ * The first column lists all connected displays "moduleTypeColumn",
+ * the second column is the number of data bytes required to control the display "numberBytesColumn",
  * the third column is a number defining the relative position of the modules
- * in relation to each other and for each type separately. 
+ * in relation to each other and for each type separately "moduleRelativePositionColumn". 
  */
 uint8_t moduleInitArray[8][3];
 
