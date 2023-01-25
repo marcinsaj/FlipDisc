@@ -71,14 +71,14 @@ void FlipDisc::Init(uint8_t MOD1, uint8_t MOD2 = 0xFF, uint8_t MOD3 = 0xFF,
   PrepareCurrentPulse();
 
   // Saving a list of displays to the array
-  moduleInitArray[0][0] = MOD1;
-  moduleInitArray[1][0] = MOD2;
-  moduleInitArray[2][0] = MOD3;
-  moduleInitArray[3][0] = MOD4;
-  moduleInitArray[4][0] = MOD5;
-  moduleInitArray[5][0] = MOD6;
-  moduleInitArray[6][0] = MOD7;
-  moduleInitArray[7][0] = MOD8;  
+  moduleInitArray[0][moduleTypeColumn] = MOD1;
+  moduleInitArray[1][moduleTypeColumn] = MOD2;
+  moduleInitArray[2][moduleTypeColumn] = MOD3;
+  moduleInitArray[3][moduleTypeColumn] = MOD4;
+  moduleInitArray[4][moduleTypeColumn] = MOD5;
+  moduleInitArray[5][moduleTypeColumn] = MOD6;
+  moduleInitArray[6][moduleTypeColumn] = MOD7;
+  moduleInitArray[7][moduleTypeColumn] = MOD8;  
   
 /*
  * moduleRelativePosition variable
@@ -108,10 +108,10 @@ void FlipDisc::Init(uint8_t MOD1, uint8_t MOD2 = 0xFF, uint8_t MOD3 = 0xFF,
     {     
       // If the selected display type is found in the list 
       // then the relative position is incremented and stored in the array
-      if(moduleInitArray[j][0] == moduleType) 
+      if(moduleInitArray[j][moduleTypeColumn] == moduleType) 
       {
         moduleRelativePosition = moduleRelativePosition + 1;   
-        moduleInitArray[j][2] = moduleRelativePosition;
+        moduleInitArray[j][moduleRelativePositionColumn] = moduleRelativePosition;
       }
     }
   }
@@ -132,7 +132,7 @@ void FlipDisc::Init(uint8_t MOD1, uint8_t MOD2 = 0xFF, uint8_t MOD3 = 0xFF,
   
   for(int i = 0; i < 8; i++)
   {
-    switch (moduleInitArray[i][0]) 
+    switch (moduleInitArray[i][moduleTypeColumn]) 
     {
       case SEG:
         numberBytes = 3;
@@ -160,7 +160,7 @@ void FlipDisc::Init(uint8_t MOD1, uint8_t MOD2 = 0xFF, uint8_t MOD3 = 0xFF,
     }
     
     // Saving data about the number of data bytes required by the module
-    moduleInitArray[i][1] = numberBytes;
+    moduleInitArray[i][numberBytesColumn] = numberBytes;
 
     // Total length of data frame for all displays.
     numberAllBytes = numberAllBytes + numberBytes; 
