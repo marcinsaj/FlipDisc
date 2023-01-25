@@ -55,7 +55,7 @@ uint8_t numberAllBytes = 0;
 /*----------------------------------------------------------------------------------*
  * Initialization function for a series of displays. The function has 1 default     *
  * argument and 7 optional arguments. The function prepares SPI and configures      *
- * _EN_PIN - the output serves as a latch for shift registers on which               *
+ * _EN_PIN - the output serves as a latch for shift registers on which              *
  * the controllers built into the displays are based. The function also configures  *
  * the PL and CH outputs for the Pulse Shaper Power Supply module.                  *
  * Correct initialization requires names of the serially connected displays.        *
@@ -450,8 +450,8 @@ void FlipDisc::ClearAllOutputs(void)
 }
 
 /*----------------------------------------------------------------------------------*
- * This function is used to prepare the Pulse Shaper Power Supply module 
- * for the first time after power up the device.
+ * This function is used to prepare the Pulse Shaper Power Supply module            * 
+ * for the first time after power up the device.                                    *
  *----------------------------------------------------------------------------------*/
 void FlipDisc::PrepareCurrentPulse(void)
 {
@@ -462,8 +462,8 @@ void FlipDisc::PrepareCurrentPulse(void)
 }
 
 /*----------------------------------------------------------------------------------*
- * The function is used to generate a current pulse of 1ms length 
- * required by flip-disc displays.
+ * The function is used to generate a current pulse of 1ms length                   *
+ * required by flip-disc displays.                                                  *
  *----------------------------------------------------------------------------------*/
 void FlipDisc::ReleaseCurrentPulse(void)
 {
