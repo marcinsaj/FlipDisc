@@ -141,6 +141,13 @@ When using the **FlipDisc** library with flip-disc displays, the user is respons
 ```  
 -------------------------------------------------------------------------------------------  
 
+## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/tools.png) Functions
+```
+void FlipDisc.Pin(uint16_t EN_PIN, uint16_t CH_PIN, uint16_t PL_PIN)
+```
+
+
+
 ## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/check.png) Supported Displays & Modules      
 
 - [dedicated Arduino controller](https://flipo.io/project/arduino-controller-for-flip-disc-displays/)
