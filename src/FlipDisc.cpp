@@ -196,7 +196,7 @@ void FlipDisc::Seg(uint8_t data1, uint8_t data2 = 0xFF, uint8_t data3 = 0xFF,
  * the second SEG display will have a relative number of 2 even though there        *
  * is a DOTS display between the SEG displays.                                      *
  * -> moduleNumber - relative number of the "SEG" display                           *
- * -> data                                                                          *
+ * -> data1, data2, data3, data4, data5, data6, data7, data8.                       *
  *                                                                                  *
  * Brief:                                                                           *
  * The display consists of 23 discs. The displaySegArray[][] array contains         *
@@ -314,19 +314,19 @@ void FlipDisc::ToDot(uint8_t moduleNumber, uint8_t dotNumber, bool dotStatus)
   // Call the function to flip the dot (only one dot)
   Dot(moduleNumber, newDotArray[0], newDotArray[1], newDotArray[2]);
 
-  // Clear all display outputs
+  // Clear all outputs of the controllers built into the displays
   ClearAllOutputs();  
 }
 
 /*----------------------------------------------------------------------------------*
  * The function allows you to control 2 or 3-dot display.                           *
- * We can control one, two or three dots of the selected display at a time.         *
+ * You can control one, two or three dots of the selected display at a time.         *
  * The first argument is the relative number of the display in the series           *
  * of all displays. For example, if we have a combination of DOTS, SEG, DOTS, then  *
  * the second DOTS display will have a relative number of 2 even though there       *
  * is a SEG display between the DOTS displays.                                      *
  * -> moduleNumber - relative number of the "DOTS" display                          *
- * -> data                                                                          *
+ * -> dot1, dot2, dot3.                                                               *
  *                                                                                  *
  * Brief:                                                                           *
  * The display consists of 2 or 3 discs.                                            *
@@ -399,14 +399,14 @@ void FlipDisc::Dot(uint8_t moduleNumber, uint8_t dot1 = 0xFF, uint8_t dot2 = 0xF
 }
 
 /*----------------------------------------------------------------------------------*
- * Function allows you to control a selected disc in a selected 1x3 display.        *
+ * Function allows you to control selected disc in a 1x3 display.                   *
  * We can control only one disc of the selected display at a time.                  *
  * The first argument moduleNumber is the relative number of the display in         *
  the series of all displays. For example, if we have a combination                  *
  of FLIP3, SEG, FLIP3, then the second FLIP3 display will have a relative number    *
  of 2 even though there is a SEG display between the FLIP3 displays.                *
  * -> moduleNumber - relative number of the "FLIP3" display                         *
- * -> discNumber - display disc number counting from right to left 1-3              *
+ * -> discNumber - display disc number counting from left to right 1-3              *
  * -> discStatus - reset disc "0" or set disc "1"                                   *
  *----------------------------------------------------------------------------------*/
 void FlipDisc::ToFlip3(uint8_t moduleNumber, uint8_t discNumber, bool discStatus)
@@ -420,7 +420,7 @@ void FlipDisc::ToFlip3(uint8_t moduleNumber, uint8_t discNumber, bool discStatus
   uint8_t newDiscArray[3];
   
   /*
-   * discNumber - counting from right to left 1, 2, 3
+   * discNumber - counting from left to right 1, 2, 3
    * The array row numbers newDiscArray[] start at 0 so we need to subtract 1 (i-1)
    * If we assign the value 0xFF to discs, the Flip3() function will ignore these discs
    */
@@ -433,7 +433,7 @@ void FlipDisc::ToFlip3(uint8_t moduleNumber, uint8_t discNumber, bool discStatus
   // Call the function to flip the disc (only one disc)
   Flip3(moduleNumber, newDiscArray[0], newDiscArray[1], newDiscArray[2]);
 
-  // Clear all display outputs
+  // Clear all outputs of the controllers built into the displays
   ClearAllOutputs();
 }
 
@@ -445,11 +445,11 @@ void FlipDisc::ToFlip3(uint8_t moduleNumber, uint8_t discNumber, bool discStatus
  * then the second FLIP3 display will have a relative number of 2 even though there *
  * is a SEG display between the FLIP3 displays.                                     *
  * -> moduleNumber - relative number of the "FLIP3" display                         *
- * -> data                                                                          *
+ * -> disc1, disc2, disc3.                                                          *
  *                                                                                  *
  * Brief:                                                                           *
  * The display consists 3 discs.                                                    *
- * To flip a selected disc dot, we need to know the corresponding control outputs.  *
+ * To flip a selected disc, we need to know the corresponding control outputs.      *
  * The list of information about control outputs for corresponding discs            *
  * to be displayed are contained in two tables:                                     *
  * -> setDiscFlip3[] - "1"                                                          *
@@ -466,7 +466,7 @@ void FlipDisc::Flip3(uint8_t moduleNumber, uint8_t disc1 = 0xFF, uint8_t disc2 =
   // Saving a list of dot statuses to the array
   uint8_t newDiscArray[3]= {disc1, disc2, disc3};
 
-  // 3 dots - 3 loops
+  // 3 discs - 3 loops
   for(int disc = 0; disc < 3; disc++)
   {  
     // Check if we have new data for disc. 0xFF - no data
@@ -513,19 +513,19 @@ void FlipDisc::Flip3(uint8_t moduleNumber, uint8_t disc1 = 0xFF, uint8_t disc2 =
     }  
   }
 
-  // Clear all display outputs
+  // Clear all outputs of the controllers built into the displays
   ClearAllOutputs();
 }
 
 /*----------------------------------------------------------------------------------*
- * Function allows you to control a selected disc in a selected 1x7 display.        *
+ * Function allows you to control a selected disc in a 1x7 display.                 *
  * We can control only one disc of the selected display at a time. The first        *
  * argument moduleNumber is the relative number of the display in the series        *
  * of all displays. For example, if we have a combination of FLIP7, SEG, FLIP7,     *
- * then the second FLIP3 display will have a relative number of 2 even though there *
+ * then the second FLIP7 display will have a relative number of 2 even though there *
  * is a SEG display between the FLIP7 displays.                                     *
  * -> moduleNumber - relative number of the "FLIP7" display                         *
- * -> discNumber - display disc number counting from right to left 1-7              *
+ * -> discNumber - display disc number counting from left to right 1-7              *
  * -> discStatus - reset disc "0" or set disc "1"                                   *
  *----------------------------------------------------------------------------------*/
 void FlipDisc::ToFlip7(uint8_t moduleNumber, uint8_t discNumber, bool discStatus)
@@ -539,7 +539,7 @@ void FlipDisc::ToFlip7(uint8_t moduleNumber, uint8_t discNumber, bool discStatus
   uint8_t newDiscArray[7];
   
   /*
-   * discNumber - counting from right to left 1, 2,...7
+   * discNumber - counting from left to right 1, 2,...7
    * The array row numbers newDiscArray[] start at 0 so we need to subtract 1 (i-1)
    * If we assign the value 0xFF to discs, the Flip7() function will ignore these discs
    */
@@ -553,7 +553,7 @@ void FlipDisc::ToFlip7(uint8_t moduleNumber, uint8_t discNumber, bool discStatus
   Flip7(moduleNumber, newDiscArray[0], newDiscArray[1], newDiscArray[2],
         newDiscArray[3], newDiscArray[4], newDiscArray[5], newDiscArray[6]);
 
-  // Clear all display outputs
+  // Clear all outputs of the controllers built into the displays
   ClearAllOutputs();
 }
 
@@ -565,11 +565,11 @@ void FlipDisc::ToFlip7(uint8_t moduleNumber, uint8_t discNumber, bool discStatus
  * then the second FLIP7 display will have a relative number of 2 even though there *
  * is a SEG display between the FLIP7 displays.                                     *
  * -> moduleNumber - relative number of the "FLIP7" display                         *
- * -> data                                                                          *
+ * -> disc1, disc2, disc3, disc4, disc5, disc6, disc7.                                                                           *
  *                                                                                  *
  * Brief:                                                                           *
  * The display consists 7 discs.                                                    *
- * To flip a selected disc dot, we need to know the corresponding control outputs.  *
+ * To flip a selected disc, we need to know the corresponding control outputs.      *
  * The list of information about control outputs for corresponding discs            *
  * to be displayed are contained in two tables:                                     *
  * -> setDiscFlip7[] - "1"                                                          *
@@ -587,7 +587,7 @@ void FlipDisc::Flip7(uint8_t moduleNumber, uint8_t disc1 = 0xFF, uint8_t disc2 =
   // Saving a list of dot statuses to the array
   uint8_t newDiscArray[7] = {disc1, disc2, disc3, disc4, disc5, disc6, disc7};
 
-  // 7 dots - 7 loops
+  // 7 discs - 7 loops
   for(int disc = 0; disc < 7; disc++)
   {  
     // Check if we have new data for disc. 0xFF - no data
@@ -611,10 +611,10 @@ void FlipDisc::Flip7(uint8_t moduleNumber, uint8_t disc1 = 0xFF, uint8_t disc2 =
       * controller outputs to achieve the desired effect. 
       * The list of information about the statuses of all discs for the display 
       * and the currently selected dot to be displayed is contained in two tables:
-      * -> setDiscFlip3[] - "1" 
-      * -> resetDiscFlip3[] - "0"
-      * Each separate display disc requires 1 byte of data to be transferred. 
-      * To flip all 3 discs, we need to send 3 bytes of data.
+      * -> setDiscFlip7[] - "1" 
+      * -> resetDiscFlip7[] - "0"
+      * Each separate display disc requires 2 byte of data to be transferred. 
+      * To flip all 7 discs, we need to send 14 bytes of data.
       */
       for(int byteNumber = 0; byteNumber < 2; byteNumber++)
       {
@@ -636,7 +636,7 @@ void FlipDisc::Flip7(uint8_t moduleNumber, uint8_t disc1 = 0xFF, uint8_t disc2 =
     }  
   }
 
-  // Clear all display outputs
+  // Clear all outputs of the controllers built into the displays
   ClearAllOutputs();
 }
 
