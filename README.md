@@ -165,40 +165,69 @@ FlipDisc.Init(...) it is second most important function. Initialization function
 ------------------------------------------------------------------------------------------- 
 
 ```c++
-void FlipDisc.Delay(uint8_t newTimeDelay);
-```
+FlipDisc.Delay(0-100ms);
 
+// Example function call
+FlipDisc.Delay(20);
+```
+The function is used to set the delay effect between flip discs. The default value without calling the function is 0. Can be called multiple times anywhere in the code.
+Recommended delay range: 0 - 100ms
 ------------------------------------------------------------------------------------------- 
 
 ```c++
-void FlipDisc.Test(void);
+FlipDisc.Test();
 ```
-
+The function is used to test all declared displays - turn on and off all displays. 
 ------------------------------------------------------------------------------------------- 
 
 ```c++
 void FlipDisc.All(void);
 ```
-
+The function is used to turn on (set) all discs of all displays.
 ------------------------------------------------------------------------------------------- 
 
 ```c++
 void Clear(void);
 ```
-
+The function is used to turn off (clear) all displays.
 ------------------------------------------------------------------------------------------- 
 
 ```c++
-void FlipDisc.ToSeg(uint8_t moduleNumber, uint8_t data);
+FlipDisc.ToSeg(moduleNumber, data);
+
+// An example of calling the function to display the number 5 on the first 7-Segment display counting from the left
+FlipDisc.ToSeg(1, 5); 
 ```
-
+The function allows you to control one 7-segment display. The first argument "moduleNumber" is the relative number of the display in the series of all displays. For example, if we have a combination of SEG, DOTS, SEG then the second SEG display will have a relative number of 2 even though there is a DOTS display between the SEG displays.  
+  
+7-Segment display consists of 23 discs. The displaySegArray[][] array contains information about all disc statuses for the symbol we want to display. To flip a selected disc, we need to know the corresponding control outputs. Disc statuses "0" and "1" correspond to different control outputs. The list of information about all control outputs for corresponding disc statuses of all discs and the currently selected digit/symbol to be displayed are contained in two tables:
+ - setDiscArray[][] - "1"
+ - resetDiscArray[][] - "0"
+See the function description and content in [FlipDisc.cpp](https://github.com/marcinsaj/FlipDisc/blob/main/src/FlipDisc.cpp)
 ------------------------------------------------------------------------------------------- 
 
 ```c++
-void FlipDisc.Seg(data1, data2 = 0xFF, data3 = 0xFF, data4 = 0xFF, 
+FlipDisc.Seg(data1, data2 = 0xFF, data3 = 0xFF, data4 = 0xFF, 
                   data5 = 0xFF, data6 = 0xFF, data7 = 0xFF, data8 = 0xFF);
-```
+                  
+/* Example function call assuming that we have declared the following displays FlipDisc.Init(SEG, SEG, SEG, SEG) and we want to display temperature 70°F. */ 
+FlipDisc.Seg(7, 0, DEG, FAH);  
+// Or in Celsius 23°C  
+FlipDisc.Seg(2, 3, DEG, CEL);
 
+```
+Function to control up to eight 7-segment displays. The first argument is the default and the others are optional. This function allows you to display numbers and symbols: 0-9, "°","C" , "F", etc.  
+Code names for symbols: 
+ - CLR - Clear Display
+ - DEG - "°" - Degree symbol
+ - CEL - "C" - Celsius symbol
+ - FAH - "F" - Fahrenheit symbol 
+ - HUM - "H" - Humidity symbol 
+ - PFH - "%" - Percent first half symbol
+ - PSH - "%" - Percent second half symbol 
+ - UPD - "¯" - Upper dash symbol
+ - MID - "-" - Middle dash symbol
+ - BTD - "_" - Bottom dash symbol
 ------------------------------------------------------------------------------------------- 
 
 ```c++
