@@ -139,7 +139,7 @@ When using the **FlipDisc** library with flip-disc displays, the user is respons
 
 ## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/tools.png) Functions  
 
-1️⃣
+1️⃣🔽
 ```c++
 #define EN_PIN  'Set your pin'  // Start & End SPI transfer data
 #define CH_PIN  'Set your pin'  // Charging PSPS module - turn ON/OFF
@@ -151,7 +151,7 @@ FlipDisc.Pin(...); it is most important function and first to call before everyt
 
 ------------------------------------------------------------------------------------------- 
 
-2️⃣
+2️⃣🔽
 ```c++
 FlipDisc.Init(MOD1, MOD2 = 0xFF, MOD3 = 0xFF, MOD4 = 0xFF, 
                    MOD5 = 0xFF, MOD6 = 0xFF, MOD7 = 0xFF, MOD8 = 0xFF);  
@@ -167,7 +167,7 @@ FlipDisc.Init(...) it is second most important function. Initialization function
 
 ------------------------------------------------------------------------------------------- 
 
-3️⃣
+3️⃣🔽
 ```c++
 FlipDisc.Delay(0-100ms);
 
@@ -178,7 +178,7 @@ The function is used to set the delay effect between flip discs. The default val
 
 ------------------------------------------------------------------------------------------- 
 
-4️⃣
+4️⃣🔽
 ```c++
 FlipDisc.Test();
 ```
@@ -186,7 +186,7 @@ The function is used to test all declared displays - turn on and off all display
 
 ------------------------------------------------------------------------------------------- 
 
-5️⃣
+5️⃣🔽
 ```c++
 void FlipDisc.All(void);
 ```
@@ -194,7 +194,7 @@ The function is used to turn on (set) all discs of all displays.
 
 ------------------------------------------------------------------------------------------- 
 
-6️⃣
+6️⃣🔽
 ```c++
 void Clear(void);
 ```
@@ -203,7 +203,7 @@ The function is used to turn off (clear) all displays.
 
 ------------------------------------------------------------------------------------------- 
 
-7️⃣
+7️⃣🔽
 ```c++
 FlipDisc.ToSeg(moduleNumber, data);
 
@@ -220,7 +220,7 @@ See the function description and content in [FlipDisc.cpp](https://github.com/ma
 
 ------------------------------------------------------------------------------------------- 
 
-8️⃣
+8️⃣🔽
 ```c++
 FlipDisc.Seg(data1, data2 = 0xFF, data3 = 0xFF, data4 = 0xFF, 
                   data5 = 0xFF, data6 = 0xFF, data7 = 0xFF, data8 = 0xFF);
@@ -248,39 +248,39 @@ Code names for symbols:
 
 ------------------------------------------------------------------------------------------- 
 
-9️⃣
+9️⃣🔽
 ```c++
 void FlipDisc.ToDot(uint8_t moduleNumber, uint8_t dotNumber, bool dotStatus);
 ```
 
 ------------------------------------------------------------------------------------------- 
 
-1️⃣:zero:
+1️⃣:zero:🔽
 ```c++
 void FlipDisc.Dot(moduleNumber, dot1 = 0xFF, dot2 = 0xFF, dot3 = 0xFF);
 ```
 
 ------------------------------------------------------------------------------------------- 
 
-1️⃣:two:
+1️⃣:two:🔽
 ```c++
 void FlipDisc.ToFlip3(moduleNumber, discNumber, discStatus);
 ```
 
 ------------------------------------------------------------------------------------------- 
-1️⃣:three:
+1️⃣:three:🔽
 ```c++
 void FlipDisc.Flip3(moduleNumber, disc1 = 0xFF, disc2 = 0xFF, disc3 = 0xFF);
 ```
 
 ------------------------------------------------------------------------------------------- 
-1️⃣:four:
+1️⃣:four:🔽
 ```c++
 void FlipDisc.ToFlip7(moduleNumber, discNumber, discStatus);
 ```
 
 ------------------------------------------------------------------------------------------- 
-1️⃣:five:
+1️⃣:five:🔽
 ```c++
 void FlipDisc.Flip7(moduleNumber, disc1 = 0xFF, disc2 = 0xFF, disc3 = 0xFF, 
                     disc4 = 0xFF, disc5 = 0xFF, disc6 = 0xFF, disc7 = 0xFF);
