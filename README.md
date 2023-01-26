@@ -119,9 +119,9 @@ In summary, there are two options:
 
 -------------------------------------------------------------------  
 
-## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/note.png) Warning!  
+## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/note.png) Warning!    
 
- The library uses SPI to control flip-disc displays. The user must remember to connect the display inputs marked DIN - data in - to the MOSI (SPI) output of the microcontroller and the CLK - clock - input of the display to the SCK (SPI) output of the microcontroller. In addition, it is very important to connect and declare EN, CH, PL pins. The declaration of DIN (MOSI) and CLK (SCK) is not necessary, because the <SPI.h> library handles the SPI hardware pins.  
+The library uses SPI to control flip-disc displays. The user must remember to connect the display inputs marked DIN - data in - to the MOSI (SPI) output of the microcontroller and the CLK - clock - input of the display to the SCK (SPI) output of the microcontroller. In addition, it is very important to connect and declare EN, CH, PL pins. The declaration of DIN (MOSI) and CLK (SCK) is not necessary, because the <SPI.h> library handles the SPI hardware pins.  
  ```
  display -> microcontroller  
  DIN -----> MOSI (SPI)  
@@ -136,7 +136,7 @@ When using the **FlipDisc** library with flip-disc displays, the user is respons
 
 -------------------------------------------------------------------------------------------  
 
-## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/tools.png) Functions
+## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/tools.png) Functions  
 
 ```c++
 #define EN_PIN  'Set your pin'  // Start & End SPI transfer data
@@ -170,8 +170,7 @@ FlipDisc.Delay(0-100ms);
 // Example function call
 FlipDisc.Delay(20);
 ```
-The function is used to set the delay effect between flip discs. The default value without calling the function is 0. Can be called multiple times anywhere in the code.
-Recommended delay range: 0 - 100ms
+The function is used to set the delay effect between flip discs. The default value without calling the function is 0. Can be called multiple times anywhere in the code. Recommended delay range: 0 - 100ms
 ------------------------------------------------------------------------------------------- 
 
 ```c++
