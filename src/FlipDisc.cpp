@@ -117,7 +117,7 @@ void FlipDisc::Init(uint8_t MOD1, uint8_t MOD2 = 0xFF, uint8_t MOD3 = 0xFF,
       {
         moduleRelativePosition = moduleRelativePosition + 1;   
         moduleInitArray[j][moduleRelativePositionColumn] = moduleRelativePosition;
-      } else moduleInitArray[j][moduleRelativePositionColumn] = 0;
+      }
     }
   }
   
@@ -749,14 +749,14 @@ void FlipDisc::Delay(uint8_t newTimeDelay)
   flipDiscDelay = newTimeDelay;  
 }
 
-/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*
+/*----------------------------------------------------------------------------------*
  * Private function                                                                 *
  * The function is used to check whether the number (segNumber) of the selected     *
  * display (moduleType) exists.                                                     *
  * For example, if the display no.3 (segNumber) of a specific type (moduleType)     *
  * was selected and earlier in the Init() function we declared fewer or no displays *
  * of the selected type (moduleType), the function returns 1 - the fuse has tripped.*
- *@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+ *----------------------------------------------------------------------------------*/
 bool FlipDisc::Fuse(uint8_t segNumber, uint8_t moduleType)
 {
   uint8_t highestSegNumber = 0;
@@ -770,11 +770,11 @@ bool FlipDisc::Fuse(uint8_t segNumber, uint8_t moduleType)
   else return 0;
 }
 
-/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*
+/*----------------------------------------------------------------------------------*
  * Private function                                                                 *
  * The function is used to wait between flip discs                                  *
  * Recommended delay range: 0 - 100ms                                               *
- *@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+ *----------------------------------------------------------------------------------*/
 void FlipDisc::FlipDelay(void)
 {
   time_now = millis();
@@ -785,7 +785,7 @@ void FlipDisc::FlipDelay(void)
   }  
 }
 
-/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*
+/*----------------------------------------------------------------------------------*
  * Private function                                                                 *
  * The function is used to sending empty data to complete the control data string.  *
  * -> segNumber - (1-8) the relative position of the display in relation            *
@@ -806,7 +806,7 @@ void FlipDisc::FlipDelay(void)
  * displays, for 24 bytes of data there are only 2 bits set to "1" and              *
  * the remaining 190 bits must be set to "0". The architecture of the embedded      *
  * display controller requires it.                                                  *
- *@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+ *----------------------------------------------------------------------------------*/
 void FlipDisc::SendBlankData(uint8_t segNumber, uint8_t moduleType, uint8_t dataPosition)
 {
   uint8_t emptyByte = 0;
@@ -845,11 +845,11 @@ void FlipDisc::SendBlankData(uint8_t segNumber, uint8_t moduleType, uint8_t data
   }   
 }
 
-/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*
+/*----------------------------------------------------------------------------------*
  * Private function                                                                 *
  * This function is used to disable all outputs of all displays in order to protect *
  * the displays against incorrect control or failure of the power module.           *
- *@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+ *----------------------------------------------------------------------------------*/
 void FlipDisc::ClearAllOutputs(void)
 {
   // Start of SPI data transfer
@@ -860,11 +860,11 @@ void FlipDisc::ClearAllOutputs(void)
   digitalWrite(_EN_PIN, HIGH); 
 }
 
-/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*
+/*----------------------------------------------------------------------------------*
  * Private function                                                                 *
  * This function is used to prepare the Pulse Shaper Power Supply module            * 
  * for the first time after power up the device.                                    *
- *@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+ *----------------------------------------------------------------------------------*/
 void FlipDisc::PrepareCurrentPulse(void)
 {
   digitalWrite(_PL_PIN, LOW);    // Turn OFF PSPS module output
@@ -873,11 +873,11 @@ void FlipDisc::PrepareCurrentPulse(void)
   digitalWrite(_CH_PIN, LOW);    // Turn OFF charging
 }
 
-/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*
+/*----------------------------------------------------------------------------------*
  * Private function                                                                 *
  * The function is used to generate a current pulse of 1ms length                   *
  * required by flip-disc displays.                                                  *
- *@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+ *----------------------------------------------------------------------------------*/
 void FlipDisc::ReleaseCurrentPulse(void)
 {
   digitalWrite(_PL_PIN, LOW);    // Turn OFF PSPS module output
