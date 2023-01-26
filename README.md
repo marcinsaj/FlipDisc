@@ -149,14 +149,16 @@ FlipDisc.Pin(...); it is most important function and first to call before everyt
 
 ```c++
 FlipDisc.Init(MOD1, MOD2 = 0xFF, MOD3 = 0xFF, MOD4 = 0xFF, 
-                   MOD5 = 0xFF, MOD6 = 0xFF, MOD7 = 0xFF, MOD8 = 0xFF);
+                   MOD5 = 0xFF, MOD6 = 0xFF, MOD7 = 0xFF, MOD8 = 0xFF);  
+                   
+// Example function call 
+FlipDisc.Init(SEG, SEG, DOTS, SEG, SEG, DOTS, SEG, SEG);
 ```
 FlipDisc.Init(...) it is second most important function. Initialization function for a series of displays. Up to 8 displays can be connected in series in any configuration. The function has 1 default argument and 7 optional arguments. The function also prepares SPI. Correct initialization requires code names of the serially connected displays:
  - SEG - 7-segment display    
  - DOTS - 2x1 or 3x1 dot display  
  - FLIP3 - 1x3 display  
  - FLIP7 - 1x7 display  
- Example function call: FlipDisc.Init(SEG, SEG, DOTS, SEG, SEG, DOTS, SEG, SEG);
 
 ```c++
 void FlipDisc.Delay(uint8_t newTimeDelay);
