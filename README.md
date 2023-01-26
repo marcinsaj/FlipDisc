@@ -317,7 +317,8 @@ Function allows you to control a selected disc in a selected FLIP3 display. You 
 ```c++
 void FlipDisc.Flip3(moduleNumber, disc1 = 0xFF, disc2 = 0xFF, disc3 = 0xFF);
 
-/* Example function call. Set the first and third disc and reset second disc of the second display, counting from the left */
+/* Example function call. Set the first and third disc and reset second disc 
+of the second display, counting from the left */
 FlipDisc.Flip3(2, 1, 0, 1);
 
 /* Set first disc of the first display */
