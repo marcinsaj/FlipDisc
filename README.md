@@ -133,22 +133,30 @@ In summary, there are two options:
 
 Incorrect declaration of control pins or incorrect connection of modules may result in damage to flip-disc displays. 
 When using the **FlipDisc** library with flip-disc displays, the user is responsible for ensuring that the connection of the display and power module corresponds to the declared control pins.
+
+-------------------------------------------------------------------------------------------  
+
+## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/tools.png) Functions
+
 ```c++
 #define EN_PIN  'Set your pin'  // Start & End SPI transfer data
 #define CH_PIN  'Set your pin'  // Charging PSPS module - turn ON/OFF
 #define PL_PIN  'Set your pin'  // Release the current pulse - turn ON/OFF
-```  
--------------------------------------------------------------------------------------------  
 
-## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/tools.png) Functions
-```c++
-void FlipDisc.Pin(EN_PIN, CH_PIN, PL_PIN);
+FlipDisc.Pin(EN_PIN, CH_PIN, PL_PIN);
 ```
+FlipDisc.Pin(...); it is most important function and first to call before everything else. The function is used to declare pin functions. Before starting the device, double check that the declarations and connection are correct. If the connection of the control outputs is incorrect, the display may be physically damaged.
 
 ```c++
-void FlipDisc.Init(MOD1, MOD2 = 0xFF, MOD3 = 0xFF, MOD4 = 0xFF, 
+FlipDisc.Init(MOD1, MOD2 = 0xFF, MOD3 = 0xFF, MOD4 = 0xFF, 
                    MOD5 = 0xFF, MOD6 = 0xFF, MOD7 = 0xFF, MOD8 = 0xFF);
 ```
+FlipDisc.Init(...) it is second most important function. Initialization function for a series of displays. Up to 8 displays can be connected in series in any configuration. The function has 1 default argument and 7 optional arguments. The function also prepares SPI. Correct initialization requires code names of the serially connected displays:
+ - SEG - 7-segment display    
+ - DOTS - 2x1 or 3x1 dot display  
+ - FLIP3 - 1x3 display  
+ - FLIP7 - 1x7 display  
+ Example function call: FlipDisc.Init(SEG, SEG, DOTS, SEG, SEG, DOTS, SEG, SEG);
 
 ```c++
 void FlipDisc.Delay(uint8_t newTimeDelay);
@@ -162,7 +170,7 @@ void FlipDisc.Test(void);
 void FlipDisc.All(void);
 ```
 
-```
+```c++
 void Clear(void);
 ```
 
