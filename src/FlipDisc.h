@@ -207,6 +207,38 @@ static const uint8_t resetDiscFlip3[3] PROGMEM =
   0b00001100
 };
 
+/* 
+ * Refers to "FLIP7" - 1x7 display.  
+ * The array contains the addresses of the control outputs corresponding 
+ * to the setting of the discs to the "color" side.
+ */ 
+static const uint8_t setDiscFlip7[7][2] PROGMEM =
+{
+  {0b00001000, 0b00000001},
+  {0b00001000, 0b00010000},
+  {0b00001000, 0b00000010},
+  {0b00001000, 0b01000000},
+  {0b00001100, 0b00000000},
+  {0b10001000, 0b00000000},
+  {0b00101000, 0b00000000}
+}; 
+
+/* 
+ * Refers to "FLIP7" - 1x7 display.  
+ * The array contains the addresses of the control outputs corresponding 
+ * to the setting of the discs to the "black" side.
+ */ 
+static const uint8_t resetDiscFlip7[7][2] PROGMEM =
+{
+  {0b00000001, 0b00001000},
+  {0b00000001, 0b00100000},
+  {0b00000001, 0b00000100},
+  {0b00000011, 0b00000000},
+  {0b00000001, 0b10000000},
+  {0b01000001, 0b00000000},
+  {0b00010001, 0b00000000}
+}; 
+
 class FlipDisc
 {
     public:
