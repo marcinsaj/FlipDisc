@@ -195,7 +195,7 @@ void FlipDisc::Seg(uint8_t data1, uint8_t data2 = 0xFF, uint8_t data3 = 0xFF,
  * of all displays. For example, if we have a combination of SEG, DOTS, SEG then    *
  * the second SEG display will have a relative number of 2 even though there        *
  * is a DOTS display between the SEG displays.                                      *
- * -> moduleNumber - relative number of the "SEG" display                              *
+ * -> moduleNumber - relative number of the "SEG" display                           *
  * -> data                                                                          *
  *                                                                                  *
  * Brief:                                                                           *
@@ -282,11 +282,11 @@ void FlipDisc::ToSeg(uint8_t moduleNumber, uint8_t data)
 /*----------------------------------------------------------------------------------*
  * Function allows you to control a selected disc in a selected dot display.        *
  * We can control only one dot of the selected display at a time.                   *
- * The first argument moduleNumber is the relative number of the display in the series *
- * of all displays. For example, if we have a combination of DOTS, SEG, DOTS,       *
- * then the second DOTS display will have a relative number of 2 even though there  *
- * is a SEG display between the DOTS displays.                                      *
- * -> moduleNumber - relative number of the "FLIP3" display                            *
+ * The first argument moduleNumber is the relative number of the display in         *
+ * the series of all displays. For example, if we have a combination                *
+ * of DOTS, SEG, DOTS, then the second DOTS display will have a relative number     * 
+ * of 2 even though there is a SEG display between the DOTS displays.               *
+ * -> moduleNumber - relative number of the "FLIP3" display                         *
  * -> dotNumber - display dot number counting from top to bottom 1-3                *
  * -> dotStatus - reset dot "0" or set disc "1"                                     *
  *----------------------------------------------------------------------------------*/
@@ -325,7 +325,7 @@ void FlipDisc::ToDot(uint8_t moduleNumber, uint8_t dotNumber, bool dotStatus)
  * of all displays. For example, if we have a combination of DOTS, SEG, DOTS, then  *
  * the second DOTS display will have a relative number of 2 even though there       *
  * is a SEG display between the DOTS displays.                                      *
- * -> moduleNumber - relative number of the "DOTS" display                             *
+ * -> moduleNumber - relative number of the "DOTS" display                          *
  * -> data                                                                          *
  *                                                                                  *
  * Brief:                                                                           *
@@ -401,11 +401,11 @@ void FlipDisc::Dot(uint8_t moduleNumber, uint8_t dot1 = 0xFF, uint8_t dot2 = 0xF
 /*----------------------------------------------------------------------------------*
  * Function allows you to control a selected disc in a selected 1x3 display.        *
  * We can control only one disc of the selected display at a time.                  *
- * The first argument moduleNumber is the relative number of the display in the series *
- * of all displays. For example, if we have a combination of FLIP3, SEG, FLIP3,     *
- * then the second FLIP3 display will have a relative number of 2 even though there *
- * is a SEG display between the FLIP3 displays.                                     *
- * -> moduleNumber - relative number of the "FLIP3" display                            *
+ * The first argument moduleNumber is the relative number of the display in         *
+ the series of all displays. For example, if we have a combination                  *
+ of FLIP3, SEG, FLIP3, then the second FLIP3 display will have a relative number    *
+ of 2 even though there is a SEG display between the FLIP3 displays.                *
+ * -> moduleNumber - relative number of the "FLIP3" display                         *
  * -> discNumber - display disc number counting from right to left 1-3              *
  * -> discStatus - reset disc "0" or set disc "1"                                   *
  *----------------------------------------------------------------------------------*/
@@ -444,7 +444,7 @@ void FlipDisc::ToFlip3(uint8_t moduleNumber, uint8_t discNumber, bool discStatus
  * of all displays. For example, if we have a combination of FLIP3, SEG, FLIP3,     *
  * then the second FLIP3 display will have a relative number of 2 even though there *
  * is a SEG display between the FLIP3 displays.                                     *
- * -> moduleNumber - relative number of the "FLIP3" display                            *
+ * -> moduleNumber - relative number of the "FLIP3" display                         *
  * -> data                                                                          *
  *                                                                                  *
  * Brief:                                                                           *
@@ -519,12 +519,12 @@ void FlipDisc::Flip3(uint8_t moduleNumber, uint8_t disc1 = 0xFF, uint8_t disc2 =
 
 /*----------------------------------------------------------------------------------*
  * Function allows you to control a selected disc in a selected 1x7 display.        *
- * We can control only one disc of the selected display at a time.                  *
- * The first argument moduleNumber is the relative number of the display in the series *
+ * We can control only one disc of the selected display at a time. The first        *
+ * argument moduleNumber is the relative number of the display in the series        *
  * of all displays. For example, if we have a combination of FLIP7, SEG, FLIP7,     *
  * then the second FLIP3 display will have a relative number of 2 even though there *
  * is a SEG display between the FLIP7 displays.                                     *
- * -> moduleNumber - relative number of the "FLIP7" display                            *
+ * -> moduleNumber - relative number of the "FLIP7" display                         *
  * -> discNumber - display disc number counting from right to left 1-7              *
  * -> discStatus - reset disc "0" or set disc "1"                                   *
  *----------------------------------------------------------------------------------*/
@@ -564,7 +564,7 @@ void FlipDisc::ToFlip7(uint8_t moduleNumber, uint8_t discNumber, bool discStatus
  * of all displays. For example, if we have a combination of FLIP7, SEG, FLIP7,     *
  * then the second FLIP7 display will have a relative number of 2 even though there *
  * is a SEG display between the FLIP7 displays.                                     *
- * -> moduleNumber - relative number of the "FLIP7" display                            *
+ * -> moduleNumber - relative number of the "FLIP7" display                         *
  * -> data                                                                          *
  *                                                                                  *
  * Brief:                                                                           *
@@ -750,9 +750,9 @@ void FlipDisc::Delay(uint8_t newTimeDelay)
 
 /*----------------------------------------------------------------------------------*
  * Private function                                                                 *
- * The function is used to check whether the number (moduleNumber) of the selected     *
+ * The function is used to check whether the number (moduleNumber) of the selected  *
  * display (moduleType) exists.                                                     *
- * For example, if the display no.3 (moduleNumber) of a specific type (moduleType)     *
+ * For example, if the display no.3 (moduleNumber) of a specific type (moduleType)  *
  * was selected and earlier in the Init() function we declared fewer or no displays *
  * of the selected type (moduleType), the function returns 1 - the fuse has tripped.*
  *----------------------------------------------------------------------------------*/
@@ -787,7 +787,7 @@ void FlipDisc::FlipDelay(void)
 /*----------------------------------------------------------------------------------*
  * Private function                                                                 *
  * The function is used to sending empty data to complete the control data string.  *
- * -> moduleNumber - (1-8) the relative position of the display in relation            *
+ * -> moduleNumber - (1-8) the relative position of the display in relation         *
  *    to the displays of the selected type                                          *
  * -> moduleType - (SEG, DOTS, FLIP3, FLIP7) selected display type                  *
  * -> dataPosition - ("Before", "After") order of sending data, before control data *
