@@ -672,14 +672,15 @@ void FlipDisc::All(void)
         break;
 
       case DOTS:
-        Dot((moduleInitArray[i][moduleRelativePositionColumn]), 1, 1 ,1);
+        Dot((moduleInitArray[i][moduleRelativePositionColumn]), 1,1,1);
         break;  
 
       case FLIP3:
-        Flip3((moduleInitArray[i][moduleRelativePositionColumn]), 1, 1 ,1);
+        Flip3((moduleInitArray[i][moduleRelativePositionColumn]), 1,1,1);
         break;
         
       case FLIP7:
+        Flip7((moduleInitArray[i][moduleRelativePositionColumn]), 1,1,1,1,1,1,1);
         break;
         
       default:
@@ -702,14 +703,15 @@ void FlipDisc::Clear(void)
         break;
 
       case DOTS:
-        Dot((moduleInitArray[i][moduleRelativePositionColumn]), 0, 0 ,0);
+        Dot((moduleInitArray[i][moduleRelativePositionColumn]), 0,0,0);
         break;  
 
       case FLIP3:
-        Flip3((moduleInitArray[i][moduleRelativePositionColumn]), 0, 0 ,0);
+        Flip3((moduleInitArray[i][moduleRelativePositionColumn]), 0,0,0);
         break;
         
       case FLIP7:
+        Flip7((moduleInitArray[i][moduleRelativePositionColumn]), 0,0,0,0,0,0,0);
         break;
         
       default:
