@@ -409,7 +409,7 @@ void FlipDisc::Dot(uint8_t segNumber, uint8_t dot1 = 0xFF, uint8_t dot2 = 0xFF, 
  * then the second FLIP3 display will have a relative number of 2 even though there *
  * is a SEG display between the FLIP3 displays.                                     *
  * -> segNumber - relative number of the "FLIP3" display                            *
- * -> discNumber - display disc number counting from left to right 1-3              *
+ * -> discNumber - display disc number counting from right to left 1-3              *
  * -> discStatus - reset disc "0" or set disc "1"                                   *
  *----------------------------------------------------------------------------------*/
 void FlipDisc::ToFlip3(uint8_t segNumber, uint8_t discNumber, bool discStatus)
@@ -423,7 +423,7 @@ void FlipDisc::ToFlip3(uint8_t segNumber, uint8_t discNumber, bool discStatus)
   uint8_t newDiscArray[3];
   
   /*
-   * discNumber - counting from left to right 1, 2, 3
+   * discNumber - counting from right to left 1, 2, 3
    * The array row numbers newDiscArray[] start at 0 so we need to subtract 1 (i-1)
    * If we assign the value 0xFF to discs, the Flip3() function will ignore these discs
    */
@@ -542,7 +542,7 @@ void FlipDisc::ToFlip7(uint8_t segNumber, uint8_t discNumber, bool discStatus)
   uint8_t newDiscArray[7];
   
   /*
-   * discNumber - counting from left to right 1, 2,...7
+   * discNumber - counting from right to left 1, 2,...7
    * The array row numbers newDiscArray[] start at 0 so we need to subtract 1 (i-1)
    * If we assign the value 0xFF to discs, the Flip7() function will ignore these discs
    */
