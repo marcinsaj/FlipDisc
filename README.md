@@ -139,7 +139,7 @@ When using the **FlipDisc** library with flip-disc displays, the user is respons
 
 ## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/tools.png) Functions  
 
-```c++
+:one:```c++
 #define EN_PIN  'Set your pin'  // Start & End SPI transfer data
 #define CH_PIN  'Set your pin'  // Charging PSPS module - turn ON/OFF
 #define PL_PIN  'Set your pin'  // Release the current pulse - turn ON/OFF
