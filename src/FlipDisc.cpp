@@ -58,11 +58,8 @@ uint8_t numberAllBytes = 0;
     
 /*----------------------------------------------------------------------------------*
  * Initialization function for a series of displays. The function has 1 default     *
- * argument and 7 optional arguments. The function prepares SPI and configures      *
- * _EN_PIN - the output serves as a latch for shift registers on which              *
- * the controllers built into the displays are based. The function also configures  *
- * the PL and CH outputs for the Pulse Shaper Power Supply module.                  *
- * Correct initialization requires names of the serially connected displays.        *
+ * argument and 7 optional arguments. The function also prepares SPI.               *
+ * Correct initialization requires code names of the serially connected displays.   *
  *----------------------------------------------------------------------------------*/
 void FlipDisc::Init(uint8_t MOD1, uint8_t MOD2 = 0xFF, uint8_t MOD3 = 0xFF, 
                                   uint8_t MOD4 = 0xFF, uint8_t MOD5 = 0xFF, 
