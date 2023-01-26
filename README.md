@@ -141,24 +141,24 @@ When using the **FlipDisc** library with flip-disc displays, the user is respons
 -------------------------------------------------------------------------------------------  
 
 ## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/tools.png) Functions
-```
+```c++
 void FlipDisc.Pin(EN_PIN, CH_PIN, PL_PIN);
 ```
 
-```
+```c++
 void FlipDisc.Init(MOD1, MOD2 = 0xFF, MOD3 = 0xFF, MOD4 = 0xFF, 
                    MOD5 = 0xFF, MOD6 = 0xFF, MOD7 = 0xFF, MOD8 = 0xFF);
 ```
 
-```
+```c++
 void FlipDisc.Delay(uint8_t newTimeDelay);
 ```
 
-```
+```c++
 void FlipDisc.Test(void);
 ```
 
-```
+```c++
 void FlipDisc.All(void);
 ```
 
@@ -166,36 +166,36 @@ void FlipDisc.All(void);
 void Clear(void);
 ```
 
-```
+```c++
 void FlipDisc.ToSeg(uint8_t moduleNumber, uint8_t data);
 ```
 
-```
+```c++
 void FlipDisc.Seg(data1, data2 = 0xFF, data3 = 0xFF, data4 = 0xFF, 
                   data5 = 0xFF, data6 = 0xFF, data7 = 0xFF, data8 = 0xFF);
 ```
 
-```
+```c++
 void FlipDisc.ToDot(uint8_t moduleNumber, uint8_t dotNumber, bool dotStatus);
 ```
 
-```
+```c++
 void FlipDisc.Dot(moduleNumber, dot1 = 0xFF, dot2 = 0xFF, dot3 = 0xFF);
 ```
 
-```
+```c++
 void FlipDisc.ToFlip3(moduleNumber, discNumber, discStatus);
 ```
 
-```
+```c++
 void FlipDisc.Flip3(moduleNumber, disc1 = 0xFF, disc2 = 0xFF, disc3 = 0xFF);
 ```
 
-```
+```c++
 void FlipDisc.ToFlip7(moduleNumber, discNumber, discStatus);
 ```
 
-```
+```c++
 void FlipDisc.Flip7(moduleNumber, disc1 = 0xFF, disc2 = 0xFF, disc3 = 0xFF, 
                     disc4 = 0xFF, disc5 = 0xFF, disc6 = 0xFF, disc7 = 0xFF);
 ```
