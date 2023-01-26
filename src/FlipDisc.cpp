@@ -198,7 +198,7 @@ void FlipDisc::Seg(uint8_t data1, uint8_t data2 = 0xFF, uint8_t data3 = 0xFF,
  * of all displays. For example, if we have a combination of SEG, DOTS, SEG then    *
  * the second SEG display will have a relative number of 2 even though there        *
  * is a DOTS display between the SEG displays.                                      *
- * -> segNumber - relative number of the "SEG" display                              *
+ * -> moduleNumber - relative number of the "SEG" display                              *
  * -> data                                                                          *
  *                                                                                  *
  * Brief:                                                                           *
@@ -212,13 +212,13 @@ void FlipDisc::Seg(uint8_t data1, uint8_t data2 = 0xFF, uint8_t data3 = 0xFF,
  * -> setDiscArray[][] - "1"                                                        *
  * -> resetDiscArray[][] - "0"                                                      *
  *----------------------------------------------------------------------------------*/
-void FlipDisc::ToSeg(uint8_t segNumber, uint8_t data)
+void FlipDisc::ToSeg(uint8_t moduleNumber, uint8_t data)
 {
  /*
   * Simple protection from user error. 
   * If the selected display has not been declared in Init() then the function will not execute.
   */
-  if(Fuse(segNumber, SEG) == true) return;
+  if(Fuse(moduleNumber, SEG) == true) return;
   
   bool newDiscStatus = 0;
 
@@ -242,7 +242,7 @@ void FlipDisc::ToSeg(uint8_t segNumber, uint8_t data)
     * sending control data to the selected display.
     * Detailed information in the function description SendBlankData().
     */
-    SendBlankData(segNumber, SEG, Before);
+    SendBlankData(moduleNumber, SEG, Before);
     
    /*
     * Each of the discs has two sides, one side corresponds to the disk status "1" - color, 
@@ -270,7 +270,7 @@ void FlipDisc::ToSeg(uint8_t segNumber, uint8_t data)
     * sending control data to the selected display.
     * Detailed information in the function description SendBlankData().
     */
-    SendBlankData(segNumber, SEG, After);
+    SendBlankData(moduleNumber, SEG, After);
 
     // End of SPI data transfer
     digitalWrite(_EN_PIN, HIGH);
@@ -285,21 +285,21 @@ void FlipDisc::ToSeg(uint8_t segNumber, uint8_t data)
 /*----------------------------------------------------------------------------------*
  * Function allows you to control a selected disc in a selected dot display.        *
  * We can control only one dot of the selected display at a time.                   *
- * The first argument segNumber is the relative number of the display in the series *
+ * The first argument moduleNumber is the relative number of the display in the series *
  * of all displays. For example, if we have a combination of DOTS, SEG, DOTS,       *
  * then the second DOTS display will have a relative number of 2 even though there  *
  * is a SEG display between the DOTS displays.                                      *
- * -> segNumber - relative number of the "FLIP3" display                            *
+ * -> moduleNumber - relative number of the "FLIP3" display                            *
  * -> dotNumber - display dot number counting from top to bottom 1-3                *
  * -> dotStatus - reset dot "0" or set disc "1"                                     *
  *----------------------------------------------------------------------------------*/
-void FlipDisc::ToDot(uint8_t segNumber, uint8_t dotNumber, bool dotStatus)
+void FlipDisc::ToDot(uint8_t moduleNumber, uint8_t dotNumber, bool dotStatus)
 {
  /*
   * Simple protection from user error. 
   * If the selected display has not been declared in Init() then the function will not execute.
   */
-  if(Fuse(segNumber, DOTS) == true) return;
+  if(Fuse(moduleNumber, DOTS) == true) return;
   
   uint8_t newDotArray[3];
   
@@ -315,7 +315,7 @@ void FlipDisc::ToDot(uint8_t segNumber, uint8_t dotNumber, bool dotStatus)
   }
   
   // Call the function to flip the dot (only one dot)
-  Dot(segNumber, newDotArray[0], newDotArray[1], newDotArray[2]);
+  Dot(moduleNumber, newDotArray[0], newDotArray[1], newDotArray[2]);
 
   // Clear all display outputs
   ClearAllOutputs();  
@@ -328,7 +328,7 @@ void FlipDisc::ToDot(uint8_t segNumber, uint8_t dotNumber, bool dotStatus)
  * of all displays. For example, if we have a combination of DOTS, SEG, DOTS, then  *
  * the second DOTS display will have a relative number of 2 even though there       *
  * is a SEG display between the DOTS displays.                                      *
- * -> segNumber - relative number of the "DOTS" display                             *
+ * -> moduleNumber - relative number of the "DOTS" display                             *
  * -> data                                                                          *
  *                                                                                  *
  * Brief:                                                                           *
@@ -339,13 +339,13 @@ void FlipDisc::ToDot(uint8_t segNumber, uint8_t dotNumber, bool dotStatus)
  * -> setDiscDot[] - "1"                                                            *
  * -> resetDiscDot[] - "0"                                                          *
  *----------------------------------------------------------------------------------*/
-void FlipDisc::Dot(uint8_t segNumber, uint8_t dot1 = 0xFF, uint8_t dot2 = 0xFF, uint8_t dot3 = 0xFF)
+void FlipDisc::Dot(uint8_t moduleNumber, uint8_t dot1 = 0xFF, uint8_t dot2 = 0xFF, uint8_t dot3 = 0xFF)
 {
  /*
   * Simple protection from user error. 
   * If the selected display has not been declared in Init() then the function will not execute.
   */
-  if(Fuse(segNumber, DOTS) == true) return;
+  if(Fuse(moduleNumber, DOTS) == true) return;
   
   // Saving a list of dot statuses to the array
   uint8_t newDotArray[3] = {dot1, dot2, dot3};
@@ -364,7 +364,7 @@ void FlipDisc::Dot(uint8_t segNumber, uint8_t dot1 = 0xFF, uint8_t dot2 = 0xFF, 
       * sending control data to the selected display.
       * Detailed information in the function description SendBlankData().
       */
-      SendBlankData(segNumber, DOTS, Before);
+      SendBlankData(moduleNumber, DOTS, Before);
 
      /*
       * Each of the discs has two sides, one side corresponds to the disk status "1" - color, 
@@ -387,7 +387,7 @@ void FlipDisc::Dot(uint8_t segNumber, uint8_t dot1 = 0xFF, uint8_t dot2 = 0xFF, 
       * sending control data to the selected display.
       * Detailed information in the function description SendBlankData().
       */
-      SendBlankData(segNumber, DOTS, After);
+      SendBlankData(moduleNumber, DOTS, After);
 
       // End of SPI data transfer
       digitalWrite(_EN_PIN, HIGH);
@@ -404,21 +404,21 @@ void FlipDisc::Dot(uint8_t segNumber, uint8_t dot1 = 0xFF, uint8_t dot2 = 0xFF, 
 /*----------------------------------------------------------------------------------*
  * Function allows you to control a selected disc in a selected 1x3 display.        *
  * We can control only one disc of the selected display at a time.                  *
- * The first argument segNumber is the relative number of the display in the series *
+ * The first argument moduleNumber is the relative number of the display in the series *
  * of all displays. For example, if we have a combination of FLIP3, SEG, FLIP3,     *
  * then the second FLIP3 display will have a relative number of 2 even though there *
  * is a SEG display between the FLIP3 displays.                                     *
- * -> segNumber - relative number of the "FLIP3" display                            *
+ * -> moduleNumber - relative number of the "FLIP3" display                            *
  * -> discNumber - display disc number counting from right to left 1-3              *
  * -> discStatus - reset disc "0" or set disc "1"                                   *
  *----------------------------------------------------------------------------------*/
-void FlipDisc::ToFlip3(uint8_t segNumber, uint8_t discNumber, bool discStatus)
+void FlipDisc::ToFlip3(uint8_t moduleNumber, uint8_t discNumber, bool discStatus)
 {
  /*
   * Simple protection from user error. 
   * If the selected display has not been declared in Init() then the function will not execute.
   */
-  if(Fuse(segNumber, FLIP3) == true) return;
+  if(Fuse(moduleNumber, FLIP3) == true) return;
   
   uint8_t newDiscArray[3];
   
@@ -434,7 +434,7 @@ void FlipDisc::ToFlip3(uint8_t segNumber, uint8_t discNumber, bool discStatus)
   }
   
   // Call the function to flip the disc (only one disc)
-  Flip3(segNumber, newDiscArray[0], newDiscArray[1], newDiscArray[2]);
+  Flip3(moduleNumber, newDiscArray[0], newDiscArray[1], newDiscArray[2]);
 
   // Clear all display outputs
   ClearAllOutputs();
@@ -447,7 +447,7 @@ void FlipDisc::ToFlip3(uint8_t segNumber, uint8_t discNumber, bool discStatus)
  * of all displays. For example, if we have a combination of FLIP3, SEG, FLIP3,     *
  * then the second FLIP3 display will have a relative number of 2 even though there *
  * is a SEG display between the FLIP3 displays.                                     *
- * -> segNumber - relative number of the "FLIP3" display                            *
+ * -> moduleNumber - relative number of the "FLIP3" display                            *
  * -> data                                                                          *
  *                                                                                  *
  * Brief:                                                                           *
@@ -458,13 +458,13 @@ void FlipDisc::ToFlip3(uint8_t segNumber, uint8_t discNumber, bool discStatus)
  * -> setDiscFlip3[] - "1"                                                          *
  * -> resetDiscFlip3[] - "0"                                                        *
  *----------------------------------------------------------------------------------*/
-void FlipDisc::Flip3(uint8_t segNumber, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF)
+void FlipDisc::Flip3(uint8_t moduleNumber, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF)
 {
  /*
   * Simple protection from user error. 
   * If the selected display has not been declared in Init() then the function will not execute.
   */
-  if(Fuse(segNumber, FLIP3) == true) return;
+  if(Fuse(moduleNumber, FLIP3) == true) return;
   
   // Saving a list of dot statuses to the array
   uint8_t newDiscArray[3]= {disc1, disc2, disc3};
@@ -483,7 +483,7 @@ void FlipDisc::Flip3(uint8_t segNumber, uint8_t disc1 = 0xFF, uint8_t disc2 = 0x
       * sending control data to the selected display.
       * Detailed information in the function description SendBlankData().
       */
-      SendBlankData(segNumber, FLIP3, Before);
+      SendBlankData(moduleNumber, FLIP3, Before);
 
      /*
       * Each of the discs has two sides, one side corresponds to the disk status "1" - color, 
@@ -506,7 +506,7 @@ void FlipDisc::Flip3(uint8_t segNumber, uint8_t disc1 = 0xFF, uint8_t disc2 = 0x
       * sending control data to the selected display.
       * Detailed information in the function description SendBlankData().
       */
-      SendBlankData(segNumber, FLIP3, After);
+      SendBlankData(moduleNumber, FLIP3, After);
 
       // End of SPI data transfer
       digitalWrite(_EN_PIN, HIGH);
@@ -523,21 +523,21 @@ void FlipDisc::Flip3(uint8_t segNumber, uint8_t disc1 = 0xFF, uint8_t disc2 = 0x
 /*----------------------------------------------------------------------------------*
  * Function allows you to control a selected disc in a selected 1x7 display.        *
  * We can control only one disc of the selected display at a time.                  *
- * The first argument segNumber is the relative number of the display in the series *
+ * The first argument moduleNumber is the relative number of the display in the series *
  * of all displays. For example, if we have a combination of FLIP7, SEG, FLIP7,     *
  * then the second FLIP3 display will have a relative number of 2 even though there *
  * is a SEG display between the FLIP7 displays.                                     *
- * -> segNumber - relative number of the "FLIP7" display                            *
+ * -> moduleNumber - relative number of the "FLIP7" display                            *
  * -> discNumber - display disc number counting from right to left 1-7              *
  * -> discStatus - reset disc "0" or set disc "1"                                   *
  *----------------------------------------------------------------------------------*/
-void FlipDisc::ToFlip7(uint8_t segNumber, uint8_t discNumber, bool discStatus)
+void FlipDisc::ToFlip7(uint8_t moduleNumber, uint8_t discNumber, bool discStatus)
 {
  /*
   * Simple protection from user error. 
   * If the selected display has not been declared in Init() then the function will not execute.
   */
-  if(Fuse(segNumber, FLIP7) == true) return;
+  if(Fuse(moduleNumber, FLIP7) == true) return;
   
   uint8_t newDiscArray[7];
   
@@ -553,7 +553,7 @@ void FlipDisc::ToFlip7(uint8_t segNumber, uint8_t discNumber, bool discStatus)
   }
   
   // Call the function to flip the disc (only one disc)
-  Flip7(segNumber, newDiscArray[0], newDiscArray[1], newDiscArray[2],
+  Flip7(moduleNumber, newDiscArray[0], newDiscArray[1], newDiscArray[2],
         newDiscArray[3], newDiscArray[4], newDiscArray[5], newDiscArray[6]);
 
   // Clear all display outputs
@@ -567,7 +567,7 @@ void FlipDisc::ToFlip7(uint8_t segNumber, uint8_t discNumber, bool discStatus)
  * of all displays. For example, if we have a combination of FLIP7, SEG, FLIP7,     *
  * then the second FLIP7 display will have a relative number of 2 even though there *
  * is a SEG display between the FLIP7 displays.                                     *
- * -> segNumber - relative number of the "FLIP7" display                            *
+ * -> moduleNumber - relative number of the "FLIP7" display                            *
  * -> data                                                                          *
  *                                                                                  *
  * Brief:                                                                           *
@@ -578,14 +578,14 @@ void FlipDisc::ToFlip7(uint8_t segNumber, uint8_t discNumber, bool discStatus)
  * -> setDiscFlip7[] - "1"                                                          *
  * -> resetDiscFlip7[] - "0"                                                        *
  *----------------------------------------------------------------------------------*/
-void FlipDisc::Flip7(uint8_t segNumber, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF,
+void FlipDisc::Flip7(uint8_t moduleNumber, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF,
                      uint8_t disc4 = 0xFF, uint8_t disc5 = 0xFF, uint8_t disc6 = 0xFF, uint8_t disc7 = 0xFF)
 {
  /*
   * Simple protection from user error. 
   * If the selected display has not been declared in Init() then the function will not execute.
   */
-  if(Fuse(segNumber, FLIP7) == true) return;
+  if(Fuse(moduleNumber, FLIP7) == true) return;
   
   // Saving a list of dot statuses to the array
   uint8_t newDiscArray[7] = {disc1, disc2, disc3, disc4, disc5, disc6, disc7};
@@ -604,7 +604,7 @@ void FlipDisc::Flip7(uint8_t segNumber, uint8_t disc1 = 0xFF, uint8_t disc2 = 0x
       * sending control data to the selected display.
       * Detailed information in the function description SendBlankData().
       */
-      SendBlankData(segNumber, FLIP7, Before);
+      SendBlankData(moduleNumber, FLIP7, Before);
 
      /*
       * Each of the discs has two sides, one side corresponds to the disk status "1" - color, 
@@ -629,7 +629,7 @@ void FlipDisc::Flip7(uint8_t segNumber, uint8_t disc1 = 0xFF, uint8_t disc2 = 0x
       * sending control data to the selected display.
       * Detailed information in the function description SendBlankData().
       */
-      SendBlankData(segNumber, FLIP7, After);
+      SendBlankData(moduleNumber, FLIP7, After);
 
       // End of SPI data transfer
       digitalWrite(_EN_PIN, HIGH);
@@ -753,22 +753,22 @@ void FlipDisc::Delay(uint8_t newTimeDelay)
 
 /*----------------------------------------------------------------------------------*
  * Private function                                                                 *
- * The function is used to check whether the number (segNumber) of the selected     *
+ * The function is used to check whether the number (moduleNumber) of the selected     *
  * display (moduleType) exists.                                                     *
- * For example, if the display no.3 (segNumber) of a specific type (moduleType)     *
+ * For example, if the display no.3 (moduleNumber) of a specific type (moduleType)     *
  * was selected and earlier in the Init() function we declared fewer or no displays *
  * of the selected type (moduleType), the function returns 1 - the fuse has tripped.*
  *----------------------------------------------------------------------------------*/
-bool FlipDisc::Fuse(uint8_t segNumber, uint8_t moduleType)
+bool FlipDisc::Fuse(uint8_t moduleNumber, uint8_t moduleType)
 {
-  uint8_t highestSegNumber = 0;
+  uint8_t highestmoduleNumber = 0;
   
   for(int i = 0; i < 8; i++)
   {
-    if(moduleInitArray[i][moduleTypeColumn] == moduleType) highestSegNumber = highestSegNumber + 1;
+    if(moduleInitArray[i][moduleTypeColumn] == moduleType) highestmoduleNumber = highestmoduleNumber + 1;
   }
   
-  if(highestSegNumber < segNumber) return 1;
+  if(highestmoduleNumber < moduleNumber) return 1;
   else return 0;
 }
 
@@ -790,7 +790,7 @@ void FlipDisc::FlipDelay(void)
 /*----------------------------------------------------------------------------------*
  * Private function                                                                 *
  * The function is used to sending empty data to complete the control data string.  *
- * -> segNumber - (1-8) the relative position of the display in relation            *
+ * -> moduleNumber - (1-8) the relative position of the display in relation            *
  *    to the displays of the selected type                                          *
  * -> moduleType - (SEG, DOTS, FLIP3, FLIP7) selected display type                  *
  * -> dataPosition - ("Before", "After") order of sending data, before control data *
@@ -809,7 +809,7 @@ void FlipDisc::FlipDelay(void)
  * the remaining 190 bits must be set to "0". The architecture of the embedded      *
  * display controller requires it.                                                  *
  *----------------------------------------------------------------------------------*/
-void FlipDisc::SendBlankData(uint8_t segNumber, uint8_t moduleType, uint8_t dataPosition)
+void FlipDisc::SendBlankData(uint8_t moduleNumber, uint8_t moduleType, uint8_t dataPosition)
 {
   uint8_t emptyByte = 0;
 
@@ -825,7 +825,7 @@ void FlipDisc::SendBlankData(uint8_t segNumber, uint8_t moduleType, uint8_t data
       * Then, based on the absolute position of the display, we calculate the empty data frame "0"
       * and sending this data.
       */
-      if(moduleInitArray[moduleAbsolutePosition][moduleRelativePositionColumn] == segNumber)
+      if(moduleInitArray[moduleAbsolutePosition][moduleRelativePositionColumn] == moduleNumber)
       {       
         if(dataPosition == Before)
         {
