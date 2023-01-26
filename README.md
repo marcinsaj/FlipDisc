@@ -188,7 +188,7 @@ The function is used to test all declared displays - turn on and off all display
 
 5️⃣🔽
 ```c++
-void FlipDisc.All(void);
+FlipDisc.All();
 ```
 The function is used to turn on (set) all discs of all displays.  
 
@@ -196,7 +196,7 @@ The function is used to turn on (set) all discs of all displays.
 
 6️⃣🔽
 ```c++
-void Clear(void);
+FlipDisc.Clear();
 ```
 
 The function is used to turn off (clear) all displays.  
@@ -250,21 +250,26 @@ Code names for symbols:
 
 9️⃣🔽
 ```c++
-void FlipDisc.ToDot(uint8_t moduleNumber, uint8_t dotNumber, bool dotStatus);
+FlipDisc.ToDot(moduleNumber, dotNumber, dotStatus);
 ```
+
+Function allows you to control a selected disc in a selected dot display. You can control only one dot of the selected display at a time. The first argument moduleNumber is the relative number of the display in the series of all displays. For example, if we have a combination of DOTS, SEG, DOTS, then the second DOTS display will have a relative number of 2 even though there is a SEG display between the DOTS displays.  
+ - moduleNumber - relative number of the "DOTS" display
+ - dotNumber - display dot number counting from top to bottom 1-3
+ - dotStatus - reset dot "0" or set disc "1"
 
 ------------------------------------------------------------------------------------------- 
 
 1️⃣:zero:🔽
 ```c++
-void FlipDisc.Dot(moduleNumber, dot1 = 0xFF, dot2 = 0xFF, dot3 = 0xFF);
+FlipDisc.Dot(moduleNumber, dot1 = 0xFF, dot2 = 0xFF, dot3 = 0xFF);
 ```
 
 ------------------------------------------------------------------------------------------- 
 
 1️⃣:two:🔽
 ```c++
-void FlipDisc.ToFlip3(moduleNumber, discNumber, discStatus);
+FlipDisc.ToFlip3(moduleNumber, discNumber, discStatus);
 ```
 
 ------------------------------------------------------------------------------------------- 
@@ -276,13 +281,13 @@ void FlipDisc.Flip3(moduleNumber, disc1 = 0xFF, disc2 = 0xFF, disc3 = 0xFF);
 ------------------------------------------------------------------------------------------- 
 1️⃣:four:🔽
 ```c++
-void FlipDisc.ToFlip7(moduleNumber, discNumber, discStatus);
+FlipDisc.ToFlip7(moduleNumber, discNumber, discStatus);
 ```
 
 ------------------------------------------------------------------------------------------- 
 1️⃣:five:🔽
 ```c++
-void FlipDisc.Flip7(moduleNumber, disc1 = 0xFF, disc2 = 0xFF, disc3 = 0xFF, 
+FlipDisc.Flip7(moduleNumber, disc1 = 0xFF, disc2 = 0xFF, disc3 = 0xFF, 
                     disc4 = 0xFF, disc5 = 0xFF, disc6 = 0xFF, disc7 = 0xFF);
 ```
 
