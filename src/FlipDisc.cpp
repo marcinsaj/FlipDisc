@@ -15,12 +15,13 @@
  * EN_PIN - the pin serves as a latch for shift registers on which 
  * the controllers built into the displays are based.
  */
-uint16_t _EN_PIN = 0;  // Start & End SPI transfer data
+uint16_t _EN_PIN = 0;       // Start & End SPI transfer data
+
 /*
  * Declaration of the Pulse Shaper Power Supply Module control pins
  */
-uint16_t _CH_PIN  = 0; // Charging PSPS module - turn ON/OFF
-uint16_t _PL_PIN  = 0; // Release the current pulse - turn ON/OFF
+uint16_t _CH_PIN  = 0;      // Charging PSPS module - turn ON/OFF
+uint16_t _PL_PIN  = 0;      // Release the current pulse - turn ON/OFF
 
 uint8_t flipDiscDelay = 0;  // Variable for the delay effect between flip discs
 uint32_t time_now = 0;      // Variable for the millis() function
