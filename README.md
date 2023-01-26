@@ -143,24 +143,24 @@ When using the **FlipDisc** library with flip-disc displays, the user is respons
 
 ## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/tools.png) Functions
 ```
-void **FlipDisc.Pin**(uint16_t EN_PIN, uint16_t CH_PIN, uint16_t PL_PIN)
+void FlipDisc.Pin(EN_PIN, CH_PIN, PL_PIN);
 ```
 
 ```
-void Init(uint8_t MOD1, uint8_t MOD2 = 0xFF, uint8_t MOD3 = 0xFF, uint8_t MOD4 = 0xFF, 
-          uint8_t MOD5 = 0xFF, uint8_t MOD6 = 0xFF, uint8_t MOD7 = 0xFF, uint8_t MOD8 = 0xFF);
+void FlipDisc.Init(MOD1, MOD2 = 0xFF, MOD3 = 0xFF, MOD4 = 0xFF, 
+                   MOD5 = 0xFF, MOD6 = 0xFF, MOD7 = 0xFF, MOD8 = 0xFF);
 ```
 
 ```
-void Delay(uint8_t newTimeDelay);
+void FlipDisc.Delay(uint8_t newTimeDelay);
 ```
 
 ```
-void Test(void);
+void FlipDisc.Test(void);
 ```
 
 ```
-void All(void);
+void FlipDisc.All(void);
 ```
 
 ```
@@ -168,39 +168,37 @@ void Clear(void);
 ```
 
 ```
-void ToSeg(uint8_t segNumber, uint8_t data);
+void FlipDisc.ToSeg(uint8_t moduleNumber, uint8_t data);
 ```
 
 ```
-void Seg(uint8_t data1, uint8_t data2 = 0xFF, uint8_t data3 = 0xFF, 
-                                uint8_t data4 = 0xFF, uint8_t data5 = 0xFF, 
-                                uint8_t data6 = 0xFF, uint8_t data7 = 0xFF, 
-                                uint8_t data8 = 0xFF);
+void FlipDisc.Seg(data1, data2 = 0xFF, data3 = 0xFF, data4 = 0xFF, 
+                  data5 = 0xFF, data6 = 0xFF, data7 = 0xFF, data8 = 0xFF);
 ```
 
 ```
-void ToDot(uint8_t segNumber, uint8_t dotNumber, bool dotStatus);
+void FlipDisc.ToDot(uint8_t moduleNumber, uint8_t dotNumber, bool dotStatus);
 ```
 
 ```
-void Dot(uint8_t segNumber, uint8_t dot1 = 0xFF, uint8_t dot2 = 0xFF, uint8_t dot3 = 0xFF);
+void FlipDisc.Dot(moduleNumber, dot1 = 0xFF, dot2 = 0xFF, dot3 = 0xFF);
 ```
 
 ```
-void ToFlip3(uint8_t segNumber, uint8_t discNumber, bool discStatus);
+void FlipDisc.ToFlip3(moduleNumber, discNumber, discStatus);
 ```
 
 ```
-void Flip3(uint8_t segNumber, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF);
+void FlipDisc.Flip3(moduleNumber, disc1 = 0xFF, disc2 = 0xFF, disc3 = 0xFF);
 ```
 
 ```
-void ToFlip7(uint8_t segNumber, uint8_t discNumber, bool discStatus);
+void FlipDisc.ToFlip7(moduleNumber, discNumber, discStatus);
 ```
 
 ```
-void Flip7(uint8_t segNumber, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF, 
-           uint8_t disc4 = 0xFF, uint8_t disc5 = 0xFF, uint8_t disc6 = 0xFF, uint8_t disc7 = 0xFF);
+void FlipDisc.Flip7(moduleNumber, disc1 = 0xFF, disc2 = 0xFF, disc3 = 0xFF, 
+                    disc4 = 0xFF, disc5 = 0xFF, disc6 = 0xFF, disc7 = 0xFF);
 ```
 
 ## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/check.png) Supported Displays & Modules      
