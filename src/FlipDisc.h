@@ -249,24 +249,23 @@ class FlipDisc
                                 uint8_t MOD6 = 0xFF, uint8_t MOD7 = 0xFF, 
                                 uint8_t MOD8 = 0xFF);
 
-        void Delay(uint8_t newTimeDelay);
-
-        void ToSeg(uint8_t segNumber, uint8_t data);                                
+        void ToSeg(uint8_t moduleNumber, uint8_t data);                                
         void Seg(uint8_t data1, uint8_t data2 = 0xFF, uint8_t data3 = 0xFF, 
                                 uint8_t data4 = 0xFF, uint8_t data5 = 0xFF, 
                                 uint8_t data6 = 0xFF, uint8_t data7 = 0xFF, 
                                 uint8_t data8 = 0xFF);
 
-        void ToDot(uint8_t segNumber, uint8_t dotNumber, bool dotStatus);
-        void Dot(uint8_t segNumber, uint8_t dot1 = 0xFF, uint8_t dot2 = 0xFF, uint8_t dot3 = 0xFF);
+        void ToDot(uint8_t moduleNumber, uint8_t dotNumber, bool dotStatus);
+        void Dot(uint8_t moduleNumber, uint8_t dot1 = 0xFF, uint8_t dot2 = 0xFF, uint8_t dot3 = 0xFF);
 
-        void ToFlip3(uint8_t segNumber, uint8_t discNumber, bool discStatus);
-        void Flip3(uint8_t segNumber, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF);
+        void ToFlip3(uint8_t moduleNumber, uint8_t discNumber, bool discStatus);
+        void Flip3(uint8_t moduleNumber, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF);
 
-        void ToFlip7(uint8_t segNumber, uint8_t discNumber, bool discStatus);
-        void Flip7(uint8_t segNumber, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF, 
+        void ToFlip7(uint8_t moduleNumber, uint8_t discNumber, bool discStatus);
+        void Flip7(uint8_t moduleNumber, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF, 
                    uint8_t disc4 = 0xFF, uint8_t disc5 = 0xFF, uint8_t disc6 = 0xFF, uint8_t disc7 = 0xFF);
 
+        void Delay(uint8_t newTimeDelay);
         void Test(void);
         void All(void);
         void Clear(void);
@@ -277,7 +276,7 @@ class FlipDisc
         void ClearAllOutputs(void);
         void PrepareCurrentPulse(void);
         void ReleaseCurrentPulse(void);
-        bool Fuse(uint8_t segNumber, uint8_t moduleType);
+        bool Fuse(uint8_t moduleNumber, uint8_t moduleType);
 };
 
 extern FlipDisc FlipDisc;
