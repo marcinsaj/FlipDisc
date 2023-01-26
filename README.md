@@ -228,7 +228,7 @@ The function allows you to control one 7-segment display. The first argument "mo
  - setDiscArray[] - "1"
  - resetDiscArray[] - "0"
   
-See the function description and content in [FlipDisc.cpp](https://github.com/marcinsaj/FlipDisc/blob/main/src/FlipDisc.cpp)
+See the function description in [FlipDisc.cpp](https://github.com/marcinsaj/FlipDisc/blob/main/src/FlipDisc.cpp)
 
 ------------------------------------------------------------------------------------------- 
 
@@ -240,6 +240,7 @@ FlipDisc.Seg(data1, data2 = 0xFF, data3 = 0xFF, data4 = 0xFF,
 /* Example function call assuming that we have declared the following displays 
 FlipDisc.Init(SEG, SEG, SEG, SEG) and we want to display temperature 70°F. */ 
 FlipDisc.Seg(7, 0, DEG, FAH);  
+
 /* Or Celsius 23°C */ 
 FlipDisc.Seg(2, 3, DEG, CEL);
 
@@ -308,8 +309,8 @@ FlipDisc.ToFlip3(1, 2, 0);
 
 Function allows you to control a selected disc in a selected FLIP3 display. You can control only one disc of the selected display at a time. The first argument moduleNumber is the relative number of the display in the series of all displays. For example, if we have a combination of FLIP3, SEG, FLIP3, then the second FLIP3 display will have a relative number of 2 even though there is a SEG display between the FLIP3 displays.  
  - moduleNumber - relative number of the FLIP3 display
- - discNumber - display dot number counting from left to right 1-3
- - discStatus - reset dot "0" or set disc "1"
+ - discNumber - display disc number counting from left to right 1-3
+ - discStatus - reset disc "0" or set disc "1"
 
 ------------------------------------------------------------------------------------------- 
 1️⃣2️⃣🔽
@@ -345,8 +346,8 @@ FlipDisc.ToFlip7(1, 3, 0);
 
 Function allows you to control a selected disc in a selected FLIP7 display. You can control only one disc of the selected display at a time. The first argument moduleNumber is the relative number of the display in the series of all displays. For example, if we have a combination of FLIP7, SEG, FLIP7, then the second FLIP7 display will have a relative number of 2 even though there is a SEG display between the FLIP7 displays.  
  - moduleNumber - relative number of the FLIP7 display
- - discNumber - display dot number counting from left to right 1-7
- - discStatus - reset dot "0" or set disc "1"
+ - discNumber - display disc number counting from left to right 1-7
+ - discStatus - reset disc "0" or set disc "1"
 
 ------------------------------------------------------------------------------------------- 
 1️⃣4️⃣🔽
