@@ -156,8 +156,18 @@ FlipDisc.Pin(...); it is most important function and first to call before everyt
 FlipDisc.Init(MOD1, MOD2 = 0xFF, MOD3 = 0xFF, MOD4 = 0xFF, 
                    MOD5 = 0xFF, MOD6 = 0xFF, MOD7 = 0xFF, MOD8 = 0xFF);  
                    
-// Example function call 
+/* Examples function call */
+/* 8 modules */
 FlipDisc.Init(SEG, SEG, DOTS, SEG, SEG, DOTS, SEG, SEG);
+
+/* 1x3 display */
+FlipDisc.Init(FLIP3);
+
+/* 1x7 display */
+FlipDisc.Init(FLIP7);
+
+/* 2 x 7-Segment displays */
+FlipDisc.Init(SEG, SEG);
 ```
 FlipDisc.Init(...) it is second most important function. Initialization function for a series of displays. Up to 8 displays can be connected in series in any configuration. The function has 1 default argument and 7 optional arguments. The function also prepares SPI. Correct initialization requires code names of the serially connected displays:
  - SEG - 7-segment display    
@@ -171,7 +181,7 @@ FlipDisc.Init(...) it is second most important function. Initialization function
 ```c++
 FlipDisc.Delay(0-100ms);
 
-// Example function call
+/* Example function call */
 FlipDisc.Delay(20);
 ```
 The function is used to set the delay effect between flip discs. The default value without calling the function is 0. Can be called multiple times anywhere in the code. Recommended delay range: 0 - 100ms  
@@ -207,7 +217,8 @@ The function is used to turn off (clear) all displays.
 ```c++
 FlipDisc.ToSeg(moduleNumber, data);
 
-/* An example of calling the function to display the number 5 on the first 7-Segment display counting from the left */
+/* An example of calling the function to display the number 5 
+on the first 7-Segment display counting from the left */
 FlipDisc.ToSeg(1, 5); 
 ```
   
@@ -216,6 +227,7 @@ The function allows you to control one 7-segment display. The first argument "mo
 7-Segment display consists of 23 discs. The displaySegArray[][] array contains information about all disc statuses for the symbol we want to display. To flip a selected disc, we need to know the corresponding control outputs. Disc statuses "0" and "1" correspond to different control outputs. The list of information about all control outputs for corresponding disc statuses of all discs and the currently selected digit/symbol to be displayed are contained in two tables:
  - setDiscArray[] - "1"
  - resetDiscArray[] - "0"
+  
 See the function description and content in [FlipDisc.cpp](https://github.com/marcinsaj/FlipDisc/blob/main/src/FlipDisc.cpp)
 
 ------------------------------------------------------------------------------------------- 
@@ -225,10 +237,10 @@ See the function description and content in [FlipDisc.cpp](https://github.com/ma
 FlipDisc.Seg(data1, data2 = 0xFF, data3 = 0xFF, data4 = 0xFF, 
                   data5 = 0xFF, data6 = 0xFF, data7 = 0xFF, data8 = 0xFF);
                   
-// Example function call assuming that we have declared the following displays 
-// FlipDisc.Init(SEG, SEG, SEG, SEG) and we want to display temperature 70°F. 
+/* Example function call assuming that we have declared the following displays 
+FlipDisc.Init(SEG, SEG, SEG, SEG) and we want to display temperature 70°F. */ 
 FlipDisc.Seg(7, 0, DEG, FAH);  
-// Or Celsius 23°C  
+/* Or Celsius 23°C */ 
 FlipDisc.Seg(2, 3, DEG, CEL);
 
 ```
@@ -252,7 +264,7 @@ Code names for symbols:
 ```c++
 FlipDisc.ToDot(moduleNumber, dotNumber, dotStatus);
 
-// Example function call. Set the second dot of the first display, counting from the left
+/* Example function call. Set the second dot of the first display, counting from the left */
 FlipDisc.ToDot(1, 2, 1);
 ```
 
@@ -267,13 +279,14 @@ Function allows you to control a selected disc in a selected dot display. You ca
 ```c++
 FlipDisc.Dot(moduleNumber, dot1 = 0xFF, dot2 = 0xFF, dot3 = 0xFF);
 
-/* Example function call. Set the first and third dot and reset second dot of the second dot display, counting from the left */
+/* Example function call. Set the first and third dot and reset second dot 
+of the second dot display, counting from the left */
 FlipDisc.Dot(2, 1, 0, 1);
 
-// Reset first dot of the first dot display
+/* Reset first dot of the first dot display */
 FlipDisc.Dot(1, 0);
 
-// Reset first dot and set second dot of the first dot display
+/* Reset first dot and set second dot of the first dot display */
 FlipDisc.Dot(1, 0, 1);
 
 ```
@@ -288,7 +301,8 @@ The function allows you to control one, two or three dots of the selected displa
 ```c++
 FlipDisc.ToFlip3(moduleNumber, discNumber, discStatus);
 
-/* Example function call. Reset the second disc, counting from the left of the first display, counting from the left */
+/* Example function call. Reset the second disc, counting from the left 
+of the first display, counting from the left */
 FlipDisc.ToFlip3(1, 2, 0);
 ```
 
@@ -305,10 +319,10 @@ void FlipDisc.Flip3(moduleNumber, disc1 = 0xFF, disc2 = 0xFF, disc3 = 0xFF);
 /* Example function call. Set the first and third disc and reset second disc of the second display, counting from the left */
 FlipDisc.Flip3(2, 1, 0, 1);
 
-// Set first disc of the first display
+/* Set first disc of the first display */
 FlipDisc.Flip3(1, 1);
 
-// Set first disc and reset second disc of the first display
+/* Set first disc and reset second disc of the first display */
 FlipDisc.Flip3(1, 1, 0);
 ```
 
@@ -321,10 +335,11 @@ The function allows you to control one, two or three discs of the selected displ
 ```c++
 FlipDisc.ToFlip7(moduleNumber, discNumber, discStatus);
 
-/* Example function call. Set the fifth disc, counting from the left of the second display, counting from the left */
+/* Example function call. Set the fifth disc, counting from the left 
+of the second display, counting from the left */
 FlipDisc.ToFlip7(2, 5, 1);
 
-// Reset the third disc, counting from the left of the first display, counting from the left
+/* Reset the third disc, counting from the left of the first display, counting from the left */
 FlipDisc.ToFlip7(1, 3, 0);
 ```
 
@@ -339,14 +354,14 @@ Function allows you to control a selected disc in a selected FLIP7 display. You 
 FlipDisc.Flip7(moduleNumber, disc1 = 0xFF, disc2 = 0xFF, disc3 = 0xFF, 
                     disc4 = 0xFF, disc5 = 0xFF, disc6 = 0xFF, disc7 = 0xFF);
                     
-/* Example function call. Reset the second and seventh disc counting from the left and set rest of the discs of the first display, counting from the left */
+/* Example function call. Reset the second and seventh disc counting from the left 
+and set rest of the discs of the first display, counting from the left */
 FlipDisc.Flip7(1, 1, 0, 1, 1, 1, 1, 0);
 ```
 
 The function allows you to control one, two or three discs of the selected display. The first argument is the relative number "moduleNumber" of the display in the series of all displays. For example, if we have a combination of FLIP7, SEG, FLIP7, then the second FLIP7 display will have a relative number of 2 even though there is a SEG display between the FLIP7 displays.
  - moduleNumber - relative number of the FLIP7 display
  - disc1, disc2, disc3, disc4, disc5, disc6, disc7 - display discs counting from left to right 1-7
-
 
 ------------------------------------------------------------------------------------------- 
 
