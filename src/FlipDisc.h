@@ -277,6 +277,7 @@ class FlipDisc
         void ClearAllOutputs(void);
         void PrepareCurrentPulse(void);
         void ReleaseCurrentPulse(void);
+        bool Fuse(uint8_t segNumber, uint8_t moduleType);
 };
 
 extern FlipDisc FlipDisc;
