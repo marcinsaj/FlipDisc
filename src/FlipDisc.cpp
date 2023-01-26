@@ -503,6 +503,9 @@ void FlipDisc::Dot(uint8_t segNumber, uint8_t dot1 = 0xFF, uint8_t dot2 = 0xFF, 
   ClearAllOutputs();
 }
 
+/*----------------------------------------------------------------------------------*
+ * The function is used to test all displays                                        *
+ *----------------------------------------------------------------------------------*/
 void FlipDisc::Test(void)
 {
   uint8_t currentTimeDelay = flipDiscDelay; // Save current time delay
