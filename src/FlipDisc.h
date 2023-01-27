@@ -13,7 +13,6 @@
 
 #include <SPI.h>
 #include <avr/pgmspace.h>
-#include "FlipDisc.h"
 
 // Codenames of display modules
 #define SEG     0x7F   
