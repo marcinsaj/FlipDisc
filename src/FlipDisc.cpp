@@ -196,7 +196,7 @@ void FlipDisc::Seg(uint8_t data1, uint8_t data2 = 0xFF, uint8_t data3 = 0xFF,
  * the second SEG display will have a relative number of 2 even though there        *
  * is a DOTS display between the SEG displays.                                      *
  * -> moduleNumber - relative number of the "SEG" display                           *
- * -> data1, data2, data3, data4, data5, data6, data7, data8.                       *
+ * -> data.                                                                         *
  *                                                                                  *
  * Brief:                                                                           *
  * The display consists of 23 discs. The displaySegArray[][] array contains         *
@@ -218,18 +218,47 @@ void FlipDisc::ToSeg(uint8_t moduleNumber, uint8_t data)
   if(Fuse(moduleNumber, SEG) == true) return;
   
   bool newDiscStatus = 0;
-
+  uint8_t bitNumber = 0;
+  uint8_t currentColumn = 0;
+  uint8_t currentRow = data;
+  
   // The display is built with 23 independently controlled flip-discs
   for(int discNumber = 0; discNumber < 23; discNumber++)
-  {
-   /* 
-    * The corresponding cell of the displaySegArray[][] array 
-    * contains information about the status of the currently selected disc.
-    * -> data - row of a multidimensional bit array
-    * -> discNumber - column number containing the status of the disc 
-    *    to be displayed "0" or "1".
-    */
-    newDiscStatus = displaySegArray[data][discNumber];
+  { 
+   /*
+    * bitNumber can only be in the range 0-7, so we must make sure that 
+    * when changing the columns/bytes to read, start counting the bits again from 0.
+    */   
+    if(discNumber < 8) 
+    {
+      // 0-7 range
+      bitNumber = discNumber;
+      // First byte
+      currentColumn = 0;
+    }
+    
+    if(discNumber >= 8 & discNumber < 16) 
+    {
+      // 0-7 range
+      bitNumber = discNumber - 8;
+      // Second byte
+      currentColumn = 1;
+    }
+
+    if(discNumber >=  16) 
+    {
+      // 0-7 range
+      bitNumber = discNumber - 16;
+    // Third byte
+      currentColumn = 2;
+    }
+    
+   /*
+    * 1 - Read read one byte from location: displaySegArray[currentRow][currentColumn]
+    * 2 - Shift byte from 0 to 7 bits to the right
+    * 3 - Extract the bit that corresponds to the state of the selected display disc
+    */ 
+    newDiscStatus = ((pgm_read_byte(&displaySegArray[currentRow][currentColumn])) >> (bitNumber)) & 0b00000001;
     
     // Start of SPI data transfer
     digitalWrite(_EN_PIN, LOW);
