@@ -8,7 +8,7 @@
  * https://github.com/marcinsaj/FlipDisc                                            *
  *----------------------------------------------------------------------------------*/
 
-#include "FlipDisc.h"
+#include <FlipDisc.h>
 
 /* 
  * Declaration of the flip-disc display enable pin   
