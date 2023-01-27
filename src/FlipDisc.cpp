@@ -349,13 +349,13 @@ void FlipDisc::ToDot(uint8_t moduleNumber, uint8_t dotNumber, bool dotStatus)
 
 /*----------------------------------------------------------------------------------*
  * The function allows you to control 2 or 3-dot display.                           *
- * You can control one, two or three dots of the selected display at a time.         *
+ * You can control one, two or three dots of the selected display at a time.        *
  * The first argument is the relative number of the display in the series           *
  * of all displays. For example, if we have a combination of DOTS, SEG, DOTS, then  *
  * the second DOTS display will have a relative number of 2 even though there       *
  * is a SEG display between the DOTS displays.                                      *
  * -> moduleNumber - relative number of the "DOTS" display                          *
- * -> dot1, dot2, dot3.                                                               *
+ * -> dot1, dot2, dot3.                                                             *
  *                                                                                  *
  * Brief:                                                                           *
  * The display consists of 2 or 3 discs.                                            *
@@ -594,7 +594,7 @@ void FlipDisc::ToFlip7(uint8_t moduleNumber, uint8_t discNumber, bool discStatus
  * then the second FLIP7 display will have a relative number of 2 even though there *
  * is a SEG display between the FLIP7 displays.                                     *
  * -> moduleNumber - relative number of the "FLIP7" display                         *
- * -> disc1, disc2, disc3, disc4, disc5, disc6, disc7.                                                                           *
+ * -> disc1, disc2, disc3, disc4, disc5, disc6, disc7.                              *
  *                                                                                  *
  * Brief:                                                                           *
  * The display consists 7 discs.                                                    *
