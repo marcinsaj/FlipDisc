@@ -139,7 +139,7 @@ When using the **FlipDisc** library with flip-disc displays, the user is respons
 
 ## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/tools.png) Functions  
 
-1️⃣🔽⚠️
+1️⃣⚠️
 ```c++
 #define EN_PIN  'Set your pin'  // Start & End SPI transfer data
 #define CH_PIN  'Set your pin'  // Charging PSPS module - turn ON/OFF
@@ -151,7 +151,7 @@ FlipDisc.Pin(...); it is most important function and first to call before everyt
 
 ------------------------------------------------------------------------------------------- 
 
-2️⃣🔽⚠️
+2️⃣⚠️
 ```c++
 FlipDisc.Init(MOD1, MOD2 = 0xFF, MOD3 = 0xFF, MOD4 = 0xFF, 
                    MOD5 = 0xFF, MOD6 = 0xFF, MOD7 = 0xFF, MOD8 = 0xFF);  
@@ -177,7 +177,7 @@ FlipDisc.Init(...) it is second most important function. Initialization function
 
 ------------------------------------------------------------------------------------------- 
 
-3️⃣🔽
+3️⃣
 ```c++
 FlipDisc.Delay(0-100ms);
 
@@ -188,7 +188,7 @@ The function is used to set the delay effect between flip discs. The default val
 
 ------------------------------------------------------------------------------------------- 
 
-4️⃣🔽
+4️⃣
 ```c++
 FlipDisc.Test();
 ```
@@ -196,7 +196,7 @@ The function is used to test all declared displays - turn on and off all display
 
 ------------------------------------------------------------------------------------------- 
 
-5️⃣🔽
+5️⃣
 ```c++
 FlipDisc.All();
 ```
@@ -204,7 +204,7 @@ The function is used to turn on (set) all discs of all displays.
 
 ------------------------------------------------------------------------------------------- 
 
-6️⃣🔽
+6️⃣
 ```c++
 FlipDisc.Clear();
 ```
@@ -213,7 +213,7 @@ The function is used to turn off (clear) all displays.
 
 ------------------------------------------------------------------------------------------- 
 
-7️⃣🔽
+7️⃣
 ```c++
 FlipDisc.ToSeg(moduleNumber, data);
 
@@ -232,7 +232,7 @@ See the function description in [FlipDisc.cpp](https://github.com/marcinsaj/Flip
 
 ------------------------------------------------------------------------------------------- 
 
-8️⃣🔽
+8️⃣
 ```c++
 FlipDisc.Seg(data1, data2 = 0xFF, data3 = 0xFF, data4 = 0xFF, 
                   data5 = 0xFF, data6 = 0xFF, data7 = 0xFF, data8 = 0xFF);
@@ -248,6 +248,7 @@ FlipDisc.Seg(2, 3, DEG, CEL);
 
 Function to control up to eight 7-segment displays. The first argument is the default and the others are optional. This function allows you to display numbers and symbols: 0-9, "°","C" , "F", etc.  
 Code names for symbols: 
+ - ALL - Set all discs
  - CLR - Clear Display
  - DEG - "°" - Degree symbol
  - CEL - "C" - Celsius symbol
@@ -261,7 +262,7 @@ Code names for symbols:
 
 ------------------------------------------------------------------------------------------- 
 
-9️⃣🔽
+9️⃣
 ```c++
 FlipDisc.ToDot(moduleNumber, dotNumber, dotStatus);
 
@@ -276,7 +277,7 @@ Function allows you to control a selected disc in a selected dot display. You ca
 
 ------------------------------------------------------------------------------------------- 
 
-1️⃣0️⃣ 🔽
+1️⃣0️⃣
 ```c++
 FlipDisc.Dot(moduleNumber, dot1 = 0xFF, dot2 = 0xFF, dot3 = 0xFF);
 
@@ -298,7 +299,7 @@ The function allows you to control one, two or three dots of the selected displa
 
 ------------------------------------------------------------------------------------------- 
 
-1️⃣1️⃣🔽
+1️⃣1️⃣
 ```c++
 FlipDisc.ToFlip3(moduleNumber, discNumber, discStatus);
 
@@ -313,7 +314,7 @@ Function allows you to control a selected disc in a selected FLIP3 display. You 
  - discStatus - reset disc "0" or set disc "1"
 
 ------------------------------------------------------------------------------------------- 
-1️⃣2️⃣🔽
+1️⃣2️⃣
 ```c++
 void FlipDisc.Flip3(moduleNumber, disc1 = 0xFF, disc2 = 0xFF, disc3 = 0xFF);
 
@@ -333,7 +334,7 @@ The function allows you to control one, two or three discs of the selected displ
  - dot1, dot2, dot3 - display discs counting from left to right 1-3
 
 ------------------------------------------------------------------------------------------- 
-1️⃣3️⃣🔽
+1️⃣3️⃣
 ```c++
 FlipDisc.ToFlip7(moduleNumber, discNumber, discStatus);
 
@@ -351,7 +352,7 @@ Function allows you to control a selected disc in a selected FLIP7 display. You 
  - discStatus - reset disc "0" or set disc "1"
 
 ------------------------------------------------------------------------------------------- 
-1️⃣4️⃣🔽
+1️⃣4️⃣
 ```c++
 FlipDisc.Flip7(moduleNumber, disc1 = 0xFF, disc2 = 0xFF, disc3 = 0xFF, 
                     disc4 = 0xFF, disc5 = 0xFF, disc6 = 0xFF, disc7 = 0xFF);
