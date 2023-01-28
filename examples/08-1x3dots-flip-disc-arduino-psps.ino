@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------------*
- * A simple example of controlling one 3x1-dot flip-disc displays                   *
+ * A simple example of controlling one 3x1-dot flip-disc display                    *
  * Example connection diagram: https://bit.ly/1x3x1DOT                              *
  *                                                                                  *
  * The MIT License                                                                  *
