@@ -1,1 +1,10 @@
-
+https://bit.ly/1x7SEG
+https://bit.ly/2x7SEG
+https://bit.ly/2x7SEG-1x3DOT
+https://bit.ly/4x7SEG-1x3DOT
+https://bit.ly/6x7SEG
+https://bit.ly/6x7SEG-2x3DOT
+https://bit.ly/1x2DOT
+https://bit.ly/1x3DOT
+https://bit.ly/1x1x3-FD
+https://bit.ly/1x1x7-FD
