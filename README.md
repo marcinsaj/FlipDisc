@@ -184,7 +184,7 @@ FlipDisc.Delay(0-100ms);
 /* Example function call */
 FlipDisc.Delay(20);
 ```
-The function is used to set the delay effect between flip discs. The default value without calling the function is 0. Can be called multiple times anywhere in the code. Recommended delay range: 0 - 100ms  
+The function is used to set the delay effect between flip discs. The default value without calling the function is 0. Can be called multiple times anywhere in the code. Recommended delay range: 0 - 100ms, max 255ms  
 
 ------------------------------------------------------------------------------------------- 
 
