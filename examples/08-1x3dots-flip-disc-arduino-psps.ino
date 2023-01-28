@@ -53,9 +53,9 @@ void setup()
   
   /* FlipDisc.Init() it is second most important function. 
   Initialization function for a series of displays. Up to 8 displays can be connected in series 
-  in any configuration. The function has 1 default argument and 7 optional arguments. 
-  The function also prepares SPI. Correct initialization requires code names of the serially 
-  connected displays:
+  in any configuration e.g. FlipDisc.Init(SEG, DOTS, SEG) The function has 1 default argument 
+  and 7 optional arguments. The function also prepares SPI. Correct initialization requires 
+  code names of the serially connected displays:
   - SEG - 7-segment display
   - DOTS - 2x1 or 3x1 dot display
   - FLIP3 - 1x3 display
