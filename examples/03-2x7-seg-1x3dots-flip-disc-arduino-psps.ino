@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------------*
  * A simple example of controlling two 7-segment and one 3x1-dot flip-disc displays *
- * Example connection diagram: https://bit.ly/2x7SEG-3x1DOT                              * 
+ * Example connection diagram: https://bit.ly/2x7SEG-3x1DOT                         * 
  *                                                                                  *
  * The MIT License                                                                  *
  * Marcin Saj 15 Jan 2023                                                           *
