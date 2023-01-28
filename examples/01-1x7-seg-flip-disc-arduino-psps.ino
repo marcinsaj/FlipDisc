@@ -12,15 +12,14 @@
  * 2. Or any Arduino board + Pulse Shaper Power Supply - https://bit.ly/PSPS-FD     *                       
  *----------------------------------------------------------------------------------*/
 
-/*
- * The library <FlipDisc.h> uses SPI to control flip-disc display. 
- * The user must remember to connect the display inputs marked: 
- * - DIN - data in - to the MOSI (SPI) output of the microcontroller, 
- * - CLK - clock - input of the display to the SCK (SPI). 
- * In addition, it is very important to connect and declare EN, CH, PL pins. 
- * The declaration of DIN (MOSI) and CLK (SCK) is not necessary, 
- * because the SPI.h library handles the SPI hardware pins.
- */
+/* The library <FlipDisc.h> uses SPI to control flip-disc display. 
+The user must remember to connect the display inputs marked: 
+- DIN - data in - to the MOSI (SPI) output of the microcontroller, 
+- CLK - clock - input of the display to the SCK (SPI). 
+In addition, it is very important to connect and declare EN, CH, PL pins. 
+The declaration of DIN (MOSI) and CLK (SCK) is not necessary, 
+because the SPI.h library handles the SPI hardware pins. */
+
 #include <FlipDisc.h>   // https://github.com/marcinsaj/FlipDisc 
 
 /*
@@ -43,27 +42,22 @@
 
 void setup() 
 {
- /*
-  * FlipDisc.Pin() it is most important function and first to call before everything else. 
-  * The function is used to declare pin functions. Before starting the device, double check 
-  * that the declarations and connection are correct. If the connection of the control outputs 
-  * is incorrect, the display may be physically damaged.
-  */
+  /* FlipDisc.Pin() it is most important function and first to call before everything else. 
+  The function is used to declare pin functions. Before starting the device, double check 
+  that the declarations and connection are correct. If the connection of the control outputs 
+  is incorrect, the display may be physically damaged. */
   FlipDisc.Pin(EN_PIN, CH_PIN, PL_PIN);
   
- /*
-  * FlipDisc.Init() it is second most important function. 
-  * Initialization function for a series of displays. Up to 8 displays can be connected in series 
-  * in any configuration. The function has 1 default argument and 7 optional arguments. 
-  * The function also prepares SPI. Correct initialization requires code names of the serially 
-  * connected displays:
-  * - SEG - 7-segment display
-  * - DOTS - 2x1 or 3x1 dot display
-  * - FLIP3 - 1x3 display
-  * - FLIP7 - 1x7 display 
-  * 
-  * Example function call for 8 modules: FlipDisc.Init(SEG,SEG,DOTS,SEG,SEG,DOTS,SEG,SEG);
-  */
+  /* FlipDisc.Init() it is second most important function. 
+  Initialization function for a series of displays. Up to 8 displays can be connected in series 
+  in any configuration. The function has 1 default argument and 7 optional arguments. 
+  The function also prepares SPI. Correct initialization requires code names of the serially 
+  connected displays:
+  - SEG - 7-segment display
+  - DOTS - 2x1 or 3x1 dot display
+  - FLIP3 - 1x3 display
+  - FLIP7 - 1x7 display   
+  Example function call for 8 modules: FlipDisc.Init(SEG,SEG,DOTS,SEG,SEG,DOTS,SEG,SEG); */
   FlipDisc.Init(SEG);
   delay(3000);
 }
