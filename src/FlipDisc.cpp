@@ -770,7 +770,7 @@ void FlipDisc::Pin(uint16_t EN_PIN, uint16_t CH_PIN, uint16_t PL_PIN)
 /*----------------------------------------------------------------------------------*
  * The function is used to set the delay effect between flip discs                  *
  * The default value without calling the function is 0                              *
- * Recommended delay range: 0 - 100ms                                               *
+ * Recommended delay range: 0 - 100ms, max 255ms                                    *
  *----------------------------------------------------------------------------------*/
 void FlipDisc::Delay(uint8_t newTimeDelay)
 {
@@ -801,7 +801,7 @@ bool FlipDisc::Fuse(uint8_t moduleNumber, uint8_t moduleType)
 /*----------------------------------------------------------------------------------*
  * Private function                                                                 *
  * The function is used to wait between flip discs                                  *
- * Recommended delay range: 0 - 100ms                                               *
+ * Recommended delay range: 0 - 100ms, max 255ms                                    *
  *----------------------------------------------------------------------------------*/
 void FlipDisc::FlipDelay(void)
 {
