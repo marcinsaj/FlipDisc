@@ -259,6 +259,7 @@ Code names for symbols:
  - UPD - "¯" - Upper dash symbol
  - MID - "-" - Middle dash symbol
  - BTD - "_" - Bottom dash symbol
+ - ALD - All three dashes
 
 ------------------------------------------------------------------------------------------- 
 
