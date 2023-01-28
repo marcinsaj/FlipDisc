@@ -294,7 +294,7 @@ FlipDisc.Dot(1, 0, 1);
 
 ```
 
-The function allows you to control one, two or three dots of the selected display. The first argument is the relative number "moduleNumber" of the display in the series of all displays. For example, if we have a combination of DOTS, SEG, DOTS, then the second DOTS display will have a relative number of 2 even though there is a SEG display between the DOTS displays.
+Function allows you to control one, two or three dots of the selected display. The first argument is the relative number "moduleNumber" of the display in the series of all displays. For example, if we have a combination of DOTS, SEG, DOTS, then the second DOTS display will have a relative number of 2 even though there is a SEG display between the DOTS displays.
  - moduleNumber - relative number of the DOTS display
  - dot1, dot2, dot3 - display dots counting from top to bottom 1-3
 
