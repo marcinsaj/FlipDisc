@@ -31,17 +31,17 @@ because the SPI.h library handles the SPI hardware pins. */
 #define PL_PIN  'Set your pin'  // Release the current pulse - turn ON/OFF 
 */
 
-
+/*
 // 1. Pin declaration for a dedicated controller
 #define EN_PIN  A7
 #define CH_PIN  A2 
 #define PL_PIN  A3
-
+*/
 
 // 2. Example pin declaration for Arduino Uno and PSPS module
-//#define EN_PIN  10
-//#define CH_PIN  8 
-//#define PL_PIN  9
+#define EN_PIN  10
+#define CH_PIN  8 
+#define PL_PIN  9
 
 void setup() 
 {
