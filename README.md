@@ -363,7 +363,7 @@ and set rest of the discs of the first display, counting from the left */
 FlipDisc.Flip7(1, 1, 0, 1, 1, 1, 1, 0);
 ```
 
-The function allows you to control one, two or three discs of the selected display. The first argument is the relative number "moduleNumber" of the display in the series of all displays. For example, if we have a combination of FLIP7, SEG, FLIP7, then the second FLIP7 display will have a relative number of 2 even though there is a SEG display between the FLIP7 displays.
+The function allows you to control up to seven discs of the selected display. The first argument is the relative number "moduleNumber" of the display in the series of all displays. For example, if we have a combination of FLIP7, SEG, FLIP7, then the second FLIP7 display will have a relative number of 2 even though there is a SEG display between the FLIP7 displays.
  - moduleNumber - relative number of the FLIP7 display
  - disc1, disc2, disc3, disc4, disc5, disc6, disc7 - display discs counting from left to right 1-7
 
