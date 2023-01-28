@@ -33,6 +33,7 @@
 #define UPD   17  //  UPD - "¯" - Upper dash symbol
 #define MID   18  //  MID - "-" - Middle dash symbol
 #define BTD   19  //  BTD - "_" - Bottom dash symbol
+#define ALD   20  //  ALD - All three dashes
 
 // Codenames for the SendBlankData() function
 #define Before 0xAA
@@ -79,6 +80,7 @@
  * 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0  //  UPD - "¯" - Upper dash symbol
  * 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1  //  MID - "-" - Middle dash symbol
  * 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0  //  BTD - "_" - Bottom dash symbol
+ * 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1  //  ALD - All three dashes 
  */ 
 
 /* 
@@ -86,7 +88,7 @@
  * Disc numbers in individual bytes:
  * 7,6,5,4,3,2,1,0  15,14,13,12,11,10,9,8  23,22,21,20,19,18,17,16 
  */
-static const uint8_t displaySegArray[20][3] PROGMEM =
+static const uint8_t displaySegArray[21][3] PROGMEM =
 {    
   {0b11111111, 0b11111111, 0b00001111},  //  0 
   {0b11110000, 0b00000111, 0b00000000},  //  1
@@ -107,7 +109,8 @@ static const uint8_t displaySegArray[20][3] PROGMEM =
   {0b10000000, 0b11111111, 0b01110011},  //  PSH - "%" - Percent second half symbol  
   {0b00011111, 0b00000000, 0b00000000},  //  UPD - "¯" - Upper dash symbol
   {0b10000000, 0b00000000, 0b01110010},  //  MID - "-" - Middle dash symbol
-  {0b00000000, 0b01111100, 0b00000000}   //  BTD - "_" - Bottom dash symbol
+  {0b00000000, 0b01111100, 0b00000000},  //  BTD - "_" - Bottom dash symbol
+  {0b10011111, 0b01111100, 0b01110010}   //  ALD - All three dashes 
 };
 
 /*
