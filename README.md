@@ -24,7 +24,7 @@ The library allows you to easily control displays connected in series. You can c
   
 All the functions responsible for controlling the displays are described in example codes and in the library files [FlipDisc.ccp](https://github.com/marcinsaj/FlipDisc/blob/main/src/FlipDisc.cpp) & [FlipDisc.h](https://github.com/marcinsaj/FlipDisc/blob/main/src/FlipDisc.h)  
 
-** Supported Displays & Modules: **       
+**Supported Displays & Modules:**       
 
 - [dedicated Arduino controller](https://flipo.io/project/arduino-controller-for-flip-disc-displays/)
 - [7-segment flip-disc display](https://flipo.io/project/flip-disc-7-segment-display/)
