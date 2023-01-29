@@ -59,7 +59,8 @@ void setup()
   - SEG - 7-segment display
   - DOTS - 2x1 or 3x1 dot display
   - FLIP3 - 1x3 display
-  - FLIP7 - 1x7 display */
+  - FLIP7 - 1x7 display  
+  Example for two FLIP7 displays: FlipDisc.Init(FLIP7, FLIP7); */
   FlipDisc.Init(FLIP7);
   delay(3000);
 }
