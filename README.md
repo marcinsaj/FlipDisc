@@ -218,7 +218,9 @@ The function is used to turn off (clear) all displays.
 FlipDisc.ToSeg(moduleNumber, data);
 
 /* An example of calling the function to display the number 5 
-on the first 7-Segment display counting from the left */
+on the first 7-Segment display counting from the left 
+ - moduleNumber - 1-8 SEG display
+ - data - symbol to display. */
 FlipDisc.ToSeg(1, 5); 
 ```
   
