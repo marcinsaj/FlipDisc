@@ -219,9 +219,9 @@ static const uint8_t resetDiscDot[3] PROGMEM =
  */ 
 static const uint8_t setDiscFlip3[3] PROGMEM =
 {
-  0b10100000,
+  0b10000010,
   0b10010000,
-  0b10000010
+  0b10100000
 };
 
 /* 
@@ -231,9 +231,9 @@ static const uint8_t setDiscFlip3[3] PROGMEM =
  */ 
 static const uint8_t resetDiscFlip3[3] PROGMEM =
 {
-  0b00001100,
+  0b00000101, 
   0b01000100,
-  0b00000101
+  0b00001100
 };
 
 /* 
