@@ -45,13 +45,13 @@ because the SPI.h library handles the SPI hardware pins. */
 
 void setup() 
 {
-  /* FlipDisc.Pin() it is most important function and first to call before everything else. 
+  /* FlipDisc.Pin() it is the most important function and first to call before everything else. 
   The function is used to declare pin functions. Before starting the device, double check 
   that the declarations and connection are correct. If the connection of the control outputs 
   is incorrect, the display may be physically damaged. */
   FlipDisc.Pin(EN_PIN, CH_PIN, PL_PIN);
   
-  /* FlipDisc.Init() it is second most important function. 
+  /* FlipDisc.Init(display1, display2, ... display8) it is the second most important function. 
   Initialization function for a series of displays. Up to 8 displays can be connected in series 
   in any configuration. The function has 1 default argument and 7 optional arguments. 
   The function also prepares SPI. Correct initialization requires code names of the serially 
