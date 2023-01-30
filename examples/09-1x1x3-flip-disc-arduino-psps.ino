@@ -78,7 +78,7 @@ void loop()
   delay(3000);
 
   /* The function allows you to control up to three discs of the selected display. 
-  FlipDisc.Flip3(disc1,disc2,disc3);
+  FlipDisc.Flip3(moduleNumber, disc1,disc2,disc3);
   The first argument is the relative number "moduleNumber" of the display in the series 
   of all displays. For example, if we have a combination of FLIP3, SEG, FLIP3, 
   then the second FLIP3 display will have a relative number of 2 even though 
