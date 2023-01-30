@@ -42,7 +42,7 @@ because the SPI.h library handles the SPI hardware pins. */
 
 void setup() 
 {
-  /* FlipDisc.Pin() it is most important function and first to call before everything else. 
+  /* FlipDisc.Pin(); it is the most important function and first to call before everything else. 
   The function is used to declare pin functions. Before starting the device, double check 
   that the declarations and connection are correct. If the connection of the control outputs 
   is incorrect, the display may be physically damaged. */
