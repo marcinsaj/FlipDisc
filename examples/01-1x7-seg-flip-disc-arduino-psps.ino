@@ -48,7 +48,7 @@ void setup()
   is incorrect, the display may be physically damaged. */
   FlipDisc.Pin(EN_PIN, CH_PIN, PL_PIN);
   
-  /* FlipDisc.Init() it is second most important function. 
+  /* FlipDisc.Init(display1, display2, ... display8); it is the second most important function. 
   Initialization function for a series of displays. Up to 8 displays can be connected in series 
   in any configuration. The function has 1 default argument and 7 optional arguments. 
   The function also prepares SPI. Correct initialization requires code names of the serially 
