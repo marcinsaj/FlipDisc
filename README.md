@@ -287,24 +287,53 @@ Flip.Matrix_7Seg(2, 3, DEG, C);
 
 ```
 
-Function to control up to eight 7-segment displays. The first argument is the default and the others are optional. This function allows you to display numbers and symbols:  
-Code names for symbols: 
- - 0, 1, 2 ... 9 - Digits
- - A, B, C ... Z - Alphabet letters
- - ALL - Set all discs
- - CLR - Clear Display
- - DEG - "°"  - Degree symbol
- - PFH - "%"  - Percent first half symbol
- - PSH - "%"  - Percent second half symbol 
- - HLU - "¯"  - Horizontal line - upper
- - HLM - "-"  - Horizontal line - middle
- - HLL - "_"  - Horizontal line - lower
- - HLT - "="  - Horizontal line - upper & lower 
- - HLA - "≡"  - All three lines
- - MIN - "-"  - Minus symbol
- - VLL - "| " - Vertical line - left
- - VLR - " |" - Vertical line - right
- - VLA - "||" - All Vertical lines
+Function to control up to eight 7-segment displays.
+
+7-segment displays allow the display of numbers and symbols.
+Symbols can be displayed using their code name or number e.g. 37/DEG - "°"  - Degree symbol 
+Code names for symbols:
+  - 0-9
+  - 1/VLR  - " |" - Vertical line - right
+  - 8/ALL  - Set all discs
+  - 10/CLR - Clear display
+  - 11/A
+  - 12/B
+  - 13/C
+  - 14/D
+  - 15/E
+  - 16/F
+  - 17/G
+  - 18/H
+  - 19/I
+  - 20/J
+  - 21/K
+  - 22/L
+  - 23/M
+  - 24/N
+  - 25/O
+  - 26/P
+  - 27/Q
+  - 28/R
+  - 29/S
+  - 30/T
+  - 31/U
+  - 32/V
+  - 33/W
+  - 34/X
+  - 35/Y
+  - 36/Z
+  - 37/DEG - "°"  - Degree symbol
+  - 37/PFH - "%"  - Percent first half symbol
+  - 38/PSH - "%"  - Percent second half symbol
+  - 39/HLU - "¯"  - Horizontal line - upper
+  - 40/HLM - "-"  - Horizontal line - middle
+  - 41/HLL - "_"  - Horizontal line - lower
+  - 42/HLT - "="  - Horizontal line - upper & lower
+  - 43/HLA - "≡"  - All three lines
+  - 40/MIN - "-"  - Minus symbol
+  - 44/VLL - "| " - Vertical line - left
+  - 1/VLR  - " |" - Vertical line - right
+  - 45/VLA - "||" - All Vertical lines
 
 ------------------------------------------------------------------------------------------- 
 
