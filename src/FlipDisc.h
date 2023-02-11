@@ -15,64 +15,64 @@
 #include <avr/pgmspace.h>
 
 // Codenames of display modules
-const uint8_t D7SEG = 0x7F;
-const uint8_t D2X1  = 0x21;
-const uint8_t D3X1  = 0x31;
-const uint8_t D1X3  = 0x13;
-const uint8_t D1X7  = 0x17;
-const uint8_t NONE  = 0xFF;
+static const uint8_t D7SEG = 0x7F;
+static const uint8_t D2X1  = 0x31; /* D3X1 = D2X1 - are the same */
+static const uint8_t D3X1  = 0x31;
+static const uint8_t D1X3  = 0x13;
+static const uint8_t D1X7  = 0x17;
+static const uint8_t NONE  = 0xFF;
 
 // Codenames of symbols for 7-segment display
-const uint8_t ALL = 8;    // ALL - Set all discs
-const uint8_t CLR = 10;   // CLR - Clear display
-const uint8_t A   = 11;
-const uint8_t B   = 12;
-const uint8_t C   = 13;
-const uint8_t D   = 14;
-const uint8_t E   = 15;
-const uint8_t F   = 16;
-const uint8_t G   = 17;
-const uint8_t H   = 18;
-const uint8_t I   = 19;
-const uint8_t J   = 20;
-const uint8_t K   = 21;
-const uint8_t L   = 22;
-const uint8_t M   = 23;
-const uint8_t N   = 24;
-const uint8_t O   = 25;
-const uint8_t P   = 26;
-const uint8_t Q   = 27;
-const uint8_t R   = 28;
-const uint8_t S   = 29;
-const uint8_t T   = 30;
-const uint8_t U   = 31;
-const uint8_t V   = 32;
-const uint8_t W   = 33;
-const uint8_t X   = 34;
-const uint8_t Y   = 35;
-const uint8_t Z   = 36;
-const uint8_t DEG = 37;   // DEG - "°"  - Degree symbol
-const uint8_t PFH = 37;   // PFH - "%"  - Percent first half symbol
-const uint8_t PSH = 38;   // PSH - "%"  - Percent second half symbol
-const uint8_t HLU = 39;   // HLU - "¯"  - Horizontal line - upper
-const uint8_t HLM = 40;   // HLM - "-"  - Horizontal line - middle
-const uint8_t HLL = 41;   // HLL - "_"  - Horizontal line - lower
-const uint8_t HLT = 42;   // HLT - "="  - Horizontal line - upper & lower
-const uint8_t HLA = 43;   // HLA - "≡"  - All three lines
-const uint8_t MIN = 40;   // MIN - "-"  - Minus symbol
-const uint8_t VLL = 44;   // VLL - "| " - Vertical line - left
-const uint8_t VLR = 1 ;   // VLR - " |" - Vertical line - right
-const uint8_t VLA = 45;   // VLA - "||" - All Vertical lines
+static const uint8_t ALL = 8;    // ALL - Set all discs
+static const uint8_t CLR = 10;   // CLR - Clear display
+static const uint8_t A   = 11;
+static const uint8_t B   = 12;
+static const uint8_t C   = 13;
+static const uint8_t D   = 14;
+static const uint8_t E   = 15;
+static const uint8_t F   = 16;
+static const uint8_t G   = 17;
+static const uint8_t H   = 18;
+static const uint8_t I   = 19;
+static const uint8_t J   = 20;
+static const uint8_t K   = 21;
+static const uint8_t L   = 22;
+static const uint8_t M   = 23;
+static const uint8_t N   = 24;
+static const uint8_t O   = 25;
+static const uint8_t P   = 26;
+static const uint8_t Q   = 27;
+static const uint8_t R   = 28;
+static const uint8_t S   = 29;
+static const uint8_t T   = 30;
+static const uint8_t U   = 31;
+static const uint8_t V   = 32;
+static const uint8_t W   = 33;
+static const uint8_t X   = 34;
+static const uint8_t Y   = 35;
+static const uint8_t Z   = 36;
+static const uint8_t DEG = 37;   // DEG - "°"  - Degree symbol
+static const uint8_t PFH = 37;   // PFH - "%"  - Percent first half symbol
+static const uint8_t PSH = 38;   // PSH - "%"  - Percent second half symbol
+static const uint8_t HLU = 39;   // HLU - "¯"  - Horizontal line - upper
+static const uint8_t HLM = 40;   // HLM - "-"  - Horizontal line - middle
+static const uint8_t HLL = 41;   // HLL - "_"  - Horizontal line - lower
+static const uint8_t HLT = 42;   // HLT - "="  - Horizontal line - upper & lower
+static const uint8_t HLA = 43;   // HLA - "≡"  - All three lines
+static const uint8_t MIN = 40;   // MIN - "-"  - Minus symbol
+static const uint8_t VLL = 44;   // VLL - "| " - Vertical line - left
+static const uint8_t VLR = 1 ;   // VLR - " |" - Vertical line - right
+static const uint8_t VLA = 45;   // VLA - "||" - All Vertical lines
 
 
 // Codenames for the SendBlankData() function
-const uint8_t BEFORE = 0xAA;
-const uint8_t AFTER = 0xBB;
+static const uint8_t BEFORE = 0xAA;
+static const uint8_t AFTER = 0xBB;
 
 // Codenames for the moduleInitArray[][3] columns
-const uint8_t module_type_column = 0;
-const uint8_t number_bytes_column = 1;
-const uint8_t module_relative_position_column = 2;
+static const uint8_t module_type_column = 0;
+static const uint8_t number_bytes_column = 1;
+static const uint8_t module_relative_position_column = 2;
 
 /*
  * The 7-segment display consists of 23 disks. 
