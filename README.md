@@ -24,14 +24,14 @@ This library is intended for use with the displays designed by www.Flipo.io - Ma
 
 The library allows you to easily control displays connected in series. You can connect up to 8 different displays in any order. Example codes and diagrams on how to connect the displays with the Arduino and the [Pulse Shaper Power Supply](https://flipo.io/project/flip-disc-power-supply/) module can be found below and on the project website: www.Flipo.io  
   
-All the functions responsible for controlling the displays are described in example codes and in the library files [FlipDisc.ccp](https://github.com/marcinsaj/FlipDisc/blob/main/src/FlipDisc.cpp) & [FlipDisc.h](https://github.com/marcinsaj/FlipDisc/blob/main/src/FlipDisc.h)  
+All the functions responsible for controlling the displays are described in example codes and in the library files [Flip.ccp](https://github.com/marcinsaj/FlipDisc/blob/main/src/Flip.cpp) & [Flip.h](https://github.com/marcinsaj/FlipDisc/blob/main/src/Flip.h)  
 
 **✔️ Supported Displays & Modules:**       
 
 - [dedicated Arduino controller](https://flipo.io/project/arduino-controller-for-flip-disc-displays/)
 - [7-segment flip-disc display](https://flipo.io/project/flip-disc-7-segment-display/)
-- [2-dot flip-disc display](https://flipo.io/project/flip-disc-2x1-display/)
-- [3-dot flip-disc display](https://flipo.io/project/flip-disc-3x1-display/)
+- [2x1 flip-disc display](https://flipo.io/project/flip-disc-2x1-display/)
+- [3x1 flip-disc display](https://flipo.io/project/flip-disc-3x1-display/)
 - [1x3 flip-disc display](https://flipo.io/project/flip-disc-1x3-display/)
 - [1x7 flip-disc display](https://flipo.io/project/flip-disc-1x7-display/)
 - [flip-disc power supply module](https://flipo.io/project/flip-disc-power-supply/)   
@@ -157,44 +157,45 @@ When using the **FlipDisc** library with flip-disc displays, the user is respons
 #define CH_PIN  'Set your pin'  // Charging PSPS module - turn ON/OFF
 #define PL_PIN  'Set your pin'  // Release the current pulse - turn ON/OFF
 
-FlipDisc.Pin(EN_PIN, CH_PIN, PL_PIN);
+Flip.Pin(EN_PIN, CH_PIN, PL_PIN);
 ```
-FlipDisc.Pin(...); it is most important function and first to call before everything else. The function is used to declare pin functions. Before starting the device, double check that the declarations and connection are correct. If the connection of the control outputs is incorrect, the display may be physically damaged.
+Flip.Pin(...); it is most important function and first to call before everything else. The function is used to declare pin functions. Before starting the device, double check that the declarations and connection are correct. If the connection of the control outputs is incorrect, the display may be physically damaged.
 
 ------------------------------------------------------------------------------------------- 
 
 2️⃣⚠️
 ```c++
-FlipDisc.Init(MOD1, MOD2 = 0xFF, MOD3 = 0xFF, MOD4 = 0xFF, 
+Flip.Init(MOD1, MOD2 = 0xFF, MOD3 = 0xFF, MOD4 = 0xFF, 
                    MOD5 = 0xFF, MOD6 = 0xFF, MOD7 = 0xFF, MOD8 = 0xFF);  
                    
 /* Examples function call */
 /* 8 modules */
-FlipDisc.Init(SEG, SEG, DOTS, SEG, SEG, DOTS, SEG, SEG);
+Flip.Init(D7SEG, D7SEG, D3X1, D7SEG, D7SEG, D3X1, D7SEG, D7SEG);
 
 /* 1x3 display */
-FlipDisc.Init(FLIP3);
+Flip.Init(D1X3);
 
 /* 1x7 display */
-FlipDisc.Init(FLIP7);
+Flip.Init(D1X7);
 
 /* 2 x 7-Segment displays */
-FlipDisc.Init(SEG, SEG);
+Flip.Init(D7SEG, D7SEG);
 ```
-FlipDisc.Init(...) it is second most important function. Initialization function for a series of displays. Up to 8 displays can be connected in series in any configuration. The function has 1 default argument and 7 optional arguments. The function also prepares SPI. Correct initialization requires code names of the serially connected displays:
- - SEG - 7-segment display    
- - DOTS - 2x1 or 3x1 dot display  
- - FLIP3 - 1x3 display  
- - FLIP7 - 1x7 display  
+Flip.Init(...) it is second most important function. Initialization function for a series of displays. Up to 8 displays can be connected in series in any configuration. The function has 1 default argument and 7 optional arguments. The function also prepares SPI. Correct initialization requires code names of the serially connected displays:
+ - D7SEG - [7-segment display](https://flipo.io/project/flip-disc-7-segment-display/)   
+ - D2X1 - [2x1 display](https://flipo.io/project/flip-disc-2x1-display/)  
+ - D3X1 - [3x1 display](https://flipo.io/project/flip-disc-3x1-display/)
+ - D1X3 - [1x3 display](https://flipo.io/project/flip-disc-1x3-display/)
+ - D1X7 - [1x7 display](https://flipo.io/project/flip-disc-1x7-display/) 
 
 ------------------------------------------------------------------------------------------- 
 
 3️⃣
 ```c++
-FlipDisc.Delay(0-100ms);
+Flip.Delay(0-100ms);
 
 /* Example function call */
-FlipDisc.Delay(20);
+Flip.Delay(20);
 ```
 The function is used to set the delay effect between flip discs. The default value without calling the function is 0. Can be called multiple times anywhere in the code. Recommended delay range: 0 - 100ms, max 255ms  
 
@@ -202,7 +203,7 @@ The function is used to set the delay effect between flip discs. The default val
 
 4️⃣
 ```c++
-FlipDisc.Test();
+Flip.Test();
 ```
 The function is used to test all declared displays - turn on and off all displays.   
 
@@ -210,7 +211,7 @@ The function is used to test all declared displays - turn on and off all display
 
 5️⃣
 ```c++
-FlipDisc.All();
+Flip.All();
 ```
 The function is used to turn on (set) all discs of all displays.  
 
@@ -218,7 +219,7 @@ The function is used to turn on (set) all discs of all displays.
 
 6️⃣
 ```c++
-FlipDisc.Clear();
+Flip.Clear();
 ```
 
 The function is used to turn off (clear) all displays.  
@@ -227,158 +228,225 @@ The function is used to turn off (clear) all displays.
 
 7️⃣
 ```c++
-FlipDisc.ToSeg(moduleNumber, data);
+Flip.Disc_7Seg(module_number, disc_number, disc_status);
 
-/* An example of calling the function to display the number 5 
-on the first 7-Segment display counting from the left 
- - moduleNumber - 1-8 SEG display
- - data - symbol to display. */
-FlipDisc.ToSeg(1, 5); 
+/* An example of calling the function to display disc no.19 
+of the first 7-Segment display counting from the left */
+Flip.Disc_7Seg(1, 19, 1); 
+
+  0  1  2  3  4
+ 19           5
+ 18           6
+ 17 20 21 22  7
+ 16           8
+ 15           9
+ 14 13 12 11 10
 ```
   
-The function allows you to control one 7-segment display. The first argument "moduleNumber" is the relative number of the display in the series of all displays. For example, if we have a combination of SEG, DOTS, SEG then the second SEG display will have a relative number of 2 even though there is a DOTS display between the SEG displays.  
-  
-7-Segment display consists of 23 discs. The displaySegArray[][] array contains information about all disc statuses for the symbol we want to display. To flip a selected disc, we need to know the corresponding control outputs. Disc statuses "0" and "1" correspond to different control outputs. The list of information about all control outputs for corresponding disc statuses of all discs and the currently selected digit/symbol to be displayed are contained in two tables:
- - setDiscArray[] - "1"
- - resetDiscArray[] - "0"
-  
-See the function description in [FlipDisc.cpp](https://github.com/marcinsaj/FlipDisc/blob/main/src/FlipDisc.cpp)
+The function allows you to control one selected disc of 7-Segment display. The first argument is the relative number of the display in the series of all 7-Segment displays. For example, if we have a combination of D7SEG, D3X1, D7SEG then the second D7SEG display will have a relative number of 2 even though there is a D3X1 display between the D7SEG displays. The second argument disc_number is the number of selected disc 0-22 of the 7-Segment display. The third argument is the status of the selected disc:  
+ - module_number - relative number of the "D7SEG" display
+ - disc_number - there are 23 discs in 7-Segment display 0-22
+ - disc_status - reset disc "0" or set disc "1"                                       
+
+See the function description in [Flip.cpp](https://github.com/marcinsaj/FlipDisc/blob/main/src/Flip.cpp)
 
 ------------------------------------------------------------------------------------------- 
 
 8️⃣
 ```c++
-FlipDisc.Seg(data1, data2 = 0xFF, data3 = 0xFF, data4 = 0xFF, 
-                  data5 = 0xFF, data6 = 0xFF, data7 = 0xFF, data8 = 0xFF);
-                  
-/* Example function call assuming that we have declared the following displays 
-FlipDisc.Init(SEG, SEG, SEG, SEG) and we want to display temperature 70°F. */ 
-FlipDisc.Seg(7, 0, DEG, FAH);  
+Flip.Display_7Seg(module_number, data);
 
-/* Or Celsius 23°C */ 
-FlipDisc.Seg(2, 3, DEG, CEL);
-
+/* An example of calling the function to display the number 5 
+on the first 7-Segment display counting from the left 
+ - module_number - 1-8 D7SEG display
+ - data - symbol to display. */
+Flip.Display_7Seg(1, 5); 
 ```
-
-Function to control up to eight 7-segment displays. The first argument is the default and the others are optional. This function allows you to display numbers and symbols: 0-9, "°","C" , "F", etc.  
-Code names for symbols: 
- - ALL - Set all discs
- - CLR - Clear Display
- - DEG - "°" - Degree symbol
- - CEL - "C" - Celsius symbol
- - FAH - "F" - Fahrenheit symbol 
- - HUM - "H" - Humidity symbol 
- - PFH - "%" - Percent first half symbol
- - PSH - "%" - Percent second half symbol 
- - UPD - "¯" - Upper dash symbol
- - MID - "-" - Middle dash symbol
- - BTD - "_" - Bottom dash symbol
- - ALD - All three dashes
+  
+The function allows you to control one 7-segment display. The first argument "module_number" is the relative number of the display in the series of all displays. For example, if we have a combination of D7SEG, D3X1, D7SEG then the second D7SEG display will have a relative number of 2 even though there is a D3X1 display between the D7SEG displays.  
+  
+7-Segment display consists of 23 discs. The displayArray_7Seg[][] array contains information about all disc statuses for the symbol we want to display. To flip a selected disc, we need to know the corresponding control outputs. Disc statuses "0" and "1" correspond to different control outputs. The list of information about all control outputs for corresponding disc statuses of all discs and the currently selected digit/symbol to be displayed are contained in two tables:
+ - setDiscArray_7Seg[] - "1"
+ - resetDiscArray_7Seg[] - "0"
+  
+See the function description in [Flip.cpp](https://github.com/marcinsaj/FlipDisc/blob/main/src/Flip.cpp)
 
 ------------------------------------------------------------------------------------------- 
 
 9️⃣
 ```c++
-FlipDisc.ToDot(moduleNumber, dotNumber, dotStatus);
+Flip.Matrix_7Seg(data1, data2 = 0xFF, data3 = 0xFF, data4 = 0xFF, 
+                  data5 = 0xFF, data6 = 0xFF, data7 = 0xFF, data8 = 0xFF);
+                  
+/* Example function call assuming that we have declared the following displays 
+Flip.Init(D7SEG, D7SEG, D7SEG, D7SEG) and we want to display temperature 70°F. */ 
+Flip.Matrix_7Seg(7, 0, DEG, F);  
 
-/* Example function call. Set the second dot of the first display, counting from the left */
-FlipDisc.ToDot(1, 2, 1);
+/* Or Celsius 23°C */ 
+Flip.Matrix_7Seg(2, 3, DEG, C);
+
 ```
 
-Function allows you to control a selected disc in a selected dot display. You can control only one dot of the selected display at a time. The first argument moduleNumber is the relative number of the display in the series of all displays. For example, if we have a combination of DOTS, SEG, DOTS, then the second DOTS display will have a relative number of 2 even though there is a SEG display between the DOTS displays.  
- - moduleNumber - relative number of the DOTS display
- - dotNumber - display dot number counting from top to bottom 1-3
- - dotStatus - reset dot "0" or set disc "1"
+Function to control up to eight 7-segment displays. The first argument is the default and the others are optional. This function allows you to display numbers and symbols:  
+Code names for symbols: 
+ - 0, 1, 2 ... 9 - Digits
+ - A, B, C ... Z - Alphabet letters
+ - ALL - Set all discs
+ - CLR - Clear Display
+ - DEG - "°"  - Degree symbol
+ - PFH - "%"  - Percent first half symbol
+ - PSH - "%"  - Percent second half symbol 
+ - HLU - "¯"  - Horizontal line - upper
+ - HLM - "-"  - Horizontal line - middle
+ - HLL - "_"  - Horizontal line - lower
+ - HLT - "="  - Horizontal line - upper & lower 
+ - HLA - "≡"  - All three lines
+ - MIN - "-"  - Minus symbol
+ - VLL - "| " - Vertical line - left
+ - VLR - " |" - Vertical line - right
+ - VLA - "||" - All Vertical lines
 
 ------------------------------------------------------------------------------------------- 
 
 1️⃣0️⃣
 ```c++
-FlipDisc.Dot(moduleNumber, dot1 = 0xFF, dot2 = 0xFF, dot3 = 0xFF);
+Flip.Disc_3x1(module_number, disc_number, disc_status);
 
-/* Example function call. Set the first and third dot and reset second dot 
-of the second dot display, counting from the left */
-FlipDisc.Dot(2, 1, 0, 1);
-
-/* Reset first dot of the first dot display */
-FlipDisc.Dot(1, 0);
-
-/* Reset first dot and set second dot of the first dot display */
-FlipDisc.Dot(1, 0, 1);
-
+/* Example function call. Set the second disc of the first display, counting from the left */
+Flip.Disc_3x1(1, 2, 1);
 ```
 
-Function allows you to control one, two or three dots of the selected display. The first argument is the relative number "moduleNumber" of the display in the series of all displays. For example, if we have a combination of DOTS, SEG, DOTS, then the second DOTS display will have a relative number of 2 even though there is a SEG display between the DOTS displays.
- - moduleNumber - relative number of the DOTS display
- - dot1, dot2, dot3 - display dots counting from top to bottom 1-3
+Function allows you to control a selected disc in a selected 3x1 display. You can control only one disc of the selected display at a time. The first argument module_number is the relative number of the display in the series of all displays. For example, if we have a combination of D3X1, D7SEG, D3X1, then the second D3X1 display will have a relative number of 2 even though there is a D7SEG display between the D3X1 displays.  
+ - module_number - relative number of the D3X1 display
+ - disc_number - display disc number counting from top to bottom 1-3
+ - disc_status - reset disc "0" or set disc "1"
 
 ------------------------------------------------------------------------------------------- 
 
 1️⃣1️⃣
 ```c++
-FlipDisc.ToFlip3(moduleNumber, discNumber, discStatus);
+Flip.Display_3x1(module_number, disc1 = 0xFF, disc2 = 0xFF, disc3 = 0xFF);
+
+/* Example function call. Set the first and third disc and reset second disc 
+of the second 3x1 display, counting from the left */
+Flip.Display_3x1(2, 1, 0, 1);
+
+/* Reset first disc of the first 3x1 display */
+Flip.Display_3x1(1, 0);
+
+/* Reset first disc and set second disc of the first 3x1 display */
+Flip.Display_3x1(1, 0, 1);
+
+```
+
+Function allows you to control one, two or three discs of the selected 3x1 display. The first argument is the relative number "module_number" of the display in the series of all 3x1 displays. For example, if we have a combination of D3X1, D7SEG, D3X1, then the second D3X1 display will have a relative number of 2 even though there is a D7SEG display between the D3X1 displays.
+ - module_number - relative number of the D3X1 display
+ - disc1, disc2, disc3 - display discs counting from top to bottom 1-3
+
+------------------------------------------------------------------------------------------- 
+
+1️⃣2️⃣
+```c++
+Flip.Disc_2x1(module_number, disc_number, disc_status);
+
+/* Example function call. Set the second disc of the first display, counting from the left */
+Flip.Disc_2x1(1, 2, 1);
+```
+
+Function allows you to control a selected disc in a selected 2x1 display. You can control only one disc of the selected display at a time. The first argument module_number is the relative number of the display in the series of all 2x1 displays. For example, if we have a combination of D2X1, D7SEG, D2X1, then the second D2X1 display will have a relative number of 2 even though there is a D7SEG display between the D2X1 displays.  
+ - module_number - relative number of the D2X1 display
+ - disc_number - display disc number counting from top to bottom 1-2
+ - disc_status - reset disc "0" or set disc "1"
+
+------------------------------------------------------------------------------------------- 
+
+1️⃣3️⃣
+```c++
+Flip.Display_2x1(module_number, disc1 = 0xFF, disc2 = 0xFF);
+
+/* Example function call. Set the first disc and reset second disc 
+of the second 2x1 display, counting from the left */
+Flip.Display_2x1(2, 1, 0);
+
+/* Reset first disc of the first 2x1 display */
+Flip.Display_2x1(1, 0);
+
+/* Reset first disc and set second disc of the first 2x1 display */
+Flip.Display_2x1(1, 0, 1);
+
+```
+
+Function allows you to control one or two discs of the selected 2x1 display. The first argument is the relative number "module_number" of the display in the series of all 2x1 displays. For example, if we have a combination of D2X1, D7SEG, D2X1, then the second D2X1 display will have a relative number of 2 even though there is a D7SEG display between the D2X1 displays.
+ - module_number - relative number of the D2X1 display
+ - disc1, disc2 - display discs counting from top to bottom 1-2
+
+------------------------------------------------------------------------------------------- 
+
+1️⃣4️⃣
+```c++
+Flip.Disc_1x3(module_number, disc_number, disc_status);
 
 /* Example function call. Reset the second disc, counting from the left 
 of the first display, counting from the left */
-FlipDisc.ToFlip3(1, 2, 0);
+Flip.Disc_1x3(1, 2, 0);
 ```
 
-Function allows you to control a selected disc in a selected FLIP3 display. You can control only one disc of the selected display at a time. The first argument moduleNumber is the relative number of the display in the series of all displays. For example, if we have a combination of FLIP3, SEG, FLIP3, then the second FLIP3 display will have a relative number of 2 even though there is a SEG display between the FLIP3 displays.  
- - moduleNumber - relative number of the FLIP3 display
- - discNumber - display disc number counting from left to right 1-3
- - discStatus - reset disc "0" or set disc "1"
+Function allows you to control a selected disc in a selected 1x3 display. You can control only one disc of the selected display at a time. The first argument module_number is the relative number of the display in the series of all displays. For example, if we have a combination of D1X3, D7SEG, D1X3, then the second D1X3 display will have a relative number of 2 even though there is a D7SEG display between the D1X3 displays.  
+ - module_number - relative number of the D1X3 display
+ - disc_number - display disc number counting from left to right 1-3
+ - disc_status - reset disc "0" or set disc "1"
 
 ------------------------------------------------------------------------------------------- 
-1️⃣2️⃣
+1️⃣5️⃣
 ```c++
-void FlipDisc.Flip3(moduleNumber, disc1 = 0xFF, disc2 = 0xFF, disc3 = 0xFF);
+void Flip.Display_1x3(module_number, disc1 = 0xFF, disc2 = 0xFF, disc3 = 0xFF);
 
 /* Example function call. Set the first and third disc and reset second disc 
-of the second display, counting from the left */
-FlipDisc.Flip3(2, 1, 0, 1);
+of the second 1x3 display, counting from the left */
+Flip.Display_1x3(2, 1, 0, 1);
 
 /* Set first disc of the first display */
-FlipDisc.Flip3(1, 1);
+Flip.Display_1x3(1, 1);
 
 /* Set first disc and reset second disc of the first display */
-FlipDisc.Flip3(1, 1, 0);
+Flip.Display_1x3(1, 1, 0);
 ```
 
-The function allows you to control one, two or three discs of the selected display. The first argument is the relative number "moduleNumber" of the display in the series of all displays. For example, if we have a combination of FLIP3, SEG, FLIP3, then the second FLIP3 display will have a relative number of 2 even though there is a SEG display between the FLIP3 displays.
- - moduleNumber - relative number of the FLIP3 display
- - dot1, dot2, dot3 - display discs counting from left to right 1-3
+The function allows you to control one, two or three discs of the selected 1x3 display. The first argument is the relative number "module_number" of the display in the series of all displays. For example, if we have a combination of D1X3, D7SEG, D1X3, then the second D1X3 display will have a relative number of 2 even though there is a D7SEG display between the D1X3 displays.
+ - module_number - relative number of the D1X3 display
+ - disc1, disc2, disc3 - display discs counting from left to right 1-3
 
 ------------------------------------------------------------------------------------------- 
-1️⃣3️⃣
+1️⃣6️⃣
 ```c++
-FlipDisc.ToFlip7(moduleNumber, discNumber, discStatus);
+Flip.Disc_1x7(module_number, disc_number, disc_status);
 
 /* Example function call. Set the fifth disc, counting from the left 
-of the second display, counting from the left */
-FlipDisc.ToFlip7(2, 5, 1);
+of the second 1x7 display, counting from the left */
+Flip.Disc_1x7(2, 5, 1);
 
 /* Reset the third disc, counting from the left of the first display, counting from the left */
-FlipDisc.ToFlip7(1, 3, 0);
+Flip.Disc_1x7(1, 3, 0);
 ```
 
-Function allows you to control a selected disc in a selected FLIP7 display. You can control only one disc of the selected display at a time. The first argument moduleNumber is the relative number of the display in the series of all displays. For example, if we have a combination of FLIP7, SEG, FLIP7, then the second FLIP7 display will have a relative number of 2 even though there is a SEG display between the FLIP7 displays.  
- - moduleNumber - relative number of the FLIP7 display
- - discNumber - display disc number counting from left to right 1-7
- - discStatus - reset disc "0" or set disc "1"
+Function allows you to control a selected disc in a selected 1x7 display. You can control only one disc of the selected display at a time. The first argument module_number is the relative number of the display in the series of all 1x7 displays. For example, if we have a combination of D1X7, D7SEG, D1X7, then the second D1X7 display will have a relative number of 2 even though there is a D7SEG display between the D1X7 displays.  
+ - module_number - relative number of the D1X7 display
+ - disc_number - display disc number counting from left to right 1-7
+ - disc_status - reset disc "0" or set disc "1"
 
 ------------------------------------------------------------------------------------------- 
-1️⃣4️⃣
+1️⃣7️⃣
 ```c++
-FlipDisc.Flip7(moduleNumber, disc1 = 0xFF, disc2 = 0xFF, disc3 = 0xFF, 
+Flip.Display_1x7(module_number, disc1 = 0xFF, disc2 = 0xFF, disc3 = 0xFF, 
                     disc4 = 0xFF, disc5 = 0xFF, disc6 = 0xFF, disc7 = 0xFF);
                     
 /* Example function call. Reset the second and seventh disc counting from the left 
-and set rest of the discs of the first display, counting from the left */
-FlipDisc.Flip7(1, 1, 0, 1, 1, 1, 1, 0);
+and set rest of the discs of the first 1x7 display, counting from the left */
+Flip.Display_1x7(1, 1, 0, 1, 1, 1, 1, 0);
 ```
 
-The function allows you to control up to seven discs of the selected display. The first argument is the relative number "moduleNumber" of the display in the series of all displays. For example, if we have a combination of FLIP7, SEG, FLIP7, then the second FLIP7 display will have a relative number of 2 even though there is a SEG display between the FLIP7 displays.
- - moduleNumber - relative number of the FLIP7 display
+The function allows you to control up to seven discs of the selected display. The first argument is the relative number "module_number" of the display in the series of all 1x7 displays. For example, if we have a combination of D1X7, D7SEG, D1X7, then the second D1X7 display will have a relative number of 2 even though there is a D7SEG display between the D1X7 displays.
+ - module_number - relative number of the D1X7 display
  - disc1, disc2, disc3, disc4, disc5, disc6, disc7 - display discs counting from left to right 1-7
 
 ------------------------------------------------------------------------------------------- 
@@ -388,8 +456,8 @@ The function allows you to control up to seven discs of the selected display. Th
 
 - [dedicated Arduino controller](https://flipo.io/project/arduino-controller-for-flip-disc-displays/)
 - [7-segment flip-disc display](https://flipo.io/project/flip-disc-7-segment-display/)
-- [2-dot flip-disc display](https://flipo.io/project/flip-disc-2x1-display/)
-- [3-dot flip-disc display](https://flipo.io/project/flip-disc-3x1-display/)
+- [2-disc flip-disc display](https://flipo.io/project/flip-disc-2x1-display/)
+- [3-disc flip-disc display](https://flipo.io/project/flip-disc-3x1-display/)
 - [1x3 flip-disc display](https://flipo.io/project/flip-disc-1x3-display/)
 - [1x7 flip-disc display](https://flipo.io/project/flip-disc-1x7-display/)
 - [flip-disc power supply module](https://flipo.io/project/flip-disc-power-supply/)  
@@ -405,5 +473,4 @@ The function allows you to control up to seven discs of the selected display. Th
   <img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-1x3-display.jpg">
   <img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-1x7-display.jpg">
   <img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-power-supply-module.jpg">
-</p>  
-
+</p>
