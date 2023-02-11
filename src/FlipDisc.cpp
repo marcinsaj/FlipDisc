@@ -141,10 +141,7 @@ void FlipDisc::Init(uint8_t MOD1, uint8_t MOD2 = 0xFF, uint8_t MOD3 = 0xFF,
         number_bytes = 3;
         break;
 
-      case D2X1:
-        number_bytes = 1;
-        break;  
-
+      /* D3X1 = D2X1 - are the same */
       case D3X1:
         number_bytes = 1;
         break; 
@@ -732,12 +729,9 @@ void FlipDisc::All(void)
     {
       case D7SEG:
         Display_7Seg((moduleInitArray[i][module_relative_position_column]), ALL);
-        break;
+        break; 
 
-      case D2X1:
-        Display_2x1((moduleInitArray[i][module_relative_position_column]), 1,1);
-        break;  
-
+      /* D3X1 = D2X1 - are the same */
       case D3X1:
         Display_3x1((moduleInitArray[i][module_relative_position_column]), 1,1,1);
         break;  
@@ -769,10 +763,7 @@ void FlipDisc::Clear(void)
         Display_7Seg((moduleInitArray[i][module_relative_position_column]), CLR);
         break;
 
-      case D2X1:
-        Display_2x1((moduleInitArray[i][module_relative_position_column]), 0,0);
-        break; 
-
+      /* D3X1 = D2X1 - are the same */
       case D3X1:
         Display_3x1((moduleInitArray[i][module_relative_position_column]), 0,0,0);
         break;  
