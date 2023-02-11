@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------------*
- * A simple example of controlling 6 x 7-segment displays                           *
+ * A simple example of controlling 6 x 7-segment flip-disc displays                 *
  * Example connection diagram: https://bit.ly/6x7SEG                                * 
  *                                                                                  *
  * The MIT License                                                                  *
