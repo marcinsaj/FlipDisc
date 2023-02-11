@@ -86,14 +86,14 @@ void loop()
 
   /* Function allows you to control a selected disc in a selected disc display. 
   You can control only one disc of the selected display at a time.
-  - Flip.Disc_3x1(moduleNumber, discNumber, discStatus);
-  The first argument moduleNumber is the relative number of the display in the series of all displays. 
-  For example, if we have a combination of D3X1, D7SEG, D3X1, then the second DOTS display 
-  will have a relative number of 2 even though there is a SEG display between the DOTS displays. 
-  - moduleNumber - relative number of the DOTS display
+  - Flip.Disc_3x1(module_number, discNumber, discStatus);
+  The first argument module_number is the relative number of the display in the series of all displays. 
+  For example, if we have a combination of D3X1, D7SEG, D3X1, then the second D3X1 display 
+  will have a relative number of 2 even though there is a SEG display between the D3X1 displays. 
+  - module_number - relative number of the D3X1 display
   - discNumber - display disc number counting from top to bottom 1-3
   - discStatus - reset disc "0" or set disc "1" */
-  Flip.Disc_3x1(1, 1, 1);  /* Set first disc of the first disc display */
+  Flip.Disc_3x1(1, 1, 1);  /* Set first disc of the first 3x1 display */
   delay(1000);
   Flip.Disc_3x1(1, 2, 1);  /* Set second disc */
   delay(1000);
@@ -101,14 +101,14 @@ void loop()
   delay(3000);
 
   /* Function allows you to control one, two or three discs of the selected display. 
-  The first argument is the relative number "moduleNumber" of the display in the series 
+  The first argument is the relative number "module_number" of the display in the series 
   of all displays. For example, if we have a combination of D3X1, D7SEG, D3X1, then 
-  the second DOTS display will have a relative number of 2 even though there is a SEG display 
-  between the DOTS displays. 
-  - Flip.Display_3x1(moduleNumber, disc1, disc2, disc3);
-  - moduleNumber - relative number of the DOTS display
+  the second D3X1 display will have a relative number of 2 even though there is a SEG display 
+  between the D3X1 displays. 
+  - Flip.Display_3x1(module_number, disc1, disc2, disc3);
+  - module_number - relative number of the D3X1 display
   - disc1, disc2, disc3 - display discs counting from top to bottom 1-3 */
-  Flip.Display_3x1(1, 0);       /* Reset first disc of the first disc display */
+  Flip.Display_3x1(1, 0);       /* Reset first disc of the first 3x1 display */
   delay(1000);
   Flip.Display_3x1(1, 1, 0);    /* Set first disc and reset second disc */
   delay(1000);
@@ -207,9 +207,9 @@ void loop()
   Flip.Delay(0);
   
   /* Symbols can be displayed using their code names or numbers */
-  for(int symbolNumber = 0; symbolNumber <= 45; symbolNumber++)
+  for(int symbol_number = 0; symbol_number <= 45; symbol_number++)
   {
-    Flip.Matrix_7Seg(symbolNumber, 45 - symbolNumber);
+    Flip.Matrix_7Seg(symbol_number, 45 - symbol_number);
     Flip.Display_3x1(1, 1, 0, 1);
     delay(500);
     Flip.Display_3x1(1, 0, 1, 0);

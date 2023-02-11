@@ -87,12 +87,12 @@ void loop()
   delay(3000);
   
   /* The function allows you to control one 7-segment display. 
-  The first argument "moduleNumber" is the relative number of the display in the series 
+  The first argument "module_number" is the relative number of the display in the series 
   of all displays. For example, if we have a combination of D7SEG, D3X1, SEG then 
-  the second SEG display will have a relative number of 2 even though there is a DOTS display 
+  the second SEG display will have a relative number of 2 even though there is a D3X1 display 
   between the SEG displays.
-  Flip.Display_7Seg(moduleNumber, data);
-  - moduleNumber - relative number of the SEG display
+  Flip.Display_7Seg(module_number, data);
+  - module_number - relative number of the SEG display
   - data - symbol to display */ 
   /* An example of calling the functions to display number 09 23 45 */
   Flip.Display_7Seg(1, 0);       /* Display no.1 from the left */

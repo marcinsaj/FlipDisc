@@ -170,9 +170,9 @@ void loop()
   - 45/VLA - "||" - All Vertical lines */ 
   
   /* Symbols can be displayed using their code names or numbers */
-  for(int symbolNumber = 0; symbolNumber <= 45; symbolNumber++)
+  for(int symbol_number = 0; symbol_number <= 45; symbol_number++)
   {
-    Flip.Matrix_7Seg(symbolNumber);
+    Flip.Matrix_7Seg(symbol_number);
     delay(1000);  
   }
   
