@@ -290,7 +290,8 @@ Flip.Matrix_7Seg(2, 3, DEG, C);
 Function to control up to eight 7-segment displays.
 
 7-segment displays allow the display of numbers and symbols.
-Symbols can be displayed using their code name or number e.g. 37/DEG - "°"  - Degree symbol 
+Symbols can be displayed using their code name or number   
+e.g. 37/DEG - "°"  - Degree symbol   
 Code names for symbols:
   - 0-9
   - 1/VLR  - " |" - Vertical line - right
