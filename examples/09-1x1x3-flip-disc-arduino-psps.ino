@@ -112,7 +112,7 @@ void loop()
   - module_number - relative number of the D1X3 display
   - discNumber - display disc number counting from left to right 1-3
   - discStatus - reset disc "0" or set disc "1" */
-  /* Reset selected discs of the first FLIPO3 display counting from the left */
+  /* Reset selected discs of the first D1X3 display counting from the left */
   Flip.Disc_1x3(1, 1, 0);
   delay(1000);
   Flip.Disc_1x3(1, 2, 0);
