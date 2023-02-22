@@ -62,10 +62,10 @@ uint8_t number_all_bytes = 0;
  * argument and 7 optional arguments. The function also prepares SPI.               *
  * Correct initialization requires code names of the serially connected displays.   *
  *----------------------------------------------------------------------------------*/
-void FlipDisc::Init(uint8_t MOD1, uint8_t MOD2 = 0xFF, uint8_t MOD3 = 0xFF, 
-                                  uint8_t MOD4 = 0xFF, uint8_t MOD5 = 0xFF, 
-                                  uint8_t MOD6 = 0xFF, uint8_t MOD7 = 0xFF, 
-                                  uint8_t MOD8 = 0xFF)
+void FlipDisc::Init(uint8_t MOD1, uint8_t MOD2 /* = 0xFF */, uint8_t MOD3 /*= 0xFF */, 
+                                  uint8_t MOD4 /*= 0xFF */, uint8_t MOD5 /*= 0xFF */, 
+                                  uint8_t MOD6 /*= 0xFF */, uint8_t MOD7 /*= 0xFF */, 
+                                  uint8_t MOD8 /*= 0xFF */)
 {  
   // SPI initialization 
   SPI.begin();
@@ -176,10 +176,10 @@ void FlipDisc::Init(uint8_t MOD1, uint8_t MOD2 = 0xFF, uint8_t MOD3 = 0xFF,
  * The first argument is the default and the others are optional.                   *
  * This function allows you to display numbers and symbols: 0-9, "°", "C", "F", etc.*
  *----------------------------------------------------------------------------------*/
-void FlipDisc::Matrix_7Seg(uint8_t data1, uint8_t data2 = 0xFF, uint8_t data3 = 0xFF, 
-                                uint8_t data4 = 0xFF, uint8_t data5 = 0xFF, 
-                                uint8_t data6 = 0xFF, uint8_t data7 = 0xFF, 
-                                uint8_t data8 = 0xFF)
+void FlipDisc::Matrix_7Seg(uint8_t data1, uint8_t data2 /* = 0xFF */, uint8_t data3 /* = 0xFF */, 
+                                uint8_t data4 /* = 0xFF */, uint8_t data5 /* = 0xFF */, 
+                                uint8_t data6 /* = 0xFF */, uint8_t data7 /* = 0xFF */, 
+                                uint8_t data8 /* = 0xFF */)
 { 
   // Saving a list of data to the array
   uint8_t newDataArray[8] = {data1, data2, data3, data4, data5, data6, data7, data8};
@@ -392,7 +392,7 @@ void FlipDisc::Disc_2x1(uint8_t module_number, uint8_t disc_number, bool disc_st
  * -> setDiscArray_3x1[] - "1"                                                      *
  * -> resetDiscArray_3x1[] - "0"                                                    *
  *----------------------------------------------------------------------------------*/
-void FlipDisc::Display_3x1(uint8_t module_number, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF)
+void FlipDisc::Display_3x1(uint8_t module_number, uint8_t disc1 /* = 0xFF */, uint8_t disc2 /* = 0xFF */, uint8_t disc3 /* = 0xFF */)
 {
  /*
   * Simple protection from user error. 
@@ -457,7 +457,7 @@ void FlipDisc::Display_3x1(uint8_t module_number, uint8_t disc1 = 0xFF, uint8_t 
 /*----------------------------------------------------------------------------------*
  * Same functionality as Display_3x1()function but to handle only two discs         *
  *----------------------------------------------------------------------------------*/
-void FlipDisc::Display_2x1(uint8_t module_number, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF)
+void FlipDisc::Display_2x1(uint8_t module_number, uint8_t disc1 /* = 0xFF */, uint8_t disc2 /* = 0xFF */)
 {
   Display_3x1(module_number, disc1, disc2);
 }
@@ -519,7 +519,7 @@ void FlipDisc::Disc_1x3(uint8_t module_number, uint8_t disc_number, bool disc_st
  * -> setDisc_1x3[] - "1"                                                           *
  * -> resetDisc_1x3[] - "0"                                                         *
  *----------------------------------------------------------------------------------*/
-void FlipDisc::Display_1x3(uint8_t module_number, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF)
+void FlipDisc::Display_1x3(uint8_t module_number, uint8_t disc1 /* = 0xFF */, uint8_t disc2 /* = 0xFF */, uint8_t disc3 /* = 0xFF */)
 {
  /*
   * Simple protection from user error. 
@@ -639,8 +639,8 @@ void FlipDisc::Disc_1x7(uint8_t module_number, uint8_t disc_number, bool disc_st
  * -> setDiscArray_1x7[] - "1"                                                      *
  * -> resetDiscArray_1x7[] - "0"                                                    *
  *----------------------------------------------------------------------------------*/
-void FlipDisc::Display_1x7(uint8_t module_number, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF,
-                           uint8_t disc4 = 0xFF,  uint8_t disc5 = 0xFF, uint8_t disc6 = 0xFF, uint8_t disc7 = 0xFF)
+void FlipDisc::Display_1x7(uint8_t module_number, uint8_t disc1 /* = 0xFF */, uint8_t disc2 /* = 0xFF */, uint8_t disc3 /* = 0xFF */,
+                           uint8_t disc4 /* = 0xFF */,  uint8_t disc5 /* = 0xFF */, uint8_t disc6 /* = 0xFF */, uint8_t disc7 /* = 0xFF */)
 {
  /*
   * Simple protection from user error. 
