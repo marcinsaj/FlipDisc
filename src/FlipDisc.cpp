@@ -56,6 +56,14 @@ static const uint8_t moduleTypeArray[] PROGMEM = {D7SEG, D2X1, D3X1, D1X3, D1X7}
  * or damage to the display may occur (thats why these 3 bytes).
  */
 uint8_t number_all_bytes = 0; 
+
+/*----------------------------------------------------------------------------------*
+ * Constructor                                                                      *
+ *----------------------------------------------------------------------------------*/ 
+FlipDisc::FlipDisc()
+{
+	
+}
     
 /*----------------------------------------------------------------------------------*
  * Initialization function for a series of displays. The function has 1 default     *
@@ -953,3 +961,8 @@ void FlipDisc::ReleaseCurrentPulse(void)
   digitalWrite(_PL_PIN, LOW);    // Turn OFF PSPS module output
   FlipDelay();                   // Delay effect between flip discs 
 }
+
+/*----------------------------------------------------------------------------------*
+ * Preinstantiate Object                                                            *
+ *----------------------------------------------------------------------------------*/
+FlipDisc Flip = FlipDisc();
