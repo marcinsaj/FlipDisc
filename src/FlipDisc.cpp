@@ -63,9 +63,9 @@ uint8_t number_all_bytes = 0;
  * Correct initialization requires code names of the serially connected displays.   *
  *----------------------------------------------------------------------------------*/
 void FlipDisc::Init(uint8_t MOD1, uint8_t MOD2 /* = 0xFF */, uint8_t MOD3 /*= 0xFF */, 
-                                  uint8_t MOD4 /*= 0xFF */, uint8_t MOD5 /*= 0xFF */, 
-                                  uint8_t MOD6 /*= 0xFF */, uint8_t MOD7 /*= 0xFF */, 
-                                  uint8_t MOD8 /*= 0xFF */)
+                                  uint8_t MOD4 /* = 0xFF */, uint8_t MOD5 /*= 0xFF */, 
+                                  uint8_t MOD6 /* = 0xFF */, uint8_t MOD7 /*= 0xFF */, 
+                                  uint8_t MOD8 /* = 0xFF */)
 {  
   // SPI initialization 
   SPI.begin();
@@ -177,9 +177,9 @@ void FlipDisc::Init(uint8_t MOD1, uint8_t MOD2 /* = 0xFF */, uint8_t MOD3 /*= 0x
  * This function allows you to display numbers and symbols: 0-9, "°", "C", "F", etc.*
  *----------------------------------------------------------------------------------*/
 void FlipDisc::Matrix_7Seg(uint8_t data1, uint8_t data2 /* = 0xFF */, uint8_t data3 /* = 0xFF */, 
-                                uint8_t data4 /* = 0xFF */, uint8_t data5 /* = 0xFF */, 
-                                uint8_t data6 /* = 0xFF */, uint8_t data7 /* = 0xFF */, 
-                                uint8_t data8 /* = 0xFF */)
+                                          uint8_t data4 /* = 0xFF */, uint8_t data5 /* = 0xFF */, 
+                                          uint8_t data6 /* = 0xFF */, uint8_t data7 /* = 0xFF */, 
+                                          uint8_t data8 /* = 0xFF */)
 { 
   // Saving a list of data to the array
   uint8_t newDataArray[8] = {data1, data2, data3, data4, data5, data6, data7, data8};
