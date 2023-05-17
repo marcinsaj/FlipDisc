@@ -20,6 +20,7 @@ static const uint8_t D2X1  = 0x31; /* D3X1 = D2X1 - are the same */
 static const uint8_t D3X1  = 0x31;
 static const uint8_t D1X3  = 0x13;
 static const uint8_t D1X7  = 0x17;
+static const uint8_t D3X4  = 0x34;
 static const uint8_t NONE  = 0xFF;
 
 // Codenames of symbols for 7-segment display
@@ -349,6 +350,48 @@ static const uint8_t resetDiscArray_1x7[7][2] PROGMEM =
   {0b00000001, 0b00100000},
   {0b00000001, 0b00001000}
 }; 
+
+/* 
+ * Refers to "D3X4" - 3x4 display.  
+ * The array contains the addresses of the control outputs corresponding 
+ * to the setting of the discs to the "color" side.
+ */ 
+static const uint8_t setDiscArray_3x4[12][2] PROGMEM =
+{
+  {0b00000001, 0b00010000},
+  {0b00000001, 0b00100000},
+  {0b00000101, 0b00000000},
+  {0b00000000, 0b00010010},
+  {0b00000000, 0b00100010},
+  {0b00000100, 0b00000010},
+  {0b00000010, 0b00010000},
+  {0b00000010, 0b00100000},
+  {0b00000110, 0b00000000},
+  {0b00100000, 0b00010000},
+  {0b00100000, 0b00100000},
+  {0b00100100, 0b00000000}
+}; 
+
+/* 
+ * Refers to "D3X4" - 3x4 display.  
+ * The array contains the addresses of the control outputs corresponding 
+ * to the setting of the discs to the "black" side.
+ */ 
+static const uint8_t resetDiscArray_3x4[12][2] PROGMEM =
+{
+  {0b00000000, 0b10000100},
+  {0b00000000, 0b10001000},
+  {0b00001000, 0b10000000},
+  {0b10000000, 0b00000100},
+  {0b10000000, 0b00001000},
+  {0b10001000, 0b00000000},
+  {0b01000000, 0b00000100},
+  {0b01000000, 0b00001000},
+  {0b01001000, 0b00000000},
+  {0b00010000, 0b00000100},
+  {0b00010000, 0b00001000},
+  {0b00011000, 0b00000000}  
+}; 
   
 class FlipDisc
 {
@@ -375,6 +418,9 @@ class FlipDisc
         void Disc_1x7(uint8_t module_number, uint8_t discNumber, bool disc_status);
         void Display_1x7(uint8_t module_number, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF, 
                          uint8_t disc4 = 0xFF, uint8_t disc5 = 0xFF, uint8_t disc6 = 0xFF, uint8_t disc7 = 0xFF);
+						 
+		void Disc_3x4(uint8_t module_number, uint8_t discNumber, bool disc_status);
+		void Display_3x4(uint8_t module_number, uint8_t row_number, uint8_t column_number, bool disc_status);
 
         void Delay(uint8_t new_time_delay);
         void Test(void);
