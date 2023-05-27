@@ -834,12 +834,12 @@ void FlipDisc::Display_3x3(uint8_t module_number, uint8_t row_number, uint8_t co
  * is a D7SEG display between the D3X4 displays.                                    *
  * -> module_number - relative number of the "D3X4" display                         *
  * -> disc_number - display disc number counting from left to right in each row     *
- * first row 1-3, second row 4-6, third row 7-9, four row 10-12 	                *
- * -> disc_status - reset disc "0" or set disc "1"   
- *	10 11 12
- *	7  8  9
- *	4  5  6
- *	1  2  3
+ * first row 1-3, second row 4-6, third row 7-9, four row 10-12 	            *
+ * -> disc_status - reset disc "0" or set disc "1"                                  *
+ *	10 11 12                                                                    *
+ *	7  8  9                                                                     *
+ *	4  5  6                                                                     *
+ *	1  2  3                                                                     *
  *----------------------------------------------------------------------------------*/
 void FlipDisc::Disc_3x4(uint8_t module_number, uint8_t disc_number, bool disc_status)
 {
@@ -942,8 +942,8 @@ void FlipDisc::Display_3x4(uint8_t module_number, uint8_t row_number, uint8_t co
  * The list of information about all control outputs for corresponding              *
  * disc statuses of all discs and the currently selected digit/symbol to be         *
  * displayed are contained in two tables:                                           *
- * -> setDiscArray_3x5[][] - "1"                                                   *
- * -> resetDiscArray_3x5[][] - "0"                                                 *
+ * -> setDiscArray_3x5[][] - "1"                                                    *
+ * -> resetDiscArray_3x5[][] - "0"                                                  *
  *----------------------------------------------------------------------------------*/
 void FlipDisc::Display_3x5(uint8_t module_number, uint8_t new_data)
 {
@@ -983,9 +983,9 @@ void FlipDisc::Display_3x5(uint8_t module_number, uint8_t new_data)
 }
 
 /*----------------------------------------------------------------------------------*
- * Function to control up to eight 3x5 displays.                              		*
+ * Function to control up to eight 3x5 displays.                              	    *
  * The first argument is the default and the others are optional.                   *
- * This function allows you to display numbers and symbols: 0-9, "C", "F", etc.		*
+ * This function allows you to display numbers and symbols: 0-9, "C", "F", etc.	    *
  *----------------------------------------------------------------------------------*/
 void FlipDisc::Matrix_3x5(uint8_t data1, uint8_t data2 /* = 0xFF */, uint8_t data3 /* = 0xFF */, 
                                          uint8_t data4 /* = 0xFF */, uint8_t data5 /* = 0xFF */, 
