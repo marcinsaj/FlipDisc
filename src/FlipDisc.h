@@ -26,7 +26,7 @@ static const uint8_t D3X5  = 0x35;
 static const uint8_t NONE  = 0xFF;
 
 // Codenames of symbols for 7-segment display
-static const uint8_t ALL = 8;    // ALL - Set all discs
+static const uint8_t ALL = 8;    // ALL - Set all discs D7SEG
 static const uint8_t CLR = 10;   // CLR - Clear display
 static const uint8_t A   = 11;
 static const uint8_t B   = 12;
@@ -55,9 +55,9 @@ static const uint8_t X   = 34;
 static const uint8_t Y   = 35;
 static const uint8_t Z   = 36;
 static const uint8_t DEG = 37;   // DEG - "°"  - Degree symbol
-static const uint8_t PFH = 37;   // PFH - "%"  - Percent first half symbol
-static const uint8_t PRC = 38;	 // PRC - "%"  - Percent symbol for 3x5 display
-static const uint8_t PSH = 38;   // PSH - "%"  - Percent second half symbol
+static const uint8_t PFH = 37;   // PFH - "%"  - Percent first half symbol for D7SEG
+static const uint8_t PRC = 38;	 // PRC - "%"  - Percent symbol for D3X5
+static const uint8_t PSH = 38;   // PSH - "%"  - Percent second half symbol for D7SEG
 static const uint8_t HLU = 39;   // HLU - "¯"  - Horizontal line - upper
 static const uint8_t HLM = 40;   // HLM - "-"  - Horizontal line - middle
 static const uint8_t MIN = 40;   // MIN - "-"  - Minus symbol
@@ -65,9 +65,31 @@ static const uint8_t HLL = 41;   // HLL - "_"  - Horizontal line - lower
 static const uint8_t HLT = 42;   // HLT - "="  - Horizontal line - upper & lower
 static const uint8_t HLA = 43;   // HLA - "≡"  - All three lines
 static const uint8_t VLL = 44;   // VLL - "| " - Vertical line - left
-static const uint8_t VLR = 1 ;   // VLR - " |" - Vertical line - right
-static const uint8_t VLA = 45;   // VLA - "||" - All Vertical lines
-
+static const uint8_t VLR = 1 ;   // VLR - " |" - Vertical line - right  for D7SEG
+static const uint8_t VRL = 45;   // VRL - " |" - Vertical line - right for D3X5
+static const uint8_t VLA = 45;   // VLA - "||" - All Vertical lines  for D7SEG
+static const uint8_t EQL = 46;   // EQL - "=" - Equal symbol for D3X5
+static const uint8_t PLS = 47;   // PLS - "+" - Plus symbol for D3X5
+static const uint8_t AST = 48;   // AST - "*" - Asterisk symbol for D3X5
+static const uint8_t TLD = 49;   // TLD - "~" - Tilde symbol for D3X5
+static const uint8_t DOT = 50;   // DOT - "." - Dot symbol for D3X5
+static const uint8_t CLN = 51;   // CLN - ":" - Colon symbol for D3X5
+static const uint8_t CMM = 52;   // CMM - "," - Comma symbol for D3X5
+static const uint8_t APS = 53;   // APS - "'" - Apostrophe symbol for D3X5
+static const uint8_t QTT = 54;   // QTT - """ - Quotation symbol for D3X5
+static const uint8_t SLS = 55;   // SLS - "/" - Slash symbol for D3X5
+static const uint8_t BLS = 56;   // BLS - "\" - Backslash symbol for D3X5
+static const uint8_t RBL = 57;   // RBL - "(" - Round bracket left for D3X5
+static const uint8_t RBR = 58;   // RBL - ")" - Round bracket right for D3X5
+static const uint8_t ABL = 59;   // ABR - "<" - Round bracket left for D3X5
+static const uint8_t ABR = 60;   // ABL - ">" - Angle bracket right for D3X5
+static const uint8_t ATS = 61;   // ATS - "@" - AT symbol for D3X5
+static const uint8_t ETS = 62;   // ETS - "&" - ET symbol for D3X5
+static const uint8_t HSH = 63;   // HSH - "#" - Hash symbol for D3X5
+static const uint8_t DOL = 64;   // DOL - "$" - Dollar symbol for D3X5
+static const uint8_t EXC = 65;   // EXC - "!" - Exclamation symbol for D3X5
+static const uint8_t QST = 66;   // QST - "?" - Question symbol for D3X5
+static const uint8_t ALD = 67;   // ALL - Set all discs D3X5
 
 // Codenames for the SendBlankData() function
 static const uint8_t BEFORE = 0xAA;
@@ -532,7 +554,7 @@ static const uint8_t displayArray_3x5[68][2] PROGMEM =
   {0b00000111, 0b01110000}, // "="/42/HLT - Horizontal line - upper & lower
   {0b11000111, 0b01110001}, // "≡"/43/HLA - All three lines
   {0b01001001, 0b00010010}, // "| "/44/VLL - Vertical line - left
-  {0b00100100, 0b01001001}, // " |"/45/VLR - Vertical line - right
+  {0b00100100, 0b01001001}, // " |"/45/VRL - Vertical line - right
   {0b00111000, 0b00001110}, // "="/46/EQL - Equal symbol
   {0b11010000, 0b00000101}, // "+"/47/PLS - Plus symbol
   {0b10101000, 0b00001010}, // "*"/48/AST - Asterisk symbol    
@@ -554,7 +576,7 @@ static const uint8_t displayArray_3x5[68][2] PROGMEM =
   {0b01110010, 0b00100111}, // "$"/64/DOL - Dollar symbol  
   {0b10000010, 0b00100100}, // "!"/65/EXC - Exclamation symbol  
   {0b10000010, 0b01111000}, // "?"/66/QST - Question symbol
-  {0b11111111, 0b01111111}  // 67/ALL - All discs     
+  {0b11111111, 0b01111111}  // 67/ALD - All discs     
 };
  
 class FlipDisc
