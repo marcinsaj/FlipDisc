@@ -185,7 +185,11 @@ Flip.Init(...) it is second most important function. Initialization function for
  - D2X1 - [2x1 display](https://flipo.io/project/flip-disc-2x1-display/)  
  - D3X1 - [3x1 display](https://flipo.io/project/flip-disc-3x1-display/)
  - D1X3 - [1x3 display](https://flipo.io/project/flip-disc-1x3-display/)
- - D1X7 - [1x7 display](https://flipo.io/project/flip-disc-1x7-display/) 
+ - D1X7 - [1x7 display](https://flipo.io/project/flip-disc-1x7-display/)
+ - D2X6 - work in progress
+ - D3X3 - work in progress
+ - D3X4 - work in progress
+ - D3X5 - work in progress
 
 ------------------------------------------------------------------------------------------- 
 
@@ -490,6 +494,10 @@ The function allows you to control up to seven discs of the selected display. Th
 - [3-disc flip-disc display](https://flipo.io/project/flip-disc-3x1-display/)
 - [1x3 flip-disc display](https://flipo.io/project/flip-disc-1x3-display/)
 - [1x7 flip-disc display](https://flipo.io/project/flip-disc-1x7-display/)
+- 2x6 flip-disc display - work in progress
+- 3x3 flip-disc display - work in progress
+- 3x4 flip-disc display - work in progress
+- 3x5 flip-disc display - work in progress
 - [flip-disc power supply module](https://flipo.io/project/flip-disc-power-supply/)  
 
   
