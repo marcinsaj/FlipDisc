@@ -29,6 +29,7 @@ All the functions responsible for controlling the displays are described in exam
 - [3x1 flip-disc display](https://flipo.io/project/flip-disc-3x1-display/)
 - [1x3 flip-disc display](https://flipo.io/project/flip-disc-1x3-display/)
 - [1x7 flip-disc display](https://flipo.io/project/flip-disc-1x7-display/)
+- 2x6 flip-disc display - work in progress
 - 3x3 flip-disc display - work in progress
 - 3x4 flip-disc display - work in progress
 - 3x5 flip-disc display - work in progress
