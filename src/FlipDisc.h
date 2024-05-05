@@ -11,6 +11,7 @@
 #ifndef FlipDisc_h
 #define FlipDisc_h
 
+#include <Arduino.h>
 #include <SPI.h>
 #include <avr/pgmspace.h>
 
@@ -20,13 +21,14 @@ static const uint8_t D2X1  = 0x31; /* D3X1 = D2X1 - are the same */
 static const uint8_t D3X1  = 0x31;
 static const uint8_t D1X3  = 0x13;
 static const uint8_t D1X7  = 0x17;
+static const uint8_t D2X6  = 0x26;
 static const uint8_t D3X3  = 0x33;
 static const uint8_t D3X4  = 0x34;
 static const uint8_t D3X5  = 0x35;
 static const uint8_t NONE  = 0xFF;
 
 // Codenames of symbols for 7-segment display
-static const uint8_t ALL = 8;    // ALL - Set all discs D7SEG
+static const uint8_t ALL = 8;    // ALL - Set all discs
 static const uint8_t CLR = 10;   // CLR - Clear display
 static const uint8_t A   = 11;
 static const uint8_t B   = 12;
@@ -55,9 +57,9 @@ static const uint8_t X   = 34;
 static const uint8_t Y   = 35;
 static const uint8_t Z   = 36;
 static const uint8_t DEG = 37;   // DEG - "°"  - Degree symbol
-static const uint8_t PFH = 37;   // PFH - "%"  - Percent first half symbol for D7SEG
-static const uint8_t PRC = 38;	 // PRC - "%"  - Percent symbol for D3X5
-static const uint8_t PSH = 38;   // PSH - "%"  - Percent second half symbol for D7SEG
+static const uint8_t PFH = 37;   // PFH - "%"  - Percent first half symbol
+static const uint8_t PRC = 38;	 // PRC - "%"  - Percent symbol for 3x5 display
+static const uint8_t PSH = 38;   // PSH - "%"  - Percent second half symbol
 static const uint8_t HLU = 39;   // HLU - "¯"  - Horizontal line - upper
 static const uint8_t HLM = 40;   // HLM - "-"  - Horizontal line - middle
 static const uint8_t MIN = 40;   // MIN - "-"  - Minus symbol
@@ -65,31 +67,9 @@ static const uint8_t HLL = 41;   // HLL - "_"  - Horizontal line - lower
 static const uint8_t HLT = 42;   // HLT - "="  - Horizontal line - upper & lower
 static const uint8_t HLA = 43;   // HLA - "≡"  - All three lines
 static const uint8_t VLL = 44;   // VLL - "| " - Vertical line - left
-static const uint8_t VLR = 1 ;   // VLR - " |" - Vertical line - right  for D7SEG
-static const uint8_t VRL = 45;   // VRL - " |" - Vertical line - right for D3X5
-static const uint8_t VLA = 45;   // VLA - "||" - All Vertical lines  for D7SEG
-static const uint8_t EQL = 46;   // EQL - "=" - Equal symbol for D3X5
-static const uint8_t PLS = 47;   // PLS - "+" - Plus symbol for D3X5
-static const uint8_t AST = 48;   // AST - "*" - Asterisk symbol for D3X5
-static const uint8_t TLD = 49;   // TLD - "~" - Tilde symbol for D3X5
-static const uint8_t DOT = 50;   // DOT - "." - Dot symbol for D3X5
-static const uint8_t CLN = 51;   // CLN - ":" - Colon symbol for D3X5
-static const uint8_t CMM = 52;   // CMM - "," - Comma symbol for D3X5
-static const uint8_t APS = 53;   // APS - "'" - Apostrophe symbol for D3X5
-static const uint8_t QTT = 54;   // QTT - """ - Quotation symbol for D3X5
-static const uint8_t SLS = 55;   // SLS - "/" - Slash symbol for D3X5
-static const uint8_t BLS = 56;   // BLS - "\" - Backslash symbol for D3X5
-static const uint8_t RBL = 57;   // RBL - "(" - Round bracket left for D3X5
-static const uint8_t RBR = 58;   // RBL - ")" - Round bracket right for D3X5
-static const uint8_t ABL = 59;   // ABR - "<" - Round bracket left for D3X5
-static const uint8_t ABR = 60;   // ABL - ">" - Angle bracket right for D3X5
-static const uint8_t ATS = 61;   // ATS - "@" - AT symbol for D3X5
-static const uint8_t ETS = 62;   // ETS - "&" - ET symbol for D3X5
-static const uint8_t HSH = 63;   // HSH - "#" - Hash symbol for D3X5
-static const uint8_t DOL = 64;   // DOL - "$" - Dollar symbol for D3X5
-static const uint8_t EXC = 65;   // EXC - "!" - Exclamation symbol for D3X5
-static const uint8_t QST = 66;   // QST - "?" - Question symbol for D3X5
-static const uint8_t ALD = 67;   // ALL - Set all discs D3X5
+static const uint8_t VLR = 1 ;   // VLR - " |" - Vertical line - right
+static const uint8_t VLA = 45;   // VLA - "||" - All Vertical lines
+
 
 // Codenames for the SendBlankData() function
 static const uint8_t BEFORE = 0xAA;
@@ -377,6 +357,49 @@ static const uint8_t resetDiscArray_1x7[7][2] PROGMEM =
 }; 
 
 /* 
+ * Refers to "D2X6" - 2x6 display.  
+ * The array contains the addresses of the control outputs corresponding 
+ * to the setting of the discs to the "color" side.
+ */ 
+static const uint8_t setDiscArray_2x6[12][2] PROGMEM =
+{
+  {0b10001000, 0b00000000},
+  {0b10000010, 0b00000000},
+  {0b10000000, 0b00000010},
+  {0b10000000, 0b00000001},
+  {0b10000000, 0b00100000},
+  {0b10000000, 0b00010000},
+  {0b00011000, 0b00000000},
+  {0b00010010, 0b00000000},
+  {0b00010000, 0b00000010},
+  {0b00010000, 0b00000001},
+  {0b00010000, 0b00100000},
+  {0b00010000, 0b00010000}
+}; 
+
+/* 
+ * Refers to "D2X6" - 2x6 display.  
+ * The array contains the addresses of the control outputs corresponding 
+ * to the setting of the discs to the "black" side.
+ */ 
+static const uint8_t resetDiscArray_2x6[12][2] PROGMEM =
+{
+  {0b01000100, 0b00000000},
+  {0b01000001, 0b00000000},
+  {0b01000000, 0b00000100},
+  {0b01000000, 0b10000000},
+  {0b01000000, 0b01000000},
+  {0b01000000, 0b00001000},
+  {0b00100100, 0b00000000},
+  {0b00100001, 0b00000000},
+  {0b00100000, 0b00000100},
+  {0b00100000, 0b10000000},
+  {0b00100000, 0b01000000},
+  {0b00100000, 0b00001000}
+
+}; 
+
+/* 
  * Refers to "D3X3" - 3x3 display.  
  * The array contains the addresses of the control outputs corresponding 
  * to the setting of the discs to the "color" side.
@@ -554,7 +577,7 @@ static const uint8_t displayArray_3x5[68][2] PROGMEM =
   {0b00000111, 0b01110000}, // "="/42/HLT - Horizontal line - upper & lower
   {0b11000111, 0b01110001}, // "≡"/43/HLA - All three lines
   {0b01001001, 0b00010010}, // "| "/44/VLL - Vertical line - left
-  {0b00100100, 0b01001001}, // " |"/45/VRL - Vertical line - right
+  {0b00100100, 0b01001001}, // " |"/45/VLR - Vertical line - right
   {0b00111000, 0b00001110}, // "="/46/EQL - Equal symbol
   {0b11010000, 0b00000101}, // "+"/47/PLS - Plus symbol
   {0b10101000, 0b00001010}, // "*"/48/AST - Asterisk symbol    
@@ -576,58 +599,61 @@ static const uint8_t displayArray_3x5[68][2] PROGMEM =
   {0b01110010, 0b00100111}, // "$"/64/DOL - Dollar symbol  
   {0b10000010, 0b00100100}, // "!"/65/EXC - Exclamation symbol  
   {0b10000010, 0b01111000}, // "?"/66/QST - Question symbol
-  {0b11111111, 0b01111111}  // 67/ALD - All discs     
+  {0b11111111, 0b01111111}  // 67/ALL - All discs     
 };
  
 class FlipDisc
 {
-    public:
-        FlipDisc();
-        void Pin(uint16_t EN_PIN, uint16_t CH_PIN, uint16_t PL_PIN);
-        void Init(uint8_t MOD1, uint8_t MOD2 = 0xFF, uint8_t MOD3 = 0xFF, uint8_t MOD4 = 0xFF, 
-                  uint8_t MOD5 = 0xFF, uint8_t MOD6 = 0xFF, uint8_t MOD7 = 0xFF, uint8_t MOD8 = 0xFF);
+  public:
+    FlipDisc();
+    void Pin(uint16_t EN_PIN, uint16_t CH_PIN, uint16_t PL_PIN);
+    void Init(uint8_t MOD1, uint8_t MOD2 = 0xFF, uint8_t MOD3 = 0xFF, uint8_t MOD4 = 0xFF,
+              uint8_t MOD5 = 0xFF, uint8_t MOD6 = 0xFF, uint8_t MOD7 = 0xFF, uint8_t MOD8 = 0xFF);
 
-        void Disc_7Seg(uint8_t module_number, uint8_t disc_number, bool disc_status);
-        void Display_7Seg(uint8_t module_number, uint8_t new_data);                                
-        void Matrix_7Seg(uint8_t data1, uint8_t data2 = 0xFF, uint8_t data3 = 0xFF, uint8_t data4 = 0xFF, 
-                         uint8_t data5 = 0xFF, uint8_t data6 = 0xFF, uint8_t data7 = 0xFF, uint8_t data8 = 0xFF);
-                              
-        void Disc_2x1(uint8_t module_number, uint8_t dot_number, bool disc_status);
-        void Display_2x1(uint8_t module_number, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF);
+    void Disc_7Seg(uint8_t module_number, uint8_t disc_number, bool disc_status);
+    void Display_7Seg(uint8_t module_number, uint8_t new_data);
+    void Matrix_7Seg(uint8_t data1, uint8_t data2 = 0xFF, uint8_t data3 = 0xFF, uint8_t data4 = 0xFF,
+                     uint8_t data5 = 0xFF, uint8_t data6 = 0xFF, uint8_t data7 = 0xFF, uint8_t data8 = 0xFF);
 
-        void Disc_3x1(uint8_t module_number, uint8_t dot_number, bool disc_status);
-        void Display_3x1(uint8_t module_number, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF);
+    void Disc_2x1(uint8_t module_number, uint8_t dot_number, bool disc_status);
+    void Display_2x1(uint8_t module_number, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF);
 
-        void Disc_1x3(uint8_t module_number, uint8_t discNumber, bool disc_status);
-        void Display_1x3(uint8_t module_number, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF);
+    void Disc_3x1(uint8_t module_number, uint8_t dot_number, bool disc_status);
+    void Display_3x1(uint8_t module_number, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF);
 
-        void Disc_1x7(uint8_t module_number, uint8_t discNumber, bool disc_status);
-        void Display_1x7(uint8_t module_number, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF, 
-                         uint8_t disc4 = 0xFF, uint8_t disc5 = 0xFF, uint8_t disc6 = 0xFF, uint8_t disc7 = 0xFF);
+    void Disc_1x3(uint8_t module_number, uint8_t discNumber, bool disc_status);
+    void Display_1x3(uint8_t module_number, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF);
+
+    void Disc_1x7(uint8_t module_number, uint8_t discNumber, bool disc_status);
+    void Display_1x7(uint8_t module_number, uint8_t disc1 = 0xFF, uint8_t disc2 = 0xFF, uint8_t disc3 = 0xFF,
+                      uint8_t disc4 = 0xFF, uint8_t disc5 = 0xFF, uint8_t disc6 = 0xFF, uint8_t disc7 = 0xFF);
+
+    void Disc_2x6(uint8_t module_number, uint8_t discNumber, bool disc_status);
+    void Display_2x6(uint8_t module_number, uint8_t row_number, uint8_t column_number, bool disc_status);
 						 
-	void Disc_3x3(uint8_t module_number, uint8_t discNumber, bool disc_status);
-	void Display_3x3(uint8_t module_number, uint8_t row_number, uint8_t column_number, bool disc_status);	
+    void Disc_3x3(uint8_t module_number, uint8_t discNumber, bool disc_status);
+    void Display_3x3(uint8_t module_number, uint8_t row_number, uint8_t column_number, bool disc_status);
 
-	void Disc_3x4(uint8_t module_number, uint8_t discNumber, bool disc_status);
-	void Display_3x4(uint8_t module_number, uint8_t row_number, uint8_t column_number, bool disc_status);
+    void Disc_3x4(uint8_t module_number, uint8_t discNumber, bool disc_status);
+    void Display_3x4(uint8_t module_number, uint8_t row_number, uint8_t column_number, bool disc_status);
 
-	void Disc_3x5(uint8_t module_number, uint8_t discNumber, bool disc_status);
-	void Display_3x5(uint8_t module_number, uint8_t new_data);
-	void Matrix_3x5(uint8_t data1, uint8_t data2 = 0xFF, uint8_t data3 = 0xFF, uint8_t data4 = 0xFF, 
-                        uint8_t data5 = 0xFF, uint8_t data6 = 0xFF, uint8_t data7 = 0xFF, uint8_t data8 = 0xFF);
+    void Disc_3x5(uint8_t module_number, uint8_t discNumber, bool disc_status);
+    void Display_3x5(uint8_t module_number, uint8_t new_data);
+    void Matrix_3x5(uint8_t data1, uint8_t data2 = 0xFF, uint8_t data3 = 0xFF, uint8_t data4 = 0xFF, 
+                    uint8_t data5 = 0xFF, uint8_t data6 = 0xFF, uint8_t data7 = 0xFF, uint8_t data8 = 0xFF);
 						 
-        void Delay(uint8_t new_time_delay);
-        void Test(void);
-        void All(void);
-        void Clear(void);
+    void Delay(uint8_t new_time_delay);
+    void Test(void);
+    void All(void);
+    void Clear(void);
         
-    private:
-        void FlipDelay(void);
-        void SendBlankData(uint8_t module_number, uint8_t module_type, uint8_t data_position);
-        void ClearAllOutputs(void);
-        void PrepareCurrentPulse(void);
-        void ReleaseCurrentPulse(void);
-        bool Fuse(uint8_t module_number, uint8_t module_type);
+  private:
+    void FlipDelay(void);
+    void SendBlankData(uint8_t module_number, uint8_t module_type, uint8_t data_position);
+    void ClearAllOutputs(void);
+    void PrepareCurrentPulse(void);
+    void ReleaseCurrentPulse(void);
+    bool Fuse(uint8_t module_number, uint8_t module_type);
 };
 
 extern FlipDisc Flip;
