@@ -1,4 +1,4 @@
-## Arduino FlipDisc Library v1.0.7
+## Arduino FlipDisc Library v1.0.8
 https://github.com/marcinsaj/FlipDisc  
 The MIT License  
 Marcin Saj 15 Jan 2023  
