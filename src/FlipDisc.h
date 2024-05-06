@@ -396,7 +396,6 @@ static const uint8_t resetDiscArray_2x6[12][2] PROGMEM =
   {0b00100000, 0b10000000},
   {0b00100000, 0b01000000},
   {0b00100000, 0b00001000}
-
 }; 
 
 /* 
