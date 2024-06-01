@@ -10,6 +10,12 @@
 
 #include "FlipDisc.h"
 
+// Ardunio UNO R3, UNO R3 SMD, UNO WiFi Rev2, UNO Mini Ltd: 10(CS), 11(COPI), 12(CIPO), 13(SCK)
+#define SPI_SCK   13
+#define SPI_CIPO  12  // not in use, but defined anyway
+#define SPI_COPI  11 
+#define SPI_CS    10
+
 /* 
  * Declaration of the flip-disc display enable pin   
  * EN_PIN - the pin serves as a latch for shift registers on which 
@@ -80,7 +86,7 @@ void FlipDisc::Init(uint8_t MOD1, uint8_t MOD2 /* = 0xFF */, uint8_t MOD3 /*= 0x
                                   uint8_t MOD8 /* = 0xFF */)
 {  
   // SPI initialization 
-  SPI.begin();
+  SPI.begin(SPI_SCK, SPI_CIPO, SPI_COPI, SPI_CS);
 
   // First charging Pulse Shaper Power Supply module after power up the device
   PrepareCurrentPulse();
