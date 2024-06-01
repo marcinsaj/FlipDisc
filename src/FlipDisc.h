@@ -13,7 +13,10 @@
 
 #include <Arduino.h>
 #include <SPI.h>
+
+#ifdef __AVR__
 #include <avr/pgmspace.h>
+#endif
 
 // Codenames of display modules
 static const uint8_t D7SEG = 0x7F;
