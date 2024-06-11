@@ -72,37 +72,37 @@ In summary, there are two options:
 
 <p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/arduino-7-seg-flip-disc-psps-module.png"></p>    
 
-1️. [Show me code](https://github.com/marcinsaj/FlipDisc/blob/main/examples/01-1x7seg-flip-disc-arduino-psps/01-1x7seg-flip-disc-arduino-psps.ino) &nbsp; [Download diagram](https://github.com/marcinsaj/FlipDisc/raw/main/datasheet/Flip-disc-7-Segment-Display-Arduino-Example-Connection-with-Pulse-Shaper-Schematic-01.pdf) :small_red_triangle_down:     
+1. [Show me code](https://github.com/marcinsaj/FlipDisc/blob/main/examples/01-1x7seg-flip-disc-arduino-psps/01-1x7seg-flip-disc-arduino-psps.ino) &nbsp; [Download diagram](https://github.com/marcinsaj/FlipDisc/raw/main/datasheet/Flip-disc-7-Segment-Display-Arduino-Example-Connection-with-Pulse-Shaper-Schematic-01.pdf) :small_red_triangle_down:     
 
 -------------------------------------------------------------------  
 
 <p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/arduino-2x7-seg-flip-disc-psps-module.png"></p> 
 
-2️. [Show me code](https://github.com/marcinsaj/FlipDisc/blob/main/examples/02-2x7seg-flip-disc-arduino-psps/02-2x7seg-flip-disc-arduino-psps.ino) &nbsp; [Download diagram](https://github.com/marcinsaj/FlipDisc/raw/main/datasheet/Flip-disc-7-Segment-Display-Arduino-Example-Connection-with-Pulse-Shaper-Schematic-02.pdf) :small_red_triangle_down:
+2. [Show me code](https://github.com/marcinsaj/FlipDisc/blob/main/examples/02-2x7seg-flip-disc-arduino-psps/02-2x7seg-flip-disc-arduino-psps.ino) &nbsp; [Download diagram](https://github.com/marcinsaj/FlipDisc/raw/main/datasheet/Flip-disc-7-Segment-Display-Arduino-Example-Connection-with-Pulse-Shaper-Schematic-02.pdf) :small_red_triangle_down:
 
 -------------------------------------------------------------------   
   
 <p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/arduino-2x7-seg-3dots-flip-disc-psps-module.png"></p>        
 
-3️. [Show me code](https://github.com/marcinsaj/FlipDisc/blob/main/examples/03-2x7seg-1x3x1-flip-disc-arduino-psps/03-2x7seg-1x3x1-flip-disc-arduino-psps.ino) &nbsp; [Download diagram](https://github.com/marcinsaj/FlipDisc/raw/main/datasheet/Flip-disc-7-Segment-Display-Arduino-Example-Connection-with-Pulse-Shaper-Schematic-03.pdf) :small_red_triangle_down:  
+3. [Show me code](https://github.com/marcinsaj/FlipDisc/blob/main/examples/03-2x7seg-1x3x1-flip-disc-arduino-psps/03-2x7seg-1x3x1-flip-disc-arduino-psps.ino) &nbsp; [Download diagram](https://github.com/marcinsaj/FlipDisc/raw/main/datasheet/Flip-disc-7-Segment-Display-Arduino-Example-Connection-with-Pulse-Shaper-Schematic-03.pdf) :small_red_triangle_down:  
 
 -------------------------------------------------------------------  
 
 <p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/arduino-4x7-seg-3dots-flip-disc-psps-module.png"></p>
  
-4️. [Show me code](https://github.com/marcinsaj/FlipDisc/blob/main/examples/04-4x7seg-1x3x1-flip-disc-arduino-psps/04-4x7seg-1x3x1-flip-disc-arduino-psps.ino) &nbsp; [Download diagram](https://github.com/marcinsaj/FlipDisc/raw/main/datasheet/Flip-disc-7-Segment-Display-Arduino-Example-Connection-with-Pulse-Shaper-Schematic-04.pdf) :small_red_triangle_down:
+4. [Show me code](https://github.com/marcinsaj/FlipDisc/blob/main/examples/04-4x7seg-1x3x1-flip-disc-arduino-psps/04-4x7seg-1x3x1-flip-disc-arduino-psps.ino) &nbsp; [Download diagram](https://github.com/marcinsaj/FlipDisc/raw/main/datasheet/Flip-disc-7-Segment-Display-Arduino-Example-Connection-with-Pulse-Shaper-Schematic-04.pdf) :small_red_triangle_down:
 
 -------------------------------------------------------------------  
 
 <p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/arduino-6x7-seg-flip-disc-psps-module.png"></p>    
 
-5️. [Show me code](https://github.com/marcinsaj/FlipDisc/blob/main/examples/05-6x7seg-flip-disc-arduino-psps/05-6x7seg-flip-disc-arduino-psps.ino) &nbsp; [Download diagram](https://github.com/marcinsaj/FlipDisc/raw/main/datasheet/Flip-disc-7-Segment-Display-Arduino-Example-Connection-with-Pulse-Shaper-Schematic-05.pdf) :small_red_triangle_down:
+5. [Show me code](https://github.com/marcinsaj/FlipDisc/blob/main/examples/05-6x7seg-flip-disc-arduino-psps/05-6x7seg-flip-disc-arduino-psps.ino) &nbsp; [Download diagram](https://github.com/marcinsaj/FlipDisc/raw/main/datasheet/Flip-disc-7-Segment-Display-Arduino-Example-Connection-with-Pulse-Shaper-Schematic-05.pdf) :small_red_triangle_down:
 
 -------------------------------------------------------------------
 
 <p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/arduino-6x7-seg-2x3dots-flip-disc-psps-module.png"></p>
 
-6️. [Show me code](https://github.com/marcinsaj/FlipDisc/blob/main/examples/06-6x7seg-2x3x1-flip-disc-arduino-psps/06-6x7seg-2x3x1-flip-disc-arduino-psps.ino) &nbsp; [Download diagram](https://github.com/marcinsaj/FlipDisc/raw/main/datasheet/Flip-disc-7-Segment-Display-Arduino-Example-Connection-with-Pulse-Shaper-Schematic-06.pdf) :small_red_triangle_down:
+6. [Show me code](https://github.com/marcinsaj/FlipDisc/blob/main/examples/06-6x7seg-2x3x1-flip-disc-arduino-psps/06-6x7seg-2x3x1-flip-disc-arduino-psps.ino) &nbsp; [Download diagram](https://github.com/marcinsaj/FlipDisc/raw/main/datasheet/Flip-disc-7-Segment-Display-Arduino-Example-Connection-with-Pulse-Shaper-Schematic-06.pdf) :small_red_triangle_down:
   
 -------------------------------------------------------------------
 
