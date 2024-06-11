@@ -150,7 +150,7 @@ When using the **FlipDisc** library with flip-disc displays, the user is respons
 
 ## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/tools.png) Functions  
 
-1️⃣⚠️
+1️.⚠️
 ```c++
 #define EN_PIN  'Set your pin'  // Start & End SPI transfer data
 #define CH_PIN  'Set your pin'  // Charging PSPS module - turn ON/OFF
@@ -162,7 +162,7 @@ Flip.Pin(...); it is most important function and first to call before everything
 
 ------------------------------------------------------------------------------------------- 
 
-2️⃣⚠️
+2️.⚠️
 ```c++
 Flip.Init(MOD1, MOD2 = 0xFF, MOD3 = 0xFF, MOD4 = 0xFF, 
                    MOD5 = 0xFF, MOD6 = 0xFF, MOD7 = 0xFF, MOD8 = 0xFF);  
@@ -193,7 +193,7 @@ Flip.Init(...) it is second most important function. Initialization function for
 
 ------------------------------------------------------------------------------------------- 
 
-3️⃣
+3️.
 ```c++
 Flip.Delay(0-100ms);
 
@@ -204,7 +204,7 @@ The function is used to set the delay effect between flip discs. The default val
 
 ------------------------------------------------------------------------------------------- 
 
-4️⃣
+4️.
 ```c++
 Flip.Test();
 ```
@@ -212,7 +212,7 @@ The function is used to test all declared displays - turn on and off all display
 
 ------------------------------------------------------------------------------------------- 
 
-5️⃣
+5️.
 ```c++
 Flip.All();
 ```
@@ -220,7 +220,7 @@ The function is used to turn on (set) all discs of all displays.
 
 ------------------------------------------------------------------------------------------- 
 
-6️⃣
+6️.
 ```c++
 Flip.Clear();
 ```
@@ -229,7 +229,7 @@ The function is used to turn off (clear) all displays.
 
 ------------------------------------------------------------------------------------------- 
 
-7️⃣
+7️.
 ```c++
 Flip.Disc_7Seg(module_number, disc_number, disc_status);
 
@@ -255,7 +255,7 @@ See the function description in [Flip.cpp](https://github.com/marcinsaj/FlipDisc
 
 ------------------------------------------------------------------------------------------- 
 
-8️⃣
+8️.
 ```c++
 Flip.Display_7Seg(module_number, data);
 
@@ -276,7 +276,7 @@ See the function description in [Flip.cpp](https://github.com/marcinsaj/FlipDisc
 
 ------------------------------------------------------------------------------------------- 
 
-9️⃣
+9️.
 ```c++
 Flip.Matrix_7Seg(data1, data2 = 0xFF, data3 = 0xFF, data4 = 0xFF, 
                   data5 = 0xFF, data6 = 0xFF, data7 = 0xFF, data8 = 0xFF);
@@ -342,7 +342,7 @@ Code names for symbols:
 
 ------------------------------------------------------------------------------------------- 
 
-1️⃣0️⃣
+1️0.
 ```c++
 Flip.Disc_3x1(module_number, disc_number, disc_status);
 
@@ -357,7 +357,7 @@ Function allows you to control a selected disc in a selected 3x1 display. You ca
 
 ------------------------------------------------------------------------------------------- 
 
-1️⃣1️⃣
+11. 
 ```c++
 Flip.Display_3x1(module_number, disc1 = 0xFF, disc2 = 0xFF, disc3 = 0xFF);
 
@@ -379,7 +379,7 @@ Function allows you to control one, two or three discs of the selected 3x1 displ
 
 ------------------------------------------------------------------------------------------- 
 
-1️⃣2️⃣
+12. 
 ```c++
 Flip.Disc_2x1(module_number, disc_number, disc_status);
 
@@ -394,7 +394,7 @@ Function allows you to control a selected disc in a selected 2x1 display. You ca
 
 ------------------------------------------------------------------------------------------- 
 
-1️⃣3️⃣
+13. 
 ```c++
 Flip.Display_2x1(module_number, disc1 = 0xFF, disc2 = 0xFF);
 
@@ -416,7 +416,7 @@ Function allows you to control one or two discs of the selected 2x1 display. The
 
 ------------------------------------------------------------------------------------------- 
 
-1️⃣4️⃣
+14. 
 ```c++
 Flip.Disc_1x3(module_number, disc_number, disc_status);
 
@@ -431,7 +431,7 @@ Function allows you to control a selected disc in a selected 1x3 display. You ca
  - disc_status - reset disc "0" or set disc "1"
 
 ------------------------------------------------------------------------------------------- 
-1️⃣5️⃣
+15. 
 ```c++
 void Flip.Display_1x3(module_number, disc1 = 0xFF, disc2 = 0xFF, disc3 = 0xFF);
 
@@ -451,7 +451,7 @@ The function allows you to control one, two or three discs of the selected 1x3 d
  - disc1, disc2, disc3 - display discs counting from left to right 1-3
 
 ------------------------------------------------------------------------------------------- 
-1️⃣6️⃣
+16. 
 ```c++
 Flip.Disc_1x7(module_number, disc_number, disc_status);
 
@@ -469,7 +469,7 @@ Function allows you to control a selected disc in a selected 1x7 display. You ca
  - disc_status - reset disc "0" or set disc "1"
 
 ------------------------------------------------------------------------------------------- 
-1️⃣7️⃣
+17. 
 ```c++
 Flip.Display_1x7(module_number, disc1 = 0xFF, disc2 = 0xFF, disc3 = 0xFF, 
                     disc4 = 0xFF, disc5 = 0xFF, disc6 = 0xFF, disc7 = 0xFF);
