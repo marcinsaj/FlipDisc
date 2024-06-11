@@ -98,37 +98,37 @@ In summary, there are two options:
 
 5️. [Show me code](https://github.com/marcinsaj/FlipDisc/blob/main/examples/05-6x7seg-flip-disc-arduino-psps/05-6x7seg-flip-disc-arduino-psps.ino) &nbsp; [Download diagram](https://github.com/marcinsaj/FlipDisc/raw/main/datasheet/Flip-disc-7-Segment-Display-Arduino-Example-Connection-with-Pulse-Shaper-Schematic-05.pdf) :small_red_triangle_down:
 
--------------------------------------------------------------------  
+-------------------------------------------------------------------
 
 <p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/arduino-6x7-seg-2x3dots-flip-disc-psps-module.png"></p>
 
 6️. [Show me code](https://github.com/marcinsaj/FlipDisc/blob/main/examples/06-6x7seg-2x3x1-flip-disc-arduino-psps/06-6x7seg-2x3x1-flip-disc-arduino-psps.ino) &nbsp; [Download diagram](https://github.com/marcinsaj/FlipDisc/raw/main/datasheet/Flip-disc-7-Segment-Display-Arduino-Example-Connection-with-Pulse-Shaper-Schematic-06.pdf) :small_red_triangle_down:
   
--------------------------------------------------------------------  
+-------------------------------------------------------------------
 
-<p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/arduino-2dots-flip-disc-psps-module.png"></p>   
+<p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/arduino-2dots-flip-disc-psps-module.png"></p>
 
 7. [Show me code](https://github.com/marcinsaj/FlipDisc/blob/main/examples/07-1x2x1-flip-disc-arduino-psps/07-1x2x1-flip-disc-arduino-psps.ino) &nbsp; [Download diagram](https://github.com/marcinsaj/FlipDisc/raw/main/datasheet/Flip-disc-2x1-Dot-Module-Arduino-Example-Connection-Schematic.pdf) :small_red_triangle_down:
 
--------------------------------------------------------------------  
+-------------------------------------------------------------------
 
-<p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/arduino-3dots-flip-disc-psps-module.png"></p>  
+<p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/arduino-3dots-flip-disc-psps-module.png"></p>
 
 8. [Show me code](https://github.com/marcinsaj/FlipDisc/blob/main/examples/08-1x3x1-flip-disc-arduino-psps/08-1x3x1-flip-disc-arduino-psps.ino) &nbsp; [Download diagram](https://github.com/marcinsaj/FlipDisc/raw/main/datasheet/Flip-disc-3x1-Dot-Module-Arduino-Example-Connection-Schematic.pdf) :small_red_triangle_down:
 
--------------------------------------------------------------------  
+-------------------------------------------------------------------
 
-<p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/arduino-1x3-flip-disc-psps-module.png"></p>  
+<p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/arduino-1x3-flip-disc-psps-module.png"></p>
 
 9. [Show me code](https://github.com/marcinsaj/FlipDisc/blob/main/examples/09-1x1x3-flip-disc-arduino-psps/09-1x1x3-flip-disc-arduino-psps.ino) &nbsp; [Download diagram](https://github.com/marcinsaj/FlipDisc/raw/main/datasheet/Flip-disc-1x3-Display-Arduino-Example-Connection-with-Pulse-Shaper-Schematic-01.pdf) :small_red_triangle_down:
 
--------------------------------------------------------------------    
+-------------------------------------------------------------------
 
-<p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/arduino-1x7-flip-disc-psps-module.png"></p>  
+<p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/arduino-1x7-flip-disc-psps-module.png"></p>
 
 10. [Show me code](https://github.com/marcinsaj/FlipDisc/blob/main/examples/10-1x1x7-flip-disc-arduino-psps/10-1x1x7-flip-disc-arduino-psps.ino) &nbsp; [Download diagram](https://github.com/marcinsaj/FlipDisc/raw/main/datasheet/Flip-disc-1x7-Display-Arduino-Example-Connection-with-Pulse-Shaper-Schematic-01.pdf) :small_red_triangle_down:
 
--------------------------------------------------------------------  
+-------------------------------------------------------------------
 
 ## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/note.png) Warning!    
 
