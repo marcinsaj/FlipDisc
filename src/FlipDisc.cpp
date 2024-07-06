@@ -1216,33 +1216,33 @@ void FlipDisc::All(void)
         Display_1x7((moduleInitArray[i][module_relative_position_column]), 1,1,1,1,1,1,1);
         break;
 
-	    case D2X6:
+      case D2X6:
         for(int disc = 1; disc <= 12; disc++)
-		    {
-			    Disc_2x6((moduleInitArray[i][module_relative_position_column]), disc, 1); 
-		    }
-		    break;
+        {
+          Disc_2x6((moduleInitArray[i][module_relative_position_column]), disc, 1); 
+        }
+        break;
 		
       case D3X3:
         for(int disc = 1; disc <= 9; disc++)
-	        {
-	          Disc_3x3((moduleInitArray[i][module_relative_position_column]), disc, 1); 
-	        }
-	      break;
+        {
+          Disc_3x3((moduleInitArray[i][module_relative_position_column]), disc, 1); 
+        }
+        break;
 
       case D3X4:
         for(int disc = 1; disc <= 12; disc++)
-	      {
-	        Disc_3x4((moduleInitArray[i][module_relative_position_column]), disc, 1); 
-	      }
-	      break;
+        {
+          Disc_3x4((moduleInitArray[i][module_relative_position_column]), disc, 1); 
+        }
+        break;
 
       case D3X5:
         for(int disc = 1; disc <= 15; disc++)
-	      {
-	        Disc_3x5((moduleInitArray[i][module_relative_position_column]), disc, 1); 
-	      }
-	      break;	
+        {
+          Disc_3x5((moduleInitArray[i][module_relative_position_column]), disc, 1); 
+        }
+        break;	
         
       default:
         break;
@@ -1276,35 +1276,35 @@ void FlipDisc::Clear(void)
         Display_1x7((moduleInitArray[i][module_relative_position_column]), 0,0,0,0,0,0,0);
         break;
 
-	    case D2X6:
+      case D2X6:
         for(int disc = 1; disc <= 12; disc++)
-		    {
-			    Disc_2x6((moduleInitArray[i][module_relative_position_column]), disc, 0); 
-		    }
-		    break;        
+        {
+          Disc_2x6((moduleInitArray[i][module_relative_position_column]), disc, 0); 
+        }
+        break;        
         
       case D3X3:
         for(int disc = 1; disc <= 9; disc++)
-	      {
-	        Disc_3x3((moduleInitArray[i][module_relative_position_column]), disc, 0); 
-	      }
-	      break;
+        {
+          Disc_3x3((moduleInitArray[i][module_relative_position_column]), disc, 0); 
+        }
+        break;
 
       case D3X4:
         for(int disc = 1; disc <= 12; disc++)
-	      {
-	        Disc_3x4((moduleInitArray[i][module_relative_position_column]), disc, 0); 
-	      }
-	      break;
+        {
+          Disc_3x4((moduleInitArray[i][module_relative_position_column]), disc, 0); 
+        }
+        break;
 
       case D3X5:
         for(int disc = 1; disc <= 15; disc++)
-	      {
-	        Disc_3x5((moduleInitArray[i][module_relative_position_column]), disc, 0); 
-	      }
-	      break;			
+        {
+          Disc_3x5((moduleInitArray[i][module_relative_position_column]), disc, 0); 
+        }
+        break;			
 	  
-	    default:
+      default:
         break;
     }
   }  
