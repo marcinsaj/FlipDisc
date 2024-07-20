@@ -259,9 +259,9 @@ void FlipDisc::Display_7Seg(uint8_t module_number, uint8_t new_data)
     * bit_number can only be in the range 0-7, so we must make sure that 
     * when changing the columns/bytes to read, start counting the bits again from 0.
     */   
-    if(disc_number <   8) {bit_number  = disc_number; current_column = 0;}
-    if(disc_number >=  8 & disc_number < 16) {bit_number = disc_number - 8; current_column = 1;}
-    if(disc_number >= 16) {bit_number  = disc_number - 16; current_column = 2;}
+    if(disc_number < 8) {bit_number = disc_number; current_column = 0;}
+    if((disc_number >= 8) && (disc_number < 16)) {bit_number = disc_number - 8; current_column = 1;}
+    if(disc_number >= 16) {bit_number = disc_number - 16; current_column = 2;}
     
    /*
     * 1 - Read one byte from location: displayArray_7Seg[current_row][current_column]
