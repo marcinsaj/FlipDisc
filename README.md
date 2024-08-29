@@ -151,7 +151,7 @@ When using the **FlipDisc** library with flip-disc displays, the user is respons
 
 ## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/tools.png) Functions  
 
-1️.⚠️
+1.⚠️
 ```c++
 #define EN_PIN  'Set your pin'  // Start & End SPI transfer data
 #define CH_PIN  'Set your pin'  // Charging PSPS module - turn ON/OFF
@@ -163,7 +163,7 @@ Flip.Pin(...); it is most important function and first to call before everything
 
 ------------------------------------------------------------------------------------------- 
 
-2️.⚠️
+2.⚠️
 ```c++
 Flip.Init(MOD1, MOD2 = 0xFF, MOD3 = 0xFF, MOD4 = 0xFF, 
                    MOD5 = 0xFF, MOD6 = 0xFF, MOD7 = 0xFF, MOD8 = 0xFF);  
@@ -194,7 +194,7 @@ Flip.Init(...) it is second most important function. Initialization function for
 
 ------------------------------------------------------------------------------------------- 
 
-3️.
+3.
 ```c++
 Flip.Delay(0-100ms);
 
@@ -205,7 +205,7 @@ The function is used to set the delay effect between flip discs. The default val
 
 ------------------------------------------------------------------------------------------- 
 
-4️.
+4.
 ```c++
 Flip.Test();
 ```
@@ -213,7 +213,7 @@ The function is used to test all declared displays - turn on and off all display
 
 ------------------------------------------------------------------------------------------- 
 
-5️.
+5.
 ```c++
 Flip.All();
 ```
@@ -221,7 +221,7 @@ The function is used to turn on (set) all discs of all displays.
 
 ------------------------------------------------------------------------------------------- 
 
-6️.
+6.
 ```c++
 Flip.Clear();
 ```
@@ -230,7 +230,7 @@ The function is used to turn off (clear) all displays.
 
 ------------------------------------------------------------------------------------------- 
 
-7️.
+7.
 ```c++
 Flip.Disc_7Seg(module_number, disc_number, disc_status);
 
@@ -256,7 +256,7 @@ See the function description in [Flip.cpp](https://github.com/marcinsaj/FlipDisc
 
 ------------------------------------------------------------------------------------------- 
 
-8️.
+8.
 ```c++
 Flip.Display_7Seg(module_number, data);
 
@@ -277,7 +277,7 @@ See the function description in [Flip.cpp](https://github.com/marcinsaj/FlipDisc
 
 ------------------------------------------------------------------------------------------- 
 
-9️.
+9.
 ```c++
 Flip.Matrix_7Seg(data1, data2 = 0xFF, data3 = 0xFF, data4 = 0xFF, 
                   data5 = 0xFF, data6 = 0xFF, data7 = 0xFF, data8 = 0xFF);
@@ -343,7 +343,7 @@ Code names for symbols:
 
 ------------------------------------------------------------------------------------------- 
 
-1️0.
+10.
 ```c++
 Flip.Disc_3x1(module_number, disc_number, disc_status);
 
