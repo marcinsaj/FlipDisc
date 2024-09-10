@@ -643,7 +643,7 @@ void FlipDisc::Disc_1x7(uint8_t module_number, uint8_t disc_number, bool disc_st
   
   // Call the function to flip the disc (only one disc)
   Display_1x7(module_number, newDiscArray[0], newDiscArray[1], newDiscArray[2],
-        newDiscArray[3], newDiscArray[4], newDiscArray[5], newDiscArray[6]);
+              newDiscArray[3], newDiscArray[4], newDiscArray[5], newDiscArray[6]);
 
   // Clear all outputs of the controllers built into the displays
   ClearAllOutputs();
@@ -1463,7 +1463,7 @@ void FlipDisc::PrepareCurrentPulse(void)
 {			
   digitalWrite(_PL_PIN, LOW);    // Turn OFF PSPS module output
   digitalWrite(_CH_PIN, HIGH);   // Turn ON charging
-  delay(100);                    // first charging time 100ms
+  delay(1000);                   // First charging time 1000ms
   digitalWrite(_CH_PIN, LOW);    // Turn OFF charging
 }
 
