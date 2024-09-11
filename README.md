@@ -131,6 +131,12 @@ In summary, there are two options:
 
 -------------------------------------------------------------------
 
+<p><img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/arduino-2x6-flip-disc-psps-module.png"></p>
+
+11. [Show me code](https://github.com/marcinsaj/FlipDisc/blob/main/examples/11-1x2x6-flip-disc-arduino-psps/11-1x2x6-flip-disc-arduino-psps.ino) &nbsp; [Download diagram](https://github.com/marcinsaj/FlipDisc/raw/main/datasheet/Flip-disc-2x6-Display-Arduino-Example-Connection-with-Pulse-Shaper-Schematic-01.pdf) :small_red_triangle_down:
+
+-------------------------------------------------------------------
+
 ## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/note.png) Warning!    
 
 The library uses SPI to control flip-disc displays. The user must remember to connect the display inputs marked DIN - data in - to the MOSI (SPI) output of the microcontroller and the CLK - clock - input of the display to the SCK (SPI) output of the microcontroller. In addition, it is very important to connect and declare EN, CH, PL pins. The declaration of DIN (MOSI) and CLK (SCK) is not necessary, because the <SPI.h> library handles the SPI hardware pins. 
