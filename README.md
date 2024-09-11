@@ -528,7 +528,7 @@ Function allows you to control a selected disc in a 2x6 display. Addressing sele
  - row_number - display disc row number counting from bottom to top 1-2
  - column_number - display disc number counting from left to right 1-6
  - disc_status - reset disc "0" or set disc "1"
- - 
+
 ------------------------------------------------------------------------------------------- 
 
 ## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/check.png) Supported Displays & Modules      
