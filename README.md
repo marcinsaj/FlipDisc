@@ -491,7 +491,43 @@ The function allows you to control up to seven discs of the selected display. Th
  - disc1, disc2, disc3, disc4, disc5, disc6, disc7 - display discs counting from left to right 1-7
 
 ------------------------------------------------------------------------------------------- 
+18. 
+```c++
+Flip.Disc_2x6(uint8_t module_number, uint8_t disc_number, bool disc_status);
+                    
+/* Example function call. Set the second disc counting from the right */
+Flip.Disc_2x6(1, 2, 1);
+```
 
+Function allows you to control a selected disc in a 2x6 display. The first argument is the relative number "module_number" of the display in the series of all displays. For example, if we have a combination of D2X6, D7SEG, D2X6, then the second D2X6 display will have a relative number of 2 even though there is a D7SEG display between the D2X6 displays.
+ -  module_number - relative number of the "D2X6" display
+ -  disc_number - display disc number counting from left to right in each row
+ - first row 1-6, second row 7-12
+ - disc_status - reset disc "0" or set disc "1"
+     7  8  9 10 11 12
+     1  2  3  4  5  6
+
+------------------------------------------------------------------------------------------- 
+19. 
+```c++
+Flip.Display_2x6(uint8_t module_number, uint8_t row_number, uint8_t column_number, bool disc_status);
+                    
+/* Example function call. Reset disc in third column, second row.
+Flip.Display_2x6(1, 2, 3, 1);
+```
+
+Function allows you to control a selected disc in a 2x6 display. Addressing selected disc using rows and columns. The first argument module_number is the relative number of the display in the series of all displays. For example, if we have a combination of D2X6, D7SEG, D2X6, then the second D2X6 display will have a relative number of 2 even though there is a D7SEG display between the D2X6 displays.
+ - module_number - relative number of the "D2X6" display
+ - row_number - display disc row number counting from bottom to top 1-2
+ - column_number - display disc number counting from left to right 1-6
+ - disc_status - reset disc "0" or set disc "1"
+
+ Rows, columns & discs numbers
+     1  2  3  4  5  6
+  2  7  8  9 10 11 12
+  1  1  2  3  4  5  6
+
+------------------------------------------------------------------------------------------- 
 
 ## ![](https://github.com/marcinsaj/FlipDisc/blob/main/extras/check.png) Supported Displays & Modules      
 
