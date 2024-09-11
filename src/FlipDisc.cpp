@@ -740,11 +740,11 @@ void FlipDisc::Display_1x7(uint8_t module_number, uint8_t disc1 /* = 0xFF */, ui
  * then the second D2X6 display will have a relative number of 2 even though there  *
  * is a D7SEG display between the D2X6 displays.                                    *
  * -> module_number - relative number of the "D2X6" display                         *
- * -> disc_number - display disc number counting from left to right in each row     *
+ * -> disc_number - display disc number counting from right to left in each row     *
  * first row 1-6, second row 7-12                                                   *
  * -> disc_status - reset disc "0" or set disc "1"                                  *
- *    7  8  9 10 11 12                                                              *
- *    1  2  3  4  5  6                                                              *
+ *    12 11 10  9  8  7                                                             *
+ *     6  5  4  3  2  1                                                             *
  *----------------------------------------------------------------------------------*/
 void FlipDisc::Disc_2x6(uint8_t module_number, uint8_t disc_number, bool disc_status)
 {
@@ -812,13 +812,13 @@ void FlipDisc::Disc_2x6(uint8_t module_number, uint8_t disc_number, bool disc_st
  * of 2 even though there is a D7SEG display between the D2X6 displays              *
  * -> module_number - relative number of the "D2X6" display                         *
  * -> row_number - display disc row number counting from bottom to top 1-2          *
- * -> column_number - display disc number counting from left to right 1-6           *
+ * -> column_number - display disc number counting from right to left 1-6           *
  * -> disc_status - reset disc "0" or set disc "1"                                  *
  *                                                                                  *
  * Rows, columns & discs numbers                                                    *
- *     1  2  3  4  5  6                                                             *
- *  2  7  8  9 10 11 12                                                             *
- *  1  1  2  3  4  5  6                                                             *
+ *     6  5  4  3  2  1                                                             *
+ *    12 11 10  9  8  7                                                             *
+ *     6  5  4  3  2  1                                                             *
  *----------------------------------------------------------------------------------*/
 void FlipDisc::Display_2x6(uint8_t module_number, uint8_t row_number, uint8_t column_number, bool disc_status)
 {
