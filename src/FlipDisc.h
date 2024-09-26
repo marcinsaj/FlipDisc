@@ -438,6 +438,95 @@ static const uint8_t resetDiscArray_3x3[9][2] PROGMEM =
 }; 
 
 /* 
+ * Refers to "D3X3" - 3x3 display
+ * Compressed array of all bits corresponding to discs states for selected dice symbol 1-9.
+ * Disc numbers in individual bytes: 7,6,5,4,3,2,1,0  15,14,13,12,11,10,9,8 
+ */
+static const uint8_t diceArray_3x3[10][2] PROGMEM =
+{    
+  {0b00000000, 0b00000000}, // 0 
+  {0b00010000, 0b00000000}, // 1 
+  {0b01000100, 0b00000000}, // 2 
+  {0b00010001, 0b00000001}, // 3 
+  {0b01000101, 0b00000001}, // 4 
+  {0b01010101, 0b00000001}, // 5
+  {0b01101101, 0b00000001}, // 6 
+  {0b01111101, 0b00000001}, // 7 
+  {0b11101111, 0b00000001}, // 6
+  {0b11111111, 0b00000001}  // 9
+};
+
+/* 
+ * Refers to "D3X3" - 3x5 display
+ * Compressed array of all bits corresponding to discs states for selected symbols.
+ * Disc numbers in individual bytes: 7,6,5,4,3,2,1,0  15,14,13,12,11,10,9,8 
+ */
+static const uint8_t displayArray_3x3[61][2] PROGMEM =
+{    
+  {0b00000000, 0b00000000}, // 0
+  {0b00000000, 0b00000000}, // 1 
+  {0b00000000, 0b00000000}, // 2 
+  {0b00000000, 0b00000000}, // 3 
+  {0b00000000, 0b00000000}, // 4 
+  {0b00000000, 0b00000000}, // 5 
+  {0b00000000, 0b00000000}, // 6 
+  {0b00000000, 0b00000000}, // 7 
+  {0b00000000, 0b00000000}, // 8 
+  {0b00000000, 0b00000000}, // 9/ALL 
+  {0b00000000, 0b00000000}, // 10/CLR 
+  {0b00000000, 0b00000000}, // 11/A
+  {0b00000000, 0b00000000}, // 12/B
+  {0b00000000, 0b00000000}, // 13/C
+  {0b00000000, 0b00000000}, // 14/D
+  {0b00000000, 0b00000000}, // 15/E
+  {0b00000000, 0b00000000}, // 16/F
+  {0b00000000, 0b00000000}, // 17/G
+  {0b00000000, 0b00000000}, // 18/H
+  {0b00000000, 0b00000000}, // 19/I
+  {0b00000000, 0b00000000}, // 20/J
+  {0b00000000, 0b00000000}, // 21/K
+  {0b00000000, 0b00000000}, // 22/L
+  {0b00000000, 0b00000000}, // 23/M
+  {0b00000000, 0b00000000}, // 24/N
+  {0b00000000, 0b00000000}, // 25/O
+  {0b00000000, 0b00000000}, // 26/P
+  {0b00000000, 0b00000000}, // 27/Q
+  {0b00000000, 0b00000000}, // 28/R
+  {0b00000000, 0b00000000}, // 29/S
+  {0b00000000, 0b00000000}, // 30/T
+  {0b00000000, 0b00000000}, // 31/U
+  {0b00000000, 0b00000000}, // 32/V
+  {0b00000000, 0b00000000}, // 33/W
+  {0b00000000, 0b00000000}, // 34/X
+  {0b00000000, 0b00000000}, // 35/Y
+  {0b00000000, 0b00000000}, // 36/Z
+  {0b00000000, 0b00000000}, // "°"/37/DEG - Degree symbol
+  {0b00000000, 0b00000000}, // "¯"/38/HLU - Horizontal line - upper
+  {0b00000000, 0b00000000}, // "-"/39/HLM/MIN - Horizontal line - middle
+  {0b00000000, 0b00000000}, // "_"/40/HLL - Horizontal line - lower
+  {0b00000000, 0b00000000}, // "="/41/HLT - Horizontal line - upper & lower
+  {0b00000000, 0b00000000}, // "| " /42/VLL - Vertical line - left
+  {0b00000000, 0b00000000}, // " | "/43/VLR - Vertical line - middle
+  {0b00000000, 0b00000000}, // "  |"/44/VLR - Vertical line - right
+  {0b00000000, 0b00000000}, // "="/45/EQL - Equal symbol
+  {0b00000000, 0b00000000}, // "+"/46/PLS - Plus symbol
+  {0b00000000, 0b00000000}, // "*"/47/AST - Multiplication symbol - dot in the middle    
+  {0b00000000, 0b00000000}, // "."/48/DOT - Dot symbol
+  {0b00000000, 0b00000000}, // ":"/49/CLN - Colon symbol
+  {0b00000000, 0b00000000}, // ","/50/CMM - Comma symbol 
+  {0b00000000, 0b00000000}, // "/"/51/SLS - Slash symbol
+  {0b00000000, 0b00000000}, // "\"/52/BLS - Backslash symbol
+  {0b00000000, 0b00000000}, // "("/53/RBL - Square bracket left
+  {0b00000000, 0b00000000}, // ")"/54/RBR - Square bracket right
+  {0b00000000, 0b00000000}, // "["/55/RBL - Round bracket left
+  {0b00000000, 0b00000000}, // "]"/56/RBR - Round bracket right
+  {0b00000000, 0b00000000}, // "<"/57/ABL - Angle bracket left
+  {0b00000000, 0b00000000}, // ">"/58/ABR - Angle bracket right
+  {0b00000000, 0b00000000}, // "?"/59/ABR - Question mark symbol
+  {0b00000000, 0b00000000}  // "!"/60/EXC - Exclamation mark symbol
+};
+
+/* 
  * Refers to "D3X4" - 3x4 display.  
  * The array contains the addresses of the control outputs corresponding 
  * to the setting of the discs to the "color" side.
