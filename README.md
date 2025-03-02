@@ -555,5 +555,6 @@ Function allows you to control a selected disc in a 2x6 display. Addressing sele
   <img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-3x1-display.jpg">
   <img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-1x3-display.jpg">
   <img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-1x7-display.jpg">
+  <img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/flipo-2x6-flip-disc-display-project.jpg">
   <img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-power-supply-module.jpg">
 </p>
