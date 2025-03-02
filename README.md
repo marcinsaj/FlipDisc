@@ -30,7 +30,7 @@ All the functions responsible for controlling the displays are described in exam
 - [3x1 flip-disc display](https://flipo.io/project/flip-disc-3x1-display/)
 - [1x3 flip-disc display](https://flipo.io/project/flip-disc-1x3-display/)
 - [1x7 flip-disc display](https://flipo.io/project/flip-disc-1x7-display/)
-- 2x6 flip-disc display - work in progress
+- [2x6 flip-disc display](https://flipo.io/project/2x6-flip-disc-display/)
 - 3x3 flip-disc display - work in progress
 - 3x4 flip-disc display - work in progress
 - 3x5 flip-disc display - work in progress
@@ -193,7 +193,7 @@ Flip.Init(...) it is second most important function. Initialization function for
  - D3X1 - [3x1 display](https://flipo.io/project/flip-disc-3x1-display/)
  - D1X3 - [1x3 display](https://flipo.io/project/flip-disc-1x3-display/)
  - D1X7 - [1x7 display](https://flipo.io/project/flip-disc-1x7-display/)
- - D2X6 - work in progress
+ - D2X6 - [2x6 display](https://flipo.io/project/2x6-flip-disc-display/)
  - D3X3 - work in progress
  - D3X4 - work in progress
  - D3X5 - work in progress
@@ -539,7 +539,7 @@ Function allows you to control a selected disc in a 2x6 display. Addressing sele
 - [3-disc flip-disc display](https://flipo.io/project/flip-disc-3x1-display/)
 - [1x3 flip-disc display](https://flipo.io/project/flip-disc-1x3-display/)
 - [1x7 flip-disc display](https://flipo.io/project/flip-disc-1x7-display/)
-- 2x6 flip-disc display - work in progress
+- [2x6 flip-disc display](https://flipo.io/project/2x6-flip-disc-display/)
 - 3x3 flip-disc display - work in progress
 - 3x4 flip-disc display - work in progress
 - 3x5 flip-disc display - work in progress
