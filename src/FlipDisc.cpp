@@ -37,17 +37,18 @@ uint8_t moduleInitArray[8][3];
 
 /* 
  *  An array of defined display names:
- * -> D7SEG - 7-Segment flip-disc display
- * -> D2X1 - 2x1 flip-disc display
- * -> D3X1 - 3x1 flip-disc display
- * -> D1X3 - 1x3 flip-disc display
- * -> D1X7 - 1x7 flip-disc display
- * -> D2X6 - 2x6 flip-disc display 
- * -> D3X3 - 3x3 flip-disc display
- * -> D3X4 - 3x4 flip-disc display  
- * -> D3X5 - 3x5 flip-disc display
+ * -> D7SEG  - 7-Segment flip-disc display
+ * -> D2X1   - 2x1 flip-disc display
+ * -> D3X1   - 3x1 flip-disc display
+ * -> D1X3   - 1x3 flip-disc display
+ * -> D1X7   - 1x7 flip-disc display
+ * -> D2X6   - 2x6 flip-disc display 
+ * -> D3X3   - 3x3 flip-disc display
+ * -> D3X4   - 3x4 flip-disc display  
+ * -> D3X5   - 3x5 flip-disc display
+ * -> D4X3X3 - 4x3x3 flip-disc display
  */
-static const uint8_t moduleTypeArray[] PROGMEM = {D7SEG, D2X1, D3X1, D1X3, D1X7, D2X6, D3X3, D3X4, D3X5};
+static const uint8_t moduleTypeArray[] PROGMEM = {D7SEG, D2X1, D3X1, D1X3, D1X7, D2X6, D3X3, D3X4, D3X5, D4X3X3};
 
 /*
  * Total length of data frame for all displays.
@@ -153,7 +154,10 @@ void FlipDisc::Init(uint8_t MOD1, uint8_t MOD2 /* = 0xFF */, uint8_t MOD3 /*= 0x
         number_bytes = 3;
         break;
 
-      /* D3X1 = D2X1 - are the same */
+      case D2X1:
+        number_bytes = 1;
+        break; 
+
       case D3X1:
         number_bytes = 1;
         break; 
@@ -180,7 +184,11 @@ void FlipDisc::Init(uint8_t MOD1, uint8_t MOD2 /* = 0xFF */, uint8_t MOD3 /*= 0x
 
       case D3X5:
         number_bytes = 2;
-        break;  
+        break;
+
+      case D4X3X3:
+        number_bytes = 3;
+        break;		
       
       case NONE:
         number_bytes = 3;
@@ -900,17 +908,13 @@ void FlipDisc::Disc_3x3(uint8_t module_number, uint8_t disc_number, bool disc_st
 }
 
 /*----------------------------------------------------------------------------------*
- * Function allows you to control a selected disc in a 3x3 display.                 *
- * We can control only one disc of the selected display at a time.                  *
- * Addressing selected disc using rows and columns.                                 *
- * The first argument module_number is the relative number of the display           *
- * in the series of all displays. For example, if we have a combination             *
- * of D3X3, D7SEG, D3X3, then the second D3X3 display will have a relative number   *
- * of 2 even though there is a D7SEG display between the D3X3 displays              *
- * -> module_number - relative number of the "D3X3" display                         *
- * -> row_number - display disc row number counting from bottom to top 1-3          *
- * -> column_number - display disc number counting from left to right 1-3           *
- * -> disc_status - reset disc "0" or set disc "1"                                  *
+ * The function allows you to control 3x3 display.                                  *
+ * The first argument is the relative number of the display in the series           *
+ * of all displays. The second argument is the symbol to display                    *
+ * Third argument data_type, you can choose how the numbers are displayed.          *
+ * -> module_number relative number of the "D3X3" display                           *
+ * -> data 0-9                                                                      *
+ * -> data_type - DICE/NUMB                                                         *
  *                                                                                  *
  * Rows, columns & discs numbers                                                    *
  *    1  2  3                                                                       *
@@ -918,12 +922,42 @@ void FlipDisc::Disc_3x3(uint8_t module_number, uint8_t disc_number, bool disc_st
  * 2  4  5  6                                                                       *
  * 1  1  2  3                                                                       *
  *----------------------------------------------------------------------------------*/
-void FlipDisc::Display_3x3(uint8_t module_number, uint8_t row_number, uint8_t column_number, bool disc_status)
+void FlipDisc::Display_3x3(uint8_t module_number, uint8_t new_data, uint8_t data_type)
 {
-  // Based on the row (1-3) and column (1-3) disc address, we determine the disc number 1-9
-  uint8_t disc_number = (row_number - 1) * 3 + column_number;	
+ /*
+  * Simple protection from user error. 
+  * If the selected display has not been declared in Init() then the function will not execute.
+  */
+  if(Fuse(module_number, D3X3) == true) return;
   
-  Disc_3x3(module_number, disc_number, disc_status);
+  bool disc_status = 0;
+  uint8_t bit_number = 0;
+  uint8_t current_column = 0;
+  uint8_t current_row = new_data;
+  
+  // The display is built with 9 independently controlled flip-discs
+  for(int disc_number = 0; disc_number < 9; disc_number++)
+  { 
+   /*
+    * bit_number can only be in the range 0-7, so we must make sure that 
+    * when changing the columns/bytes to read, start counting the bits again from 0.
+    */   
+    if(disc_number <   8) {bit_number = disc_number; current_column = 0;}
+    if(disc_number >=  8) {bit_number = disc_number - 8; current_column = 1;}
+    
+   /*
+    * 1 - Read one byte from location: currentArray_3x3[current_row][current_column]
+    * 2 - Shift byte from 0 to 7 bits to the right
+    * 3 - Extract the bit that corresponds to the state of the selected display disc
+    */ 
+    if(data_type == DICE) disc_status = ((pgm_read_byte(&diceArray_3x3[current_row][current_column])) >> (bit_number)) & 0b00000001;
+    if(data_type == NUMB) disc_status = ((pgm_read_byte(&numbArray_3x3[current_row][current_column])) >> (bit_number)) & 0b00000001;
+
+    // Flip one selected disc
+    Disc_3x3(module_number, disc_number + 1, disc_status);
+  }
+  // Finally, clear all display outputs
+  ClearAllOutputs();
 }
 
 /*----------------------------------------------------------------------------------*
@@ -1177,6 +1211,161 @@ void FlipDisc::Disc_3x5(uint8_t module_number, uint8_t disc_number, bool disc_st
 }
 
 /*----------------------------------------------------------------------------------*
+ * Function allows you to control a selected disc in a 4x3x3 display                *
+ * We can control only one disc of the selected display at a time. The first        *
+ * argument module_number is the relative number of the display in the series       *
+ * of all displays.                                                                 *
+ * -> module_number = 1 - relative number of the "D4X3X3" display                   *
+ * -> disc_number - display disc number counting from right to left                 *
+ * in each 3x3 section, first row 1-3, second row 4-6, third row 7-9                *
+ * -> disc_status - reset disc "0" or set disc "1"                                  *
+ *                                                                                  *
+ *    36 35 34   27 26 25                                                           *
+ *    33 32 31   24 23 22                                                           *
+ *    30 29 28   21 20 19                                                           *
+ *                                                                                  *
+ *    18 17 16    9  8  7                                                           *
+ *    15 14 13    6  5  4                                                           *
+ *    12 11 10    3  2  1                                                           *
+ *----------------------------------------------------------------------------------*/
+void FlipDisc::Disc_4x3x3( uint8_t module_number, uint8_t disc_number, bool disc_status)
+{
+ /*
+  * Simple protection from user error. 
+  * If the selected display has not been declared in Init() then the function will not execute.
+  */
+  if(Fuse(module_number, D4X3X3) == true) return;
+
+  disc_number = disc_number - 1;
+	
+  // Start of SPI data transfer
+  digitalWrite(_EN_PIN, LOW);
+
+ /* 
+  * Send blank data "0" to all control outputs of the other displays BEFORE 
+  * sending control data to the selected display.
+  * Detailed information in the function description SendBlankData().
+  */
+  SendBlankData(module_number, D4X3X3, BEFORE);
+
+ /*
+  * Each of the discs has two sides, one side corresponds to the disk status "1" - color, 
+  * the other side "0" - black. 
+  * Each of the "0" or "1" statuses requires a different polarity of the current pulse 
+  * released into the disc, and thus for each of the statuses we must drive different 
+  * controller outputs to achieve the desired effect. 
+  * The list of information about the statuses of all discs for the display 
+  * and the currently selected dot to be displayed is contained in two tables:
+  * -> setDiscArray_4x3x3[] - "1" 
+  * -> resetDiscArray_4x3x3[] - "0"
+  * Each separate display disc requires 3 byte of data to be transferred. 
+  * To flip all 36 discs, we need to send 108 bytes of data.
+  */
+  for(int byte_number = 0; byte_number < 3; byte_number++)
+  {
+	if(disc_status == 1) SPI.transfer(pgm_read_byte(&setDiscArray_4x3x3[disc_number][byte_number]));
+	if(disc_status == 0) SPI.transfer(pgm_read_byte(&resetDiscArray_4x3x3[disc_number][byte_number]));
+  }
+   
+ /* 
+  * Send blank data "0" to all control outputs of the other displays AFTER 
+  * sending control data to the selected display.
+  * Detailed information in the function description SendBlankData().
+  */
+  SendBlankData(module_number, D4X3X3, AFTER);
+
+  // End of SPI data transfer
+  digitalWrite(_EN_PIN, HIGH);
+
+  // Release of 1ms current pulse 
+  ReleaseCurrentPulse();
+
+  // Clear all outputs of the controllers built into the displays
+  ClearAllOutputs(); 
+}
+
+/*----------------------------------------------------------------------------------*
+ * The function allows you to control 4x3x3 display.                                *
+ * The first argument is the relative number of the display in the series           *
+ * of all displays. The second argument is the display section_number 1-4           *
+ * Third argument data_type, you can choose how the numbers are displayed.          *
+ * -> module_number relative number of the "D4X3X3" display                         *
+ * -> section_number 1-4                                                            *
+ * -> data 0-9                                                                    *
+ * -> data_type - DICE/NUMB                                                         *
+ *                                                                                  *
+ * Brief:                                                                           *
+ * The display consists of 36 discs. The displayArray_4x3x3[][] array contains      *
+ * information about all disc statuses for the 0-9 symbol/digit we want to display. *
+ * To flip a selected disc, we need to know the corresponding control outputs.      *
+ * Disc statuses "0" and "1" correspond to different control outputs.               *
+ * The list of information about all control outputs for corresponding              *
+ * disc statuses of all discs and the currently selected digit/symbol to be         *
+ * displayed are contained in two tables:                                           *
+ * -> setDiscArray_4x3x3[][] - "1"                                                  *
+ * -> resetDiscArray_4x3x3[][] - "0"                                                *
+ *                                                                                  *
+ *           Discs                       Sections                                   *  
+ *    36 35 34   27 26 25              o o o  o o o                                 *
+ *    33 32 31   24 23 22              o 4 o  o 3 o                                 *
+ *    30 29 28   21 20 19              o o o  o o o                                 *
+ *                                                                                  *
+ *    18 17 16    9  8  7              o o o  o o o                                 *
+ *    15 14 13    6  5  4              o 2 o  o 1 o                                 *
+ *    12 11 10    3  2  1              o o o  o o o                                 *
+ *----------------------------------------------------------------------------------*/
+void FlipDisc::Display_4x3x3(uint8_t module_number, uint8_t section_number, uint8_t new_data, uint8_t data_type)
+{
+ /*
+  * Simple protection from user error. 
+  * If the selected display has not been declared in Init() then the function will not execute.
+  */
+  if(Fuse(module_number, D4X3X3) == true) return;
+  
+  bool disc_status = 0;
+  uint8_t bit_number = 0;
+  uint8_t current_column = 0;
+  uint8_t current_row = new_data;
+ 
+ /* 
+  * The display is built with four 3x3 sections
+  * each section with 9 independently controlled flip-discs
+  */
+  for(int disc_number = 0; disc_number < 9; disc_number++)
+  { 
+   /*
+    * bit_number can only be in the range 0-7, so we must make sure that 
+    * when changing the columns/bytes to read, start counting the bits again from 0.
+    */   
+    if(disc_number <   8) {bit_number = disc_number; current_column = 0;}
+    if(disc_number >=  8) {bit_number = disc_number - 8; current_column = 1;}
+    
+   /*
+    * 1 - Read one byte from location: displayArray_4x3x3[current_row][current_column]
+    * 2 - Shift byte from 0 to 7 bits to the right
+    * 3 - Extract the bit that corresponds to the state of the selected display disc
+	* displayArray_4x3x3[row]][column]))
+	* displayArray_4x3x3 is a two-dimensional array containing the numbers of all discs 
+	* that need to be turned on/off to display a given number/symbol. 
+	* In each row there are two bytes with bit numbers that correspond to discs 1-9. 
+    */ 
+    if(data_type == DICE) disc_status = ((pgm_read_byte(&diceArray_4x3x3[current_row][current_column])) >> (bit_number)) & 0b00000001;
+    if(data_type == NUMB) disc_status = ((pgm_read_byte(&numbArray_4x3x3[current_row][current_column])) >> (bit_number)) & 0b00000001;
+
+    // Each of the 3x3 display sections is numbered the same way, 
+	// for each subsequent section we need to shift the disc number by 9
+	uint8_t current_disc_number = 0;
+	current_disc_number = disc_number + 9*(section_number - 1);
+
+    // Flip one selected disc	  
+    Disc_4x3x3(module_number, current_disc_number + 1, disc_status);
+  }	
+	
+  // Finally, clear all display outputs
+  ClearAllOutputs();
+}
+
+/*----------------------------------------------------------------------------------*
  * The function is used to test all displays                                        *
  *----------------------------------------------------------------------------------*/
 void FlipDisc::Test(void)
@@ -1203,7 +1392,10 @@ void FlipDisc::All(void)
         Display_7Seg((moduleInitArray[i][module_relative_position_column]), ALL);
         break; 
 
-      /* D3X1 = D2X1 - are the same */
+      case D2X1:
+        Display_2x1((moduleInitArray[i][module_relative_position_column]), 1,1);
+        break; 
+		
       case D3X1:
         Display_3x1((moduleInitArray[i][module_relative_position_column]), 1,1,1);
         break;  
@@ -1242,7 +1434,14 @@ void FlipDisc::All(void)
         {
           Disc_3x5((moduleInitArray[i][module_relative_position_column]), disc, 1); 
         }
-        break;	
+        break;
+
+      case D4X3X3:
+        for(int disc = 1; disc <= 36; disc++)
+        {
+          Disc_4x3x3((moduleInitArray[i][module_relative_position_column]), disc, 1); 
+        }
+        break;		
         
       default:
         break;
@@ -1263,7 +1462,10 @@ void FlipDisc::Clear(void)
         Display_7Seg((moduleInitArray[i][module_relative_position_column]), CLR);
         break;
 
-      /* D3X1 = D2X1 - are the same */
+      case D2X1:
+        Display_2x1((moduleInitArray[i][module_relative_position_column]), 0,0);
+        break;  
+		
       case D3X1:
         Display_3x1((moduleInitArray[i][module_relative_position_column]), 0,0,0);
         break;  
@@ -1302,7 +1504,14 @@ void FlipDisc::Clear(void)
         {
           Disc_3x5((moduleInitArray[i][module_relative_position_column]), disc, 0); 
         }
-        break;			
+        break;
+
+      case D4X3X3:
+        for(int disc = 1; disc <= 36; disc++)
+        {
+          Disc_4x3x3((moduleInitArray[i][module_relative_position_column]), disc, 0); 
+        }
+        break;		
 	  
       default:
         break;
