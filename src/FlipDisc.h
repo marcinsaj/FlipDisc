@@ -19,16 +19,17 @@
 #endif
 
 // Codenames of display modules
-static const uint8_t D7SEG = 0x7F;
-static const uint8_t D2X1  = 0x31; /* D3X1 = D2X1 - are the same */
-static const uint8_t D3X1  = 0x31;
-static const uint8_t D1X3  = 0x13;
-static const uint8_t D1X7  = 0x17;
-static const uint8_t D2X6  = 0x26;
-static const uint8_t D3X3  = 0x33;
-static const uint8_t D3X4  = 0x34;
-static const uint8_t D3X5  = 0x35;
-static const uint8_t NONE  = 0xFF;
+static const uint8_t D7SEG   = 0x7F;
+static const uint8_t D2X1    = 0x21;
+static const uint8_t D3X1    = 0x31;
+static const uint8_t D1X3    = 0x13;
+static const uint8_t D1X7    = 0x17;
+static const uint8_t D2X6    = 0x26;
+static const uint8_t D3X3    = 0x33;
+static const uint8_t D3X4    = 0x34;
+static const uint8_t D3X5    = 0x35;
+static const uint8_t D4X3X3  = 0x43;
+static const uint8_t NONE    = 0xFF;
 
 // Codenames of symbols for 7-segment display
 static const uint8_t ALL = 8;    // ALL - Set all discs
@@ -73,6 +74,9 @@ static const uint8_t VLL = 44;   // VLL - "| " - Vertical line - left
 static const uint8_t VLR = 1 ;   // VLR - " |" - Vertical line - right
 static const uint8_t VLA = 45;   // VLA - "||" - All Vertical lines
 
+// Codenames of symbols for 3x3 display
+static const uint8_t CAD = 10;   // CAD - Clear all discs
+static const uint8_t SAD = 11;   // SAD - Set all discs
 
 // Codenames for the SendBlankData() function
 static const uint8_t BEFORE = 0xAA;
@@ -82,6 +86,10 @@ static const uint8_t AFTER = 0xBB;
 static const uint8_t module_type_column = 0;
 static const uint8_t number_bytes_column = 1;
 static const uint8_t module_relative_position_column = 2;
+
+// Codenames for all 3x3 type displays
+static const uint8_t DICE = 0xDD;
+static const uint8_t NUMB = 0xEE;
 
 /*
  * The 7-segment display consists of 23 disks. 
@@ -442,7 +450,7 @@ static const uint8_t resetDiscArray_3x3[9][2] PROGMEM =
  * Compressed array of all bits corresponding to discs states for selected dice symbol 1-9.
  * Disc numbers in individual bytes: 7,6,5,4,3,2,1,0  15,14,13,12,11,10,9,8 
  */
-static const uint8_t diceArray_3x3[10][2] PROGMEM =
+static const uint8_t diceArray_3x3[12][2] PROGMEM =
 {    
   {0b00000000, 0b00000000}, // 0 
   {0b00010000, 0b00000000}, // 1 
@@ -453,15 +461,17 @@ static const uint8_t diceArray_3x3[10][2] PROGMEM =
   {0b01101101, 0b00000001}, // 6 
   {0b01111101, 0b00000001}, // 7 
   {0b11101111, 0b00000001}, // 6
-  {0b11111111, 0b00000001}  // 9
+  {0b11111111, 0b00000001}, // 9
+  {0b00000000, 0b00000000}, // 10/CAD - clear all discs
+  {0b11111111, 0b00000001}  // 11/SAD - set all discs  
 };
 
 /* 
- * Refers to "D3X3" - 3x5 display
+ * Refers to "D3X3" - 3x3 display - TO DO
  * Compressed array of all bits corresponding to discs states for selected symbols.
  * Disc numbers in individual bytes: 7,6,5,4,3,2,1,0  15,14,13,12,11,10,9,8 
  */
-static const uint8_t displayArray_3x3[61][2] PROGMEM =
+static const uint8_t numbArray_3x3[12][2] PROGMEM =
 {    
   {0b00000000, 0b00000000}, // 0
   {0b00000000, 0b00000000}, // 1 
@@ -472,58 +482,9 @@ static const uint8_t displayArray_3x3[61][2] PROGMEM =
   {0b00000000, 0b00000000}, // 6 
   {0b00000000, 0b00000000}, // 7 
   {0b00000000, 0b00000000}, // 8 
-  {0b00000000, 0b00000000}, // 9/ALL 
-  {0b00000000, 0b00000000}, // 10/CLR 
-  {0b00000000, 0b00000000}, // 11/A
-  {0b00000000, 0b00000000}, // 12/B
-  {0b00000000, 0b00000000}, // 13/C
-  {0b00000000, 0b00000000}, // 14/D
-  {0b00000000, 0b00000000}, // 15/E
-  {0b00000000, 0b00000000}, // 16/F
-  {0b00000000, 0b00000000}, // 17/G
-  {0b00000000, 0b00000000}, // 18/H
-  {0b00000000, 0b00000000}, // 19/I
-  {0b00000000, 0b00000000}, // 20/J
-  {0b00000000, 0b00000000}, // 21/K
-  {0b00000000, 0b00000000}, // 22/L
-  {0b00000000, 0b00000000}, // 23/M
-  {0b00000000, 0b00000000}, // 24/N
-  {0b00000000, 0b00000000}, // 25/O
-  {0b00000000, 0b00000000}, // 26/P
-  {0b00000000, 0b00000000}, // 27/Q
-  {0b00000000, 0b00000000}, // 28/R
-  {0b00000000, 0b00000000}, // 29/S
-  {0b00000000, 0b00000000}, // 30/T
-  {0b00000000, 0b00000000}, // 31/U
-  {0b00000000, 0b00000000}, // 32/V
-  {0b00000000, 0b00000000}, // 33/W
-  {0b00000000, 0b00000000}, // 34/X
-  {0b00000000, 0b00000000}, // 35/Y
-  {0b00000000, 0b00000000}, // 36/Z
-  {0b00000000, 0b00000000}, // "°"/37/DEG - Degree symbol
-  {0b00000000, 0b00000000}, // "¯"/38/HLU - Horizontal line - upper
-  {0b00000000, 0b00000000}, // "-"/39/HLM/MIN - Horizontal line - middle
-  {0b00000000, 0b00000000}, // "_"/40/HLL - Horizontal line - lower
-  {0b00000000, 0b00000000}, // "="/41/HLT - Horizontal line - upper & lower
-  {0b00000000, 0b00000000}, // "| " /42/VLL - Vertical line - left
-  {0b00000000, 0b00000000}, // " | "/43/VLR - Vertical line - middle
-  {0b00000000, 0b00000000}, // "  |"/44/VLR - Vertical line - right
-  {0b00000000, 0b00000000}, // "="/45/EQL - Equal symbol
-  {0b00000000, 0b00000000}, // "+"/46/PLS - Plus symbol
-  {0b00000000, 0b00000000}, // "*"/47/AST - Multiplication symbol - dot in the middle    
-  {0b00000000, 0b00000000}, // "."/48/DOT - Dot symbol
-  {0b00000000, 0b00000000}, // ":"/49/CLN - Colon symbol
-  {0b00000000, 0b00000000}, // ","/50/CMM - Comma symbol 
-  {0b00000000, 0b00000000}, // "/"/51/SLS - Slash symbol
-  {0b00000000, 0b00000000}, // "\"/52/BLS - Backslash symbol
-  {0b00000000, 0b00000000}, // "("/53/RBL - Square bracket left
-  {0b00000000, 0b00000000}, // ")"/54/RBR - Square bracket right
-  {0b00000000, 0b00000000}, // "["/55/RBL - Round bracket left
-  {0b00000000, 0b00000000}, // "]"/56/RBR - Round bracket right
-  {0b00000000, 0b00000000}, // "<"/57/ABL - Angle bracket left
-  {0b00000000, 0b00000000}, // ">"/58/ABR - Angle bracket right
-  {0b00000000, 0b00000000}, // "?"/59/ABR - Question mark symbol
-  {0b00000000, 0b00000000}  // "!"/60/EXC - Exclamation mark symbol
+  {0b00000000, 0b00000000}, // 9
+  {0b00000000, 0b00000000}, // 10/CAD - clear all discs
+  {0b11111111, 0b00000001}  // 11/SAD - set all discs  
 };
 
 /* 
@@ -692,6 +653,178 @@ static const uint8_t displayArray_3x5[68][2] PROGMEM =
   {0b10000010, 0b01111000}, // "?"/66/QST - Question symbol
   {0b11111111, 0b01111111}  // 67/ALL - All discs     
 };
+
+/* 
+ * Refers to "D4X3X3" - 4x3x3 display.  
+ * The array contains the addresses of the control outputs corresponding 
+ * to the setting of the discs to the "color" side.
+ *    36 35 34   27 26 25
+ *    33 32 31   24 23 22
+ *    30 29 28   21 20 19
+ *
+ *    18 17 16    9  8  7
+ *    15 14 13    6  5  4
+ *    12 11 10    3  2  1
+ */ 
+static const uint8_t setDiscArray_4x3x3[36][3] PROGMEM =
+{
+  {0b00000000, 0b00000000, 0b01000010},
+  {0b00000000, 0b00000000, 0b00010010},
+  {0b00000000, 0b00000100, 0b00000010},
+
+  {0b10000000, 0b00000000, 0b01000000},
+  {0b10000000, 0b00000000, 0b00010000},
+  {0b10000000, 0b00000100, 0b00000000},
+  
+  {0b00000000, 0b00000001, 0b01000000},
+  {0b00000000, 0b00000001, 0b00010000},
+  {0b00000000, 0b00000101, 0b00000000},
+
+  {0b00000000, 0b00001000, 0b00000010},
+  {0b00001000, 0b00000000, 0b00000010},
+  {0b00000100, 0b00000000, 0b00000010},
+
+  {0b10000000, 0b00001000, 0b00000000},
+  {0b10001000, 0b00000000, 0b00000000},
+  {0b10000100, 0b00000000, 0b00000000},
+  
+  {0b00000000, 0b00001001, 0b00000000},
+  {0b00001000, 0b00000001, 0b00000000},
+  {0b00000100, 0b00000001, 0b00000000},
+
+  {0b00000000, 0b01000000, 0b01000000},
+  {0b00000000, 0b01000000, 0b00010000},
+  {0b00000000, 0b01000100, 0b00000000},  
+
+  {0b00000000, 0b00000000, 0b01001000},
+  {0b00000000, 0b00000000, 0b00011000},
+  {0b00000000, 0b00000100, 0b00001000},
+
+  {0b01000000, 0b00000000, 0b01000000},
+  {0b01000000, 0b00000000, 0b00010000},
+  {0b01000000, 0b00000100, 0b00000000},
+
+  {0b00000000, 0b01001000, 0b00000000},
+  {0b00001000, 0b01000000, 0b00000000},
+  {0b00000100, 0b01000000, 0b00000000},  
+
+  {0b00000000, 0b00001000, 0b00001000},
+  {0b00001000, 0b00000000, 0b00001000},
+  {0b00000100, 0b00000000, 0b00001000},
+
+  {0b01000000, 0b00001000, 0b00000000},
+  {0b01001000, 0b00000000, 0b00000000},
+  {0b01000100, 0b00000000, 0b00000000} 
+};
+
+/* 
+ * Refers to "D4X3X3" - 4x3x3 display.  
+ * The array contains the addresses of the control outputs corresponding 
+ * to the setting of the discs to the "black" side.
+ *    36 35 34   27 26 25
+ *    33 32 31   24 23 22
+ *    30 29 28   21 20 19
+ *
+ *    18 17 16    9  8  7
+ *    15 14 13    6  5  4
+ *    12 11 10    3  2  1
+ */ 
+static const uint8_t resetDiscArray_4x3x3[36][3] PROGMEM =
+{
+  {0b00000000, 0b00000000, 0b10000001},
+  {0b00000000, 0b00000000, 0b00100001},
+  {0b00000000, 0b00000010, 0b00000001},
+
+  {0b00000001, 0b00000000, 0b10000000},
+  {0b00000001, 0b00000000, 0b00100000},
+  {0b00000001, 0b00000010, 0b00000000},
+  
+  {0b00000000, 0b10000000, 0b10000000},
+  {0b00000000, 0b10000000, 0b00100000},
+  {0b00000000, 0b10000010, 0b00000000},
+
+  {0b00000000, 0b00010000, 0b00000001},
+  {0b00010000, 0b00000000, 0b00000001},
+  {0b00000010, 0b00000000, 0b00000001},
+
+  {0b00000001, 0b00010000, 0b00000000},
+  {0b00010001, 0b00000000, 0b00000000},
+  {0b00000011, 0b00000000, 0b00000000},
+  
+  {0b00000000, 0b10010000, 0b00000000},
+  {0b00010000, 0b10000000, 0b00000000},
+  {0b00000010, 0b10000000, 0b00000000}, 
+
+  {0b00000000, 0b00100000, 0b10000000},
+  {0b00000000, 0b00100000, 0b00100000},
+  {0b00000000, 0b00100010, 0b00000000},
+
+  {0b00000000, 0b00000000, 0b10000100},
+  {0b00000000, 0b00000000, 0b00100100},
+  {0b00000000, 0b00000010, 0b00000100},
+  
+  {0b00100000, 0b00000000, 0b10000000},
+  {0b00100000, 0b00000000, 0b00100000},
+  {0b00100000, 0b00000010, 0b00000000},
+
+  {0b00000000, 0b00110000, 0b00000000},
+  {0b00010000, 0b00100000, 0b00000000},
+  {0b00000010, 0b00100000, 0b00000000},
+
+  {0b00000000, 0b00010000, 0b00000100},
+  {0b00010000, 0b00000000, 0b00000100},
+  {0b00000010, 0b00000000, 0b00000100},
+  
+  {0b00100000, 0b00010000, 0b00000000},
+  {0b00110000, 0b00000000, 0b00000000},
+  {0b00100010, 0b00000000, 0b00000000} 
+}; 
+
+/* 
+ * Refers to "D4X3X3" - 4x3x3 display
+ * Compressed array of all bits corresponding to discs states for selected dice symbol 0-9.
+ * 4x3x3 display contains 4 sections 3x3, the discs in each section are numbered in the same way 
+ * so the array only needs to contain the disc numbers of one section.
+ * Disc numbers in individual bytes: 7,6,5,4,3,2,1,0  15,14,13,12,11,10,9,8 
+ */
+static const uint8_t diceArray_4x3x3[12][2] PROGMEM =
+{    
+  {0b00000000, 0b00000000}, // 0 
+  {0b00010000, 0b00000000}, // 1 
+  {0b00000001, 0b00000001}, // 2 
+  {0b01010100, 0b00000000}, // 3 
+  {0b01000101, 0b00000001}, // 4 
+  {0b01010101, 0b00000001}, // 5 
+  {0b01101101, 0b00000001}, // 6 
+  {0b01111101, 0b00000001}, // 7 
+  {0b11101111, 0b00000001}, // 8 
+  {0b11111111, 0b00000001}, // 9
+  {0b00000000, 0b00000000}, // 10/CAD - clear all discs
+  {0b11111111, 0b00000001}  // 11/SAD - set all discs
+};
+
+/* 
+ * Refers to "D4X3X3" - 4x3x3 display
+ * Compressed array of all bits corresponding to discs states for selected digits symbol 0-9.
+ * 4x3x3 display contains 4 sections 3x3, the discs in each section are numbered in the same way 
+ * so the array only needs to contain the disc numbers of one section.
+ * Disc numbers in individual bytes: 7,6,5,4,3,2,1,0  15,14,13,12,11,10,9,8 
+ */
+static const uint8_t numbArray_4x3x3[12][2] PROGMEM =
+{    
+  {0b11101111, 0b00000001}, // 0
+  {0b10010111, 0b00000001}, // 1
+  {0b10010011, 0b00000001}, // 2 
+  {0b11011111, 0b00000001}, // 3
+  {0b01111001, 0b00000001}, // 4
+  {0b11010110, 0b00000000}, // 5
+  {0b00111111, 0b00000001}, // 6
+  {0b11001001, 0b00000001}, // 7
+  {0b11111111, 0b00000000}, // 8
+  {0b11111001, 0b00000001}, // 9
+  {0b00000000, 0b00000000}, // 10/CAD - clear all discs
+  {0b11111111, 0b00000001}  // 11/SAD - set all discs
+};
  
 class FlipDisc
 {
@@ -723,7 +856,7 @@ class FlipDisc
     void Display_2x6(uint8_t module_number, uint8_t row_number, uint8_t column_number, bool disc_status);
 						 
     void Disc_3x3(uint8_t module_number, uint8_t discNumber, bool disc_status);
-    void Display_3x3(uint8_t module_number, uint8_t row_number, uint8_t column_number, bool disc_status);
+    void Display_3x3(uint8_t module_number, uint8_t new_data, uint8_t data_type);
 
     void Disc_3x4(uint8_t module_number, uint8_t discNumber, bool disc_status);
     void Display_3x4(uint8_t module_number, uint8_t row_number, uint8_t column_number, bool disc_status);
@@ -733,7 +866,10 @@ class FlipDisc
     void Matrix_3x5(uint8_t data1, uint8_t data2 = 0xFF, uint8_t data3 = 0xFF, uint8_t data4 = 0xFF, 
                     uint8_t data5 = 0xFF, uint8_t data6 = 0xFF, uint8_t data7 = 0xFF, uint8_t data8 = 0xFF);
 						 
-    void Delay(uint8_t new_time_delay);
+    void Disc_4x3x3(uint8_t module_number, uint8_t discNumber, bool disc_status);
+	void Display_4x3x3(uint8_t module_number, uint8_t section_number, uint8_t new_data, uint8_t data_type);
+	
+	void Delay(uint8_t new_time_delay);
     void Test(void);
     void All(void);
     void Clear(void);
