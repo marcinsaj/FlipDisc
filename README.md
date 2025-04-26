@@ -1,5 +1,5 @@
 ![Arduino](https://img.shields.io/badge/-Arduino-00979D?style=for-the-badge&logo=Arduino&logoColor=white)
-## Arduino FlipDisc Library v1.1.1
+## Arduino FlipDisc Library v1.1.2
 https://github.com/marcinsaj/FlipDisc  
 The MIT License
 Marcin Saj 15 Jan 2023  
