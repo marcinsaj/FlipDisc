@@ -867,9 +867,9 @@ class FlipDisc
                     uint8_t data5 = 0xFF, uint8_t data6 = 0xFF, uint8_t data7 = 0xFF, uint8_t data8 = 0xFF);
 						 
     void Disc_4x3x3(uint8_t module_number, uint8_t discNumber, bool disc_status);
-	void Display_4x3x3(uint8_t module_number, uint8_t section_number, uint8_t new_data, uint8_t data_type);
+    void Display_4x3x3(uint8_t module_number, uint8_t section_number, uint8_t new_data, uint8_t data_type);
 	
-	void Delay(uint8_t new_time_delay);
+    void Delay(uint8_t new_time_delay);
     void Test(void);
     void All(void);
     void Clear(void);
