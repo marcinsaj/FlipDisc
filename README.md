@@ -1,5 +1,6 @@
-![Arduino](https://img.shields.io/badge/-Arduino-00979D?style=for-the-badge&logo=Arduino&logoColor=white)
 ## Arduino FlipDisc Library v1.1.2
+![GitHub Release](https://img.shields.io/github/v/release/marcinsaj/FlipDisc?sort=date&style=flat&label=Version) ![GitHub License](https://img.shields.io/github/license/marcinsaj/FlipDisc)
+
 https://github.com/marcinsaj/FlipDisc  
 The MIT License
 Marcin Saj 15 Jan 2023  
