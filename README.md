@@ -272,7 +272,7 @@ The function allows you to control one selected disc of 7-Segment display. The f
  - disc_number - there are 23 discs in 7-Segment display 0-22
  - disc_status - reset disc "0" or set disc "1"                                       
 
-See the function description in [Flip.cpp](https://github.com/marcinsaj/FlipDisc/blob/main/src/Flip.cpp)
+See the function description in [FlipDisc.cpp](https://github.com/marcinsaj/FlipDisc/blob/main/src/FlipDisc.cpp)
 
 ------------------------------------------------------------------------------------------- 
 
@@ -293,7 +293,7 @@ The function allows you to control one 7-segment display. The first argument "mo
  - setDiscArray_7Seg[] - "1"
  - resetDiscArray_7Seg[] - "0"
   
-See the function description in [Flip.cpp](https://github.com/marcinsaj/FlipDisc/blob/main/src/Flip.cpp)
+See the function description in [FlipDisc.cpp](https://github.com/marcinsaj/FlipDisc/blob/main/src/FlipDisc.cpp)
 
 ------------------------------------------------------------------------------------------- 
 
