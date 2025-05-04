@@ -1,4 +1,4 @@
-## Arduino FlipDisc Library v1.1.2
+## Arduino FlipDisc Library v1.1.3
 ![GitHub Release](https://img.shields.io/github/v/release/marcinsaj/FlipDisc?sort=date&style=flat&label=Version) ![GitHub License](https://img.shields.io/github/license/marcinsaj/FlipDisc)
 
 https://github.com/marcinsaj/FlipDisc  
