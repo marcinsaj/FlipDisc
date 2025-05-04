@@ -211,6 +211,7 @@ Flip.Init(...) it is second most important function. Initialization function for
  - D3X3 - work in progress
  - D3X4 - work in progress
  - D3X5 - work in progress
+ - D4X3X3 - work in progress
 
 ------------------------------------------------------------------------------------------- 
 
@@ -557,6 +558,7 @@ Function allows you to control a selected disc in a 2x6 display. Addressing sele
 - 3x3 flip-disc display - work in progress
 - 3x4 flip-disc display - work in progress
 - 3x5 flip-disc display - work in progress
+- 4x3x3 flip-disc display - work in progress
 - [flip-disc power supply module](https://flipo.io/project/flip-disc-power-supply/)  
 
 ------------------------------------------------------------------------------------------- 
