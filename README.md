@@ -559,16 +559,14 @@ Function allows you to control a selected disc in a 2x6 display. Addressing sele
 - 3x5 flip-disc display - work in progress
 - [flip-disc power supply module](https://flipo.io/project/flip-disc-power-supply/)  
 
-  
+------------------------------------------------------------------------------------------- 
 
-
-<p align="center">
-  <img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-arduino-controller.jpg">
-  <img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-7-segment-display.jpg">
-  <img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-2x1-display.jpg">
-  <img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-3x1-display.jpg">
-  <img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-1x3-display.jpg">
-  <img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-1x7-display.jpg">
-  <img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/flipo-2x6-flip-disc-display-project.jpg">
-  <img src="https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-power-supply-module.jpg">
-</p>
+![flip-disc arduino controller](https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-arduino-controller.jpg)
+![flip-disc 7-segment display](https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-7-segment-display.jpg)
+![flip-disc 2x1 display](https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-2x1-display.jpg)
+![flip-disc 3x1 display](https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-3x1-display.jpg)
+![flip-disc 1x3 display](https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-1x3-display.jpg)
+![flip-disc 1x7 display](https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-1x7-display.jpg)
+![flip-disc 2x6 display](https://github.com/marcinsaj/FlipDisc/blob/main/extras/flipo-2x6-flip-disc-display-project.jpg)
+![4x3x3 flip-disc display](https://github.com/marcinsaj/FlipDisc/blob/main/extras/4x3x3-flip-disc-display-cover-github.webp)
+![flip-disc power-supply module](https://github.com/marcinsaj/FlipDisc/blob/main/extras/flip-disc-power-supply-module.jpg)
