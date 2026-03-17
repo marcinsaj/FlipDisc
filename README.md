@@ -4,10 +4,6 @@
 https://github.com/marcinsaj/FlipDisc  
 The MIT License
 Marcin Saj 15 Jan 2023  
-  
-> [!IMPORTANT]
-> This project is no longer actively maintained due to a fundamental redesign of the main flip-disc display controller.  
-> The first project based on the new controller is the [Modular Flip-Disc Clock](https://github.com/marcinsaj/Flipo-Modular-Clock-4x3x3-Flip-Disc-Display).
 
 -------------------------------------------------------------------------------------------  
  
