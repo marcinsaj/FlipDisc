@@ -25,10 +25,6 @@ All the functions responsible for controlling the displays are described in exam
 - [1x3 flip-disc display](https://flipo.io/project/flip-disc-1x3-display/)
 - [1x7 flip-disc display](https://flipo.io/project/flip-disc-1x7-display/)
 - [2x6 flip-disc display](https://flipo.io/project/2x6-flip-disc-display/)
-- 3x3 flip-disc display - work in progress
-- 3x4 flip-disc display - work in progress
-- 3x5 flip-disc display - work in progress
-- 4x3x3 flip-disc display - work in progress
 - [flip-disc power supply module](https://flipo.io/project/flip-disc-power-supply/)   
 
 -------------------------------------------------------------------------------------------     
